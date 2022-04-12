@@ -22,4 +22,9 @@
 .home-landing-background {
   background: url('images/manoa-valley.jpg') no-repeat center center fixed;
   background-size: cover;
+
+}
+
+.transparency {
+  background-color: rgba(0, 0, 0, 0.45);
 }
