@@ -10,7 +10,7 @@ import Landing from '../pages/Landing';
 import Profiles from '../pages/Profiles';
 import StudentHome from '../pages/StudentHome';
 import CompanyHome from '../pages/CompanyHome';
-import AddProject from '../pages/AddProject';
+import AddJob from '../pages/AddJob';
 import Projects from '../pages/Projects';
 import Filter from '../pages/Filter';
 import Interests from '../pages/Interests';
@@ -34,7 +34,7 @@ class App extends React.Component {
               <Route path="/profiles" component={Profiles}/>
               <Route path="/projects" component={Projects}/>
               <Route path="/interests" component={Interests}/>
-              <ProtectedRoute path="/addproject" component={AddProject}/>
+              <ProtectedRoute path="/addjob" component={AddJob}/>
               <ProtectedRoute path="/filter" component={Filter}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
