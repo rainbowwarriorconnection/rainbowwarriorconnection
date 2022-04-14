@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Profiles from '../pages/Profiles';
 import StudentHome from '../pages/StudentHome';
+import CompanyHome from '../pages/CompanyHome';
 import AddProject from '../pages/AddProject';
 import Projects from '../pages/Projects';
 import Filter from '../pages/Filter';
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/student-home" component={StudentHome}/>
+              <ProtectedRoute path="/company-home" component={CompanyHome}/>
               <Route path="/profiles" component={Profiles}/>
               <Route path="/projects" component={Projects}/>
               <Route path="/interests" component={Interests}/>
