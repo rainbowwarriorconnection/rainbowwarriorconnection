@@ -1,5 +1,3 @@
-/* Custom site-wide CSS */
-
 .bowfolio-green {
   color:  #376551;
 }
@@ -19,4 +17,14 @@
 .reset-margins {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.home-landing-background {
+  background: url('images/manoa-valley.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+}
+
+.transparency {
+  background-color: rgba(0, 0, 0, 0.45);
 }
