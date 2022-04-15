@@ -17,19 +17,18 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests, allParticipants) => new SimpleSchema({
-  name: String,
+const makeSchema = (allInterests) => new SimpleSchema({
+  jobTitle: String,
   description: String,
-  homepage: String,
-  picture: String,
-  interests: { type: Array, label: 'Interests', optional: false },
+  location: String,
+  position: String,
+  salaryRange: String,
+  interests: { type: Array, label: 'Skills', optional: false },
   'interests.$': { type: String, allowedValues: allInterests },
-  participants: { type: Array, label: 'Participants', optional: true },
-  'participants.$': { type: String, allowedValues: allParticipants },
 });
 
 /** Renders the Page for adding a document. */
-class AddProject extends React.Component {
+class AddJob extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
@@ -50,20 +49,19 @@ class AddProject extends React.Component {
     const formSchema = makeSchema(allInterests, allParticipants);
     const bridge = new SimpleSchema2Bridge(formSchema);
     return (
-      <Grid id="add-project-page" container centered>
+      <Grid id="add-job-page" container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Add Project</Header>
+          <Header as="h2" textAlign="center">Add Job Posting</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <Form.Group widths={'equal'}>
-                <TextField id='name' name='name' showInlineError={true} placeholder='Project name'/>
-                <TextField id='picture' name='picture' showInlineError={true} placeholder='Project picture URL'/>
-                <TextField id='homepage' name='homepage' showInlineError={true} placeholder='Homepage URL'/>
+                <TextField id='jobTitle' name='jobTitle' showInlineError={true} placeholder='Job Title'/>
+                <MultiSelectField id='position' name='position' showInlineError={true} placeholder='Position'/>
+                <MultiSelectField id='location' name='location' showInlineError={true} placeholder='State/Country'/>
               </Form.Group>
-              <LongTextField id='description' name='description' placeholder='Describe the project here'/>
+              <LongTextField id='description' name='description' placeholder='Describe the job here'/>
               <Form.Group widths={'equal'}>
-                <MultiSelectField id='interests' name='interests' showInlineError={true} placeholder={'Interests'}/>
-                <MultiSelectField id='participants' name='participants' showInlineError={true} placeholder={'Participants'}/>
+                <MultiSelectField id='interests' name='interests' showInlineError={true} placeholder={'Skills Needed'}/>
               </Form.Group>
               <SubmitField id='submit' value='Submit'/>
               <ErrorsField/>
@@ -75,7 +73,7 @@ class AddProject extends React.Component {
   }
 }
 
-AddProject.propTypes = {
+AddJob.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 
@@ -90,4 +88,4 @@ export default withTracker(() => {
   return {
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
   };
-})(AddProject);
+})(AddJob);
