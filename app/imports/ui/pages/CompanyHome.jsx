@@ -18,15 +18,11 @@ import { updateProfileMethod } from '../../startup/both/Methods';
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allInterests, allProjects) => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
-  companyName: { type: String, label: 'Company', optional: true },
-  bio: { type: String, label: 'Biography', optional: true },
+  name: { type: String, label: 'Company', optional: true },
+  description: { type: String, label: 'Biography', optional: true },
   state: { type: String, label: 'State', optional: true },
   city: { type: String, label: 'City', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
-  interests: { type: Array, label: 'Interests', optional: true },
-  'interests.$': { type: String, allowedValues: allInterests },
-  projects: { type: Array, label: 'Projects', optional: true },
-  'projects.$': { type: String, allowedValues: allProjects },
 });
 
 /** Renders the Home Page: what appears after the user logs in. */
@@ -52,13 +48,9 @@ class CompanyHome extends React.Component {
   renderPage() {
     const email = Meteor.user().username;
     // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
-    const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
-    const allProjects = _.pluck(Projects.collection.find().fetch(), 'name');
     const formSchema = makeSchema(allInterests, allProjects);
     const bridge = new SimpleSchema2Bridge(formSchema);
     // Now create the model with all the company information.
-    const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-    const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
     const profile = Profiles.collection.findOne({ email });
     const model = _.extend({}, profile, { interests, projects });
     return (
@@ -77,7 +69,7 @@ class CompanyHome extends React.Component {
                 <TextField name='picture' showInlineError={true} placeholder={'Provide a link for your Company Logo'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <LongTextField name='bio' showInlineError={true} placeholder={'Company Description'}/>
+                <LongTextField name='description' showInlineError={true} placeholder={'Company Description'}/>
               </Form.Group>
               <SubmitField id='home-page-submit' value='Submit'/>
             </Segment>
@@ -95,12 +87,8 @@ CompanyHome.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
-  const sub1 = Meteor.subscribe(Interests.userPublicationName);
-  const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-  const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Projects.userPublicationName);
+  const sub1 = Meteor.subscribe(Companies.userPublicationName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    ready: sub1.ready(),
   };
 })(CompanyHome);
