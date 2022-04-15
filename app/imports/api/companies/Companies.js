@@ -17,6 +17,7 @@ class CompaniesCollection {
       email: { type: String, index: true, unique: true },
       picture: { type: String, optional: true },
       state: { type: String, optional: true},
+      city: { type: String, optional: true}
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

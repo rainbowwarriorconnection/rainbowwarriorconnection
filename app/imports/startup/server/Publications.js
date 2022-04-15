@@ -1,7 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Students } from '../../api/students/Students';
+import { Companies } from '../../api/companies/Companies';
 
 Meteor.publish(Students.userPublicationName, () => Students.collection.find());
+Meteor.publish(Companies.userPublicationName, () => Companies.collection.find());
 
 // alanning:roles publication
 // Recommended code to publish roles for each user.

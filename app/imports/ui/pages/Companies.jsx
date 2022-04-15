@@ -7,7 +7,7 @@ import { _ } from 'meteor/underscore';
 import { Companies } from '../../api/companies/Companies';
 
 /** Gets the Project data as well as Profiles and Interests associated with the passed Project name. */
-function getProjectData(name) {
+function getCompanyData(name) {
   const data = Companies.collection.findOne({ name });
   return _.extend({ }, data);
 }
@@ -33,7 +33,7 @@ MakeCard.propTypes = {
 };
 
 /** Renders the Project Collection as a set of Cards. */
-class ProjectsPage extends React.Component {
+class CompaniesPage extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -42,19 +42,19 @@ class ProjectsPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const projects = _.pluck(Companies.collection.find().fetch(), 'name');
-    const projectData = projects.map(project => getProjectData(project));
+    const companies = _.pluck(Companies.collection.find().fetch(), 'name');
+    const companyData = companies.map(company => getCompanyData(company));
     return (
       <Container id="projects-page">
         <Card.Group>
-          {_.map(projectData, (project, index) => <MakeCard key={index} project={project}/>)}
+          {_.map(companyData, (company, index) => <MakeCard key={index} project={company}/>)}
         </Card.Group>
       </Container>
     );
   }
 }
 
-ProjectsPage.propTypes = {
+CompaniesPage.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 
@@ -65,4 +65,4 @@ export default withTracker(() => {
   return {
     ready: sub1.ready(),
   };
-})(ProjectsPage);
+})(CompaniesPage);
