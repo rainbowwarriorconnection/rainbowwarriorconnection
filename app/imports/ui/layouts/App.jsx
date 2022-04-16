@@ -11,7 +11,7 @@ import Profiles from '../pages/Profiles';
 import StudentHome from '../pages/StudentHome';
 import CompanyHome from '../pages/CompanyHome';
 import AddJob from '../pages/AddJob';
-import Projects from '../pages/Projects';
+import Companies from '../pages/Companies';
 import Filter from '../pages/Filter';
 import Interests from '../pages/Interests';
 import NotFound from '../pages/NotFound';
@@ -32,7 +32,7 @@ class App extends React.Component {
               <ProtectedRoute path="/student-home" component={StudentHome}/>
               <ProtectedRoute path="/company-home" component={CompanyHome}/>
               <Route path="/profiles" component={Profiles}/>
-              <Route path="/projects" component={Projects}/>
+              <Route path="/companies" component={Companies}/>
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addjob" component={AddJob}/>
               <ProtectedRoute path="/filter" component={Filter}/>
