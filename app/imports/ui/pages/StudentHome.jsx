@@ -9,34 +9,26 @@ import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
-import { Interests } from '../../api/interests/Interests';
-import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
-import { updateProfileMethod } from '../../startup/both/Methods';
+
+import { Students } from '../../api/students/Students';
+import { updateStudentsMethod } from '../../startup/both/Methods';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests, allProjects) => new SimpleSchema({
+const makeSchema = (allStudents) => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   firstName: { type: String, label: 'First', optional: true },
   lastName: { type: String, label: 'Last', optional: true },
-  bio: { type: String, label: 'Biographical statement', optional: true },
+  description: { type: String, label: 'Biographical statement', optional: true },
   state: { type: String, label: 'State', optional: true },
-  city: { type: String, label: 'City', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
-  interests: { type: Array, label: 'Interests', optional: true },
-  'interests.$': { type: String, allowedValues: allInterests },
-  projects: { type: Array, label: 'Projects', optional: true },
-  'projects.$': { type: String, allowedValues: allProjects },
 });
 
 /** Renders the Home Page: what appears after the user logs in. */
 class StudentHome extends React.Component {
-
   /** On submit, insert the data. */
   submit(data) {
-    Meteor.call(updateProfileMethod, data, (error) => {
+    console.log(data);
+    Meteor.call(updateStudentsMethod, data, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {
@@ -53,16 +45,14 @@ class StudentHome extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     const email = Meteor.user().username;
-    // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
-    const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
-    const allProjects = _.pluck(Projects.collection.find().fetch(), 'name');
-    const formSchema = makeSchema(allInterests, allProjects);
+    const allStudents = _.pluck(Students.collection.find().fetch(), 'name');
+
+    const formSchema = makeSchema(allStudents);
     const bridge = new SimpleSchema2Bridge(formSchema);
-    // Now create the model with all the user information.
-    const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-    const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
-    const profile = Profiles.collection.findOne({ email });
-    const model = _.extend({}, profile, { interests, projects });
+    // Now create the model with all the user information
+    const student = Students.collection.findOne({ email });
+    const model = _.extend({}, student);
+
     return (
       <Grid id="home-page" container centered>
         <Grid.Column>
@@ -72,17 +62,13 @@ class StudentHome extends React.Component {
               <Form.Group widths={'equal'}>
                 <TextField id='firstName' name='firstName' showInlineError={true} placeholder={'First Name'}/>
                 <TextField id='lastName' name='lastName' showInlineError={true} placeholder={'Last Name'}/>
-                <TextField name='email' showInlineError={true} placeholder={'email'}/>
+                <TextField name='email' id='email' showInlineError={true} placeholder={'email'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <TextField name='state' showInlineError={true} placeholder={'State'}/>
-                <TextField name='city' showInlineError={true} placeholder={'city'}/>
+                <TextField name='state' id='state' showInlineError={true} placeholder={'State'}/>
               </Form.Group>
-              <TextField name='picture' showInlineError={true} placeholder={'URL for picture'}/>
-              <Form.Group widths={'equal'}>
-                <MultiSelectField name='interests' showInlineError={true} placeholder={'Skills'}/>
-                <MultiSelectField name='projects' showInlineError={true} placeholder={'Projects'}/>
-              </Form.Group>
+              <TextField name='picture' id='picture' showInlineError={true} placeholder={'URL for picture'}/>
+	      <LongTextField name='description' id='description' placeholder={'Description'}/>
               <SubmitField id='home-page-submit' value='Submit'/>
             </Segment>
           </AutoForm>
@@ -99,12 +85,8 @@ StudentHome.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
-  const sub1 = Meteor.subscribe(Interests.userPublicationName);
-  const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-  const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Projects.userPublicationName);
+  const sub1 = Meteor.subscribe(Students.userPublicationName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    ready: sub1.ready()
   };
 })(StudentHome);
