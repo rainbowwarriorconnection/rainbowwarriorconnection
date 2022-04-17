@@ -5,6 +5,8 @@ import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Students } from '../../api/students/Students';
+import { Companies } from '../../api/companies/Companies';
+
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
  * changes to the client MiniMongo DB.
@@ -28,6 +30,19 @@ import { Students } from '../../api/students/Students';
  * Note that it would be even better if each method was wrapped in a transaction so that the database would be rolled
  * back if any of the intermediate updates failed. Left as an exercise to the reader.
  */
+
+const updateCompaniesMethod = 'Companies.update';
+
+/**
+ * The server-side Profiles.update Meteor Method is called by the client-side Home page after pushing the update button.
+ * Its purpose is to update the Profiles, ProfilesInterests, and ProfilesProjects collections to reflect the
+ * updated situation specified by the user.
+ */
+Meteor.methods({
+  'Companies.update'({ email, name, description, picture, state, city }) {
+   Students.collection.update({ email }, { $set: {  email, name, description, picture, state, city } });
+  },
+});
 
 const updateStudentsMethod = 'Students.update';
 
@@ -61,4 +76,4 @@ Meteor.methods({
   },
 });
 
-export { updateStudentsMethod, addProjectMethod };
+export { updateStudentsMethod, updateCompaniesMethod, addProjectMethod };
