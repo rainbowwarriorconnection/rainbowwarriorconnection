@@ -9,16 +9,16 @@ import { Companies } from '../../api/companies/Companies';
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
 function createUser(email, role) {
   const userID = Accounts.createUser({ username: email, email, password: 'foo' });
-  if (role === 'admin') {
+  if (role === 'admin' || role === 'student' || role === 'company') {
     Roles.createRole(role, { unlessExists: true });
-    Roles.addUsersToRoles(userID, 'admin');
+    Roles.addUsersToRoles(userID, role);
   }
 }
 
 /** Defines a new user and associated profile. Error if user already exists. */
 function addStudent({ firstName, lastName, email, state, picture, description, role }) {
   console.log(`Defining profile ${email}`);
-  createUser(email, role);
+  createUser(email, 'student');
   Students.collection.insert({ firstName, lastName, email, state, picture, description });
 }
 
