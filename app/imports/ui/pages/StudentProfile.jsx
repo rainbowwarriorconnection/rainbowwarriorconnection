@@ -24,7 +24,7 @@ function getProfileData(email) {
 const MakeCard = (props) => (
   <Card>
     <Card.Content>
-      <Image floated='right' size='mini' src={props.profile.picture} />
+      <Image floated='right' size='mini' src={<props className=""></props>profile.picture} />
       <Card.Header>{props.profile.firstName} {props.profile.lastName}</Card.Header>
       <Card.Meta>
         <span className='date'>{props.profile.state}</span>
