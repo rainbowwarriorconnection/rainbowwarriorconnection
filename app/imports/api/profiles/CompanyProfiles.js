@@ -16,7 +16,7 @@ class CompanyProfilesCollection {
       state: { type: String, optional: true },
       city: { type: String, optional: true },
       picture: { type: String, optional: true },
-      bio: { type: String, optional: true }
+      bio: { type: String, optional: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
@@ -26,4 +26,4 @@ class CompanyProfilesCollection {
   }
 }
 
-export const StudentProfiles = new CompanyProfilesCollection();
+export const CompanyProfiles = new CompanyProfilesCollection();

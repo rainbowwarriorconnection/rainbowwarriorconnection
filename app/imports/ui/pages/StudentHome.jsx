@@ -25,9 +25,9 @@ const makeSchema = (allInterests, allProjects) => new SimpleSchema({
   state: { type: String, label: 'State', optional: true },
   city: { type: String, label: 'City', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
-  interests: { type: Array, label: 'Interests', optional: true },
+  interests: { type: Array, label: 'Skills', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
-  projects: { type: Array, label: 'Projects', optional: true },
+  projects: { type: Array, label: 'Extra Links', optional: true },
   'projects.$': { type: String, allowedValues: allProjects },
 });
 
@@ -72,16 +72,16 @@ class StudentHome extends React.Component {
               <Form.Group widths={'equal'}>
                 <TextField id='firstName' name='firstName' showInlineError={true} placeholder={'First Name'}/>
                 <TextField id='lastName' name='lastName' showInlineError={true} placeholder={'Last Name'}/>
-                <TextField name='email' showInlineError={true} placeholder={'email'}/>
+                <TextField name='email' showInlineError={true} placeholder={'Email'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
                 <TextField name='state' showInlineError={true} placeholder={'State'}/>
-                <TextField name='city' showInlineError={true} placeholder={'city'}/>
+                <TextField name='city' showInlineError={true} placeholder={'City'}/>
               </Form.Group>
               <TextField name='picture' showInlineError={true} placeholder={'URL for picture'}/>
               <Form.Group widths={'equal'}>
                 <MultiSelectField name='interests' showInlineError={true} placeholder={'Skills'}/>
-                <MultiSelectField name='projects' showInlineError={true} placeholder={'Projects'}/>
+                <LongTextField name='projects' showInlineError={true} placeholder={'Extra Links '}/>
               </Form.Group>
               <SubmitField id='home-page-submit' value='Submit'/>
             </Segment>

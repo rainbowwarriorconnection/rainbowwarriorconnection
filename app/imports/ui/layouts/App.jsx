@@ -8,6 +8,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Profiles from '../pages/Profiles';
+import StudentProfile from '../pages/StudentProfile';
 import StudentHome from '../pages/StudentHome';
 import CompanyHome from '../pages/CompanyHome';
 import AddProject from '../pages/AddProject';
@@ -31,7 +32,7 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/student-home" component={StudentHome}/>
               <ProtectedRoute path="/company-home" component={CompanyHome}/>
-              <Route path="/profiles" component={Profiles}/>
+              <Route path="/profiles" component={StudentProfile}/>
               <Route path="/projects" component={Projects}/>
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
