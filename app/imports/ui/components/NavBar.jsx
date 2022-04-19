@@ -18,13 +18,13 @@ class NavBar extends React.Component {
         </Menu.Item>
         {this.props.currentUser ? (
           [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/student-home" key='home'>Student Home</Menu.Item>,
-          <Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/company-home" key='home'>Company Home</Menu.Item>]
+            <Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/company-home" key='home'>Company Home</Menu.Item>]
         ) : ''}
         <Menu.Item as={NavLink} id="profilesMenuItem" activeClassName="active" exact to="/profiles" key='profiles'>Browse Students</Menu.Item>
-        <Menu.Item as={NavLink} id="projectsMenuItem" activeClassName="active" exact to="/projects" key='projects'>Browse Companies</Menu.Item>
-        { /*<Menu.Item as={NavLink} id="interestsMenuItem" activeClassName="active" exact to="/interests" key='interests'>Interests</Menu.Item>*/ }
+        <Menu.Item as={NavLink} id="projectsMenuItem" activeClassName="active" exact to="/companies" key='projects'>Browse Companies</Menu.Item>
+        { /* <Menu.Item as={NavLink} id="interestsMenuItem" activeClassName="active" exact to="/interests" key='interests'>Interests</Menu.Item> */ }
         {this.props.currentUser ? (
-          [<Menu.Item as={NavLink} id="addProjectMenuItem" activeClassName="active" exact to="/addProject" key='addP'>Add Project</Menu.Item>,
+          [<Menu.Item as={NavLink} id="addJobMenuItem" activeClassName="active" exact to="/addJob" key='addP'>Add Job</Menu.Item>,
             <Menu.Item as={NavLink} id="filterMenuItem" activeClassName="active" exact to="/filter" key='filter'>Filter</Menu.Item>]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (

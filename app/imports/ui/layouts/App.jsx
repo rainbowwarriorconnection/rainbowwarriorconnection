@@ -8,11 +8,10 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Profiles from '../pages/Profiles';
-import StudentProfile from '../pages/StudentProfile';
 import StudentHome from '../pages/StudentHome';
 import CompanyHome from '../pages/CompanyHome';
-import AddProject from '../pages/AddProject';
-import Projects from '../pages/Projects';
+import AddJob from '../pages/AddJob';
+import Companies from '../pages/Companies';
 import Filter from '../pages/Filter';
 import Interests from '../pages/Interests';
 import NotFound from '../pages/NotFound';
@@ -32,10 +31,10 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/student-home" component={StudentHome}/>
               <ProtectedRoute path="/company-home" component={CompanyHome}/>
-              <Route path="/profiles" component={StudentProfile}/>
-              <Route path="/projects" component={Projects}/>
+              <Route path="/profiles" component={Profiles}/>
+              <Route path="/companies" component={Companies}/>
               <Route path="/interests" component={Interests}/>
-              <ProtectedRoute path="/addproject" component={AddProject}/>
+              <ProtectedRoute path="/addjob" component={AddJob}/>
               <ProtectedRoute path="/filter" component={Filter}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>

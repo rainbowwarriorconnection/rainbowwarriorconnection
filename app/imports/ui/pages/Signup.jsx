@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
-import { Profiles } from '../../api/profiles/Profiles';
+import { Students } from '../../api/students/Students';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -22,12 +22,13 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
-    const { email, password } = this.state;
+    const { email, firstName, lastName, description, picture, password } = this.state;
+    console.log(firstName)
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Profiles.insert({ email }, (err2) => {
+        Students.collection.insert({ email, firstName, lastName, picture, description }, (err2) => {
           if (err2) {
             this.setState({ error: err2.reason });
           } else {
@@ -64,7 +65,33 @@ class Signup extends React.Component {
                   placeholder="E-mail address"
                   onChange={this.handleChange}
                 />
-                <Form.Input
+	    	<Form.Group inline widths='equal'>
+                <Form.Input fluid
+                  label="First Name"
+                  id="signup-form-firstname"
+                  name="firstName"
+                  type="firstname"
+	    	  placeholder="First Name"
+                  onChange={this.handleChange}
+                />
+	    	<Form.Input fluid
+                  label="Last Name"
+                  id="signup-form-lastname"
+                  name="lastName"
+                  placeholder="Last Name"
+                  type=""
+                  onChange={this.handleChange}
+                />
+	    	</Form.Group>
+	    	<Form.Input
+	    	  label="Picture URL"
+	    	  id="signup-form-picture"
+	    	  name="picture"
+	    	  placeholder="URL"
+	    	  type=""
+	    	  onChange={this.handleChange}
+	    	/>
+		<Form.Input
                   label="Password"
                   id="signup-form-password"
                   icon="lock"

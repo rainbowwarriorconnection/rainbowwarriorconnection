@@ -4,7 +4,8 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
-import { StudentProfiles } from '../../api/profiles/StudentProfiles';
+import { Students } from '../../api/students/Students';
+import { Companies } from '../../api/companies/Companies';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -30,7 +31,7 @@ import { StudentProfiles } from '../../api/profiles/StudentProfiles';
  * back if any of the intermediate updates failed. Left as an exercise to the reader.
  */
 
-const updateProfileMethod = 'Profiles.update';
+const updateCompaniesMethod = 'Companies.update';
 
 /**
  * The server-side Profiles.update Meteor Method is called by the client-side Home page after pushing the update button.
@@ -38,23 +39,23 @@ const updateProfileMethod = 'Profiles.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Profiles.update'({ email, firstName, lastName, bio, title, picture, interests, projects }) {
-    Profiles.collection.update({ email }, { $set: { email, firstName, lastName, bio, title, picture } });
-    ProfilesInterests.collection.remove({ profile: email });
-    ProfilesProjects.collection.remove({ profile: email });
-    interests.map((interest) => ProfilesInterests.collection.insert({ profile: email, interest }));
-    projects.map((project) => ProfilesProjects.collection.insert({ profile: email, project }));
+  'Companies.update'({ email, name, description, picture, state, city }) {
+   Students.collection.update({ email }, { $set: {  email, name, description, picture, state, city } });
   },
 });
 
-const updateStudentProfileMethod = 'StudentProfiles.update';
+const updateStudentsMethod = 'Students.update';
 
+/**
+ * The server-side Profiles.update Meteor Method is called by the client-side Home page after pushing the update button.
+ * Its purpose is to update the Profiles, ProfilesInterests, and ProfilesProjects collections to reflect the
+ * updated situation specified by the user.
+ */
 Meteor.methods({
-  'StudentProfiles.update'({ firstName, lastName, email, state, city, picture }) {
-    Profiles.collection.update({ email }, { $set: { firstName, lastName, email, state, city, picture } });
+  'Students.update'({ email, firstName, lastName, description, picture, state }) {
+   Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
   },
 });
-
 
 const addProjectMethod = 'Projects.add';
 
@@ -75,4 +76,4 @@ Meteor.methods({
   },
 });
 
-export { updateProfileMethod, addProjectMethod, updateStudentProfileMethod };
+export { updateStudentsMethod, updateCompaniesMethod, addProjectMethod };
