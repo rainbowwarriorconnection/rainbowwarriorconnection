@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Projects } from '../../api/projects/Projects';
+import { Profiles } from '../../api/profiles/Profiles';
+import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Students } from '../../api/students/Students';
@@ -38,7 +40,7 @@ const updateCompaniesMethod = 'Companies.update';
  */
 Meteor.methods({
   'Companies.update'({ email, name, description, picture, state, city }) {
-    Companies.collection.update({ email }, { $set: { email, name, description, picture, state, city } });
+   Companies.collection.update({ email }, { $set: {  email, name, description, picture, state, city } });
   },
 });
 
@@ -51,7 +53,7 @@ const updateStudentsMethod = 'Students.update';
  */
 Meteor.methods({
   'Students.update'({ email, firstName, lastName, description, picture, state }) {
-    Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
+   Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
   },
 });
 

@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
-import { Students } from '../../api/students/Students';
+import { Companies} from '../../api/companies/Companies';
+
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
  */
-class Signup extends React.Component {
+class CompanySignup extends React.Component {
   /** Initialize state fields. */
   constructor(props) {
     super(props);
@@ -22,12 +23,12 @@ class Signup extends React.Component {
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
-    const { email, firstName, lastName, description, picture, password } = this.state;
+    const { email, name, description, picture, state, city, homepage, password } = this.state;
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Students.collection.insert({ email, firstName, lastName, picture, description }, (err2) => {
+        Companies.collection.insert({ email, name, description, picture, state, city, homepage }, (err2) => {
           if (err2) {
             this.setState({ error: err2.reason });
           } else {
@@ -66,19 +67,11 @@ class Signup extends React.Component {
                 />
 	    	<Form.Group inline widths='equal'>
                 <Form.Input fluid
-                  label="First Name"
+                  label="Company Name"
                   id="signup-form-firstname"
-                  name="firstName"
-                  type="firstname"
-	    	  placeholder="First Name"
-                  onChange={this.handleChange}
-                />
-	    	<Form.Input fluid
-                  label="Last Name"
-                  id="signup-form-lastname"
-                  name="lastName"
-                  placeholder="Last Name"
-                  type=""
+                  name="name"
+                  type="name"
+	    	  placeholder="Company Name"
                   onChange={this.handleChange}
                 />
 	    	</Form.Group>
@@ -123,8 +116,8 @@ class Signup extends React.Component {
 }
 
 /** Ensure that the React Router location object is available in case we need to redirect. */
-Signup.propTypes = {
+CompanySignup.propTypes = {
   location: PropTypes.object,
 };
 
-export default Signup;
+export default CompanySignup;
