@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Icon, Container, Header } from 'semantic-ui-react';
+import { Grid, Icon, Container, Header, Image } from 'semantic-ui-react';
 
 /** Renders a color-blocked static landing page. */
 class Landing extends React.Component {
@@ -18,20 +18,22 @@ class Landing extends React.Component {
         </div>
         <div className='home-landing-background'>
           <div className='transparency'>
+            <Image src="/images/Kermit-Logo-V3-Lined.png" size='large' style={{ paddingTop: '20px' }} centered/>
             <Grid style={{ paddingTop: '20px' }} container centered stackable columns={3}>
-
               <Grid.Column textAlign='center'>
-                <Icon size="huge" name="users" style={{ color: 'white' }}/>
-                <Header as='h1' style={{ color: 'white' }}>Multiple Users</Header>
-                <Header as='h3' style={{ color: 'white' }}>This website allows UH Manoa
-                  students and tech companies to create profiles and show them on our website.</Header>
+                <Icon size="huge" name="user" style={{ color: 'white' }}/>
+                <Header as='h1' style={{ color: 'white' }}>Students</Header>
+                <Header as='h3' style={{ color: 'white' }}>Create a profile with your skills,
+                  contact information, and headshot. Put yourself out to the world as you search for your job in the tech industry.</Header>
               </Grid.Column>
 
               <Grid.Column textAlign='center'>
-                <Icon size="huge" name="address book" style={{ color: 'white' }}/>
-                <Header as='h1' style={{ color: 'white' }}>Contact Details</Header>
-                <Header as='h3' style={{ color: 'white' }}>Students are able to browse companies and their geographical location to find the
-                  best job for them. Companies and browse students and post jobs on the websites to recruit students.</Header>
+                <Icon size="huge" name="briefcase" style={{ color: 'white' }}/>
+                <Header as='h1' style={{ color: 'white' }}>Companies</Header>
+                <Header as='h3' style={{ color: 'white' }}>Create your company profile with your location, company background, salaries,
+                  and contact info.
+                  Create job postings so students can see types of jobs offered, salary, and positions.
+                </Header>
               </Grid.Column>
 
               <Grid.Column textAlign='center'>
@@ -44,7 +46,6 @@ class Landing extends React.Component {
           </div>
         </div>
       </div>
-
     );
   }
 }
