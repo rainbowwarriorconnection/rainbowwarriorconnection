@@ -24,7 +24,8 @@ function addStudent({ firstName, lastName, email, state, picture, description, r
 
 /** Define a new project. Error ifproject already exists.  */
 function addCompany({ name, homepage, email, description, picture, state, city }) {
-  console.log(`Defining project ${name}`);
+  console.log(`Defining company ${name}`);
+  createUser(email, 'company');
   Companies.collection.insert({ name, homepage, email, description, picture, state, city });
 }
 
