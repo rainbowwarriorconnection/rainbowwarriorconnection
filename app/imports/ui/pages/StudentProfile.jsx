@@ -12,7 +12,7 @@ import { Projects } from '../../api/projects/Projects';
 
 /** Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {
-  const data = Profiles.collection.findOne({ email });
+  const data = StudentProfiles.collection.findOne({ email });
   const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
   const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
   const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
@@ -24,7 +24,7 @@ function getProfileData(email) {
 const MakeCard = (props) => (
   <Card>
     <Card.Content>
-      <Image floated='right' size='mini' src={<props className=""></props>profile.picture} />
+      <Image floated='right' size='mini' src={<props className=""></props>} />
       <Card.Header>{props.profile.firstName} {props.profile.lastName}</Card.Header>
       <Card.Meta>
         <span className='date'>{props.profile.state}</span>
@@ -59,10 +59,9 @@ class ProfilesPage extends React.Component {
     const emails = _.pluck(StudentProfiles.collection.find().fetch(), 'email');
     const profileData = emails.map(email => getProfileData(email));
     return (
-      <Container id="profiles-page">
-        <Card.Group>
-          {_.map(profileData, (profile, index) => <MakeCard key={index} profile={profile}/>)}
-        </Card.Group>
+      <Container id="student-profiles-page">
+        <Image src={profileData.picture}/>
+        <Header as='h2'>{profileData.firstName}</Header>
       </Container>
     );
   }
