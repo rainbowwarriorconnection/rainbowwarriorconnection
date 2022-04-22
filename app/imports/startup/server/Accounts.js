@@ -11,6 +11,7 @@ function createUser(email, password, role) {
     email: email,
     password: password,
   });
+  console.log('Role:',role);
   if (role === 'admin' || role === 'student' || role === 'company') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, role);

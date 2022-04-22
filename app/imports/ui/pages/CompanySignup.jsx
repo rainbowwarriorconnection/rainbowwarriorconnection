@@ -24,7 +24,7 @@ class CompanySignup extends React.Component {
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
     const { email, name, description, picture, state, city, homepage, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    Accounts.createUser({ email, username: email, password, role: 'company' }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {

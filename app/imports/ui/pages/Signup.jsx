@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
-import { Accounts } from 'meteor/accounts-base';
 import { Students } from '../../api/students/Students';
+import { Roles } from 'meteor/alanning:roles'
+import { Accounts } from 'meteor/accounts-base';
+import { addStudentToRoleMethod } from '../../startup/both/Methods'
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -23,21 +25,27 @@ class Signup extends React.Component {
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
     const { email, firstName, lastName, description, picture, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    Accounts.createUser({email: email, username: email, password}, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Students.collection.insert({ email, firstName, lastName, picture, description }, (err2) => {
+        Students.collection.insert({ email, firstName, lastName, description, picture }, (err2) => {
           if (err2) {
             this.setState({ error: err2.reason });
           } else {
             this.setState({ error: '', redirectToReferer: true });
           }
         });
+	Meteor.call(addStudentToRoleMethod, (err3) => {
+	   if(err3) {
+             this.setState({ error: err3.reason });
+           } else {
+	     this.setState({ error: '', redirectToReferer: true});
+	   }
+	});
       }
     });
   }
-
   /** Display the signup form. */
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/home' } };

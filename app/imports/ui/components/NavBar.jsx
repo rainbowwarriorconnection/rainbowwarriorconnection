@@ -10,6 +10,8 @@ import { Roles } from 'meteor/alanning:roles';
 class NavBar extends React.Component {
   render() {
     const menuStyle = { marginBottom: '0px' };
+
+    console.log("User: " + this.props.currentUser + " " + Meteor.user())
     return (
       <Menu style={menuStyle} attached="top" borderless>
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
@@ -17,8 +19,8 @@ class NavBar extends React.Component {
           <span style={{ fontWeight: 800, fontSize: '24px' }}>Rainbow Warrior Connection</span>
         </Menu.Item>
         {this.props.currentUser ? (
-          [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/student-home" key='home'>Student Home</Menu.Item>,
-            <Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/company-home" key='home'>Company Home</Menu.Item>]
+          [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/student-home" key='student-home'>Student Home</Menu.Item>,
+            <Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/company-home" key='company-home'>Company Home</Menu.Item>]
         ) : ''}
         <Menu.Item as={NavLink} id="profilesMenuItem" activeClassName="active" exact to="/profiles" key='profiles'>Browse Students</Menu.Item>
         <Menu.Item as={NavLink} id="projectsMenuItem" activeClassName="active" exact to="/companies" key='projects'>Browse Companies</Menu.Item>
@@ -61,6 +63,7 @@ NavBar.propTypes = {
 const NavBarContainer = withTracker(() => ({
   currentUser: Meteor.user() ? Meteor.user().username : '',
 }))(NavBar);
+
 
 /** Enable ReactRouter so that links work. */
 export default withRouter(NavBarContainer);
