@@ -5,7 +5,6 @@
 .landing-green-background {
   background-color: #376551;
   color: white;
-  padding-top: 20px;
 }
 
 .landing-white-background {
@@ -27,4 +26,8 @@
 
 .transparency {
   background-color: rgba(0, 0, 0, 0.45);
+}
+
+.ui.menu.menu-background {
+  background-color: #376551;
 }

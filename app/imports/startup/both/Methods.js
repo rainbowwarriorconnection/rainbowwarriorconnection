@@ -49,7 +49,7 @@ const updateCompaniesMethod = 'Companies.update';
  */
 Meteor.methods({
   'Companies.update'({ email, name, description, picture, state, city }) {
-   Students.collection.update({ email }, { $set: {  email, name, description, picture, state, city } });
+   Companies.collection.update({ email }, { $set: {  email, name, description, picture, state, city } });
   },
 });
 
