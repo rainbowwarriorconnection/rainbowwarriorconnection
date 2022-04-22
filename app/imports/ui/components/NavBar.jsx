@@ -17,8 +17,8 @@ class NavBar extends React.Component {
           <span style={{ fontWeight: 800, fontSize: '24px', color: 'white' }}>Rainbow Warrior Connection</span>
         </Menu.Item>
         {this.props.currentUser ? (
-          [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/student-home" key='student-home'>Student Home</Menu.Item>,
-            <Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/company-home" key='company-home'>Company Home</Menu.Item>]
+          [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/student-home" key='student-home' style={{ color: 'white' }}>Student Home</Menu.Item>,
+            <Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/company-home" key='company-home' style={{ color: 'white' }}>Company Home</Menu.Item>]
         ) : ''}
         <Menu.Item as={NavLink} id="profilesMenuItem" activeClassName="active" exact to="/profiles" key='profiles' style={{ color: 'white' }}>Browse Students</Menu.Item>
         <Menu.Item as={NavLink} id="projectsMenuItem" activeClassName="active" exact to="/companies" key='projects' style={{ color: 'white' }}>Browse Companies</Menu.Item>
