@@ -16,17 +16,19 @@ class NavBar extends React.Component {
           <Image size="tiny" src="/images/Kermit-Logo-V1.png"/>
           <span style={{ fontWeight: 800, fontSize: '24px', color: 'white' }}>Rainbow Warrior Connection</span>
         </Menu.Item>
-        {this.props.currentUser ? (
-          [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/student-home" key='student-home' style={{ color: 'white' }}>Student Home</Menu.Item>,
-            <Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/company-home" key='company-home' style={{ color: 'white' }}>Company Home</Menu.Item>]
+        
+	{this.props.currentUser && this.isInRole('student') ? (
+          [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/student-home" key='student-home' style={{ color: 'white' }}>Student Home</Menu.Item>,]
         ) : ''}
-        <Menu.Item as={NavLink} id="profilesMenuItem" activeClassName="active" exact to="/profiles" key='profiles' style={{ color: 'white' }}>Browse Students</Menu.Item>
+	
+	{this.props.currentUser && this.isInRole('company') ? (
+	  [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/company-home" key='company-home' style={{ color: 'white' }}>Company Home</Menu.Item>,
+	   <Menu.Item as={NavLink} id="addJobMenuItem" activeClassName="active" exact to="/addJob" key='addP' style={{ color: 'white' }}>Add Job</Menu.Item>,]
+	) : ''}
+
+	<Menu.Item as={NavLink} id="profilesMenuItem" activeClassName="active" exact to="/profiles" key='profiles' style={{ color: 'white' }}>Browse Students</Menu.Item>
         <Menu.Item as={NavLink} id="projectsMenuItem" activeClassName="active" exact to="/companies" key='projects' style={{ color: 'white' }}>Browse Companies</Menu.Item>
-        { /* <Menu.Item as={NavLink} id="interestsMenuItem" activeClassName="active" exact to="/interests" key='interests'>Interests</Menu.Item> */ }
-        {this.props.currentUser ? (
-          [<Menu.Item as={NavLink} id="addJobMenuItem" activeClassName="active" exact to="/addJob" key='addP' style={{ color: 'white' }}>Add Job</Menu.Item>,
-            <Menu.Item as={NavLink} id="filterMenuItem" activeClassName="active" exact to="/filter" key='filter' style={{ color: 'white' }}>Filter</Menu.Item>]
-        ) : ''}
+        
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           <Menu.Item as={NavLink} id="adminMenuItem" activeClassName="active" exact to="/admin" key='admin' style={{ color: 'white' }}>Admin</Menu.Item>
         ) : ''}
@@ -50,7 +52,12 @@ class NavBar extends React.Component {
       </Menu>
     );
   }
+
+  isInRole(role) {
+    return Roles.userIsInRole(Meteor.userId(), role);
+  }
 }
+
 
 /** Declare the types of all properties. */
 NavBar.propTypes = {
