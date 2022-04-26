@@ -10,6 +10,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 
 import { Students } from '../../api/students/Students';
+import { StudentsInterest } from '../../api/students/StudentsInterest';
+
 import { updateStudentsMethod } from '../../startup/both/Methods';
 
 /** Create a schema to specify the structure of the data to appear in the form. */

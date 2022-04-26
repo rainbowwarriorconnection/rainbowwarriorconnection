@@ -35,6 +35,15 @@ import { Companies } from '../../api/companies/Companies';
  * back if any of the intermediate updates failed. Left as an exercise to the reader.
  */
 
+const addStudentToRoleMethod = 'Roles.addStudentToRole';
+Meteor.methods({
+  'Roles.addStudentToRole'() {
+    Roles.createRole('student', { unlessExists: true });
+    Roles.addUsersToRoles(this.userId, 'student');
+  },
+});
+
+
 const addCompanyToRoleMethod = 'Roles.addCompanyToRole';
 Meteor.methods({
   'Roles.addCompanyToRole'() {
