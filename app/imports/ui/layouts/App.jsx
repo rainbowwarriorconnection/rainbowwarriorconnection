@@ -19,6 +19,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import CompanySignup from '../pages/CompanySignup.jsx';
+import AdminHome from '../pages/AdminHome.jsx';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -29,9 +30,10 @@ class App extends React.Component {
           <NavBar/>
           <div style={{ paddingTop: '20px', paddingBottom: '30px' }}>
             <Switch>
-              <Route exact path="/" component={Landing}/>
+              <Route exact path="/" component={AdminHome}/>
               <RoleProtectedRoute path="/student-home" role='student' component={StudentHome}/>
               <RoleProtectedRoute path="/company-home" role='company' component={CompanyHome}/>
+              <RoleProtectedRoute path="/admin-home" role='admin' component={AdminHome}/>
               <RoleProtectedRoute path="/profiles" role='student' component={Profiles}/>
               <Route path="/companies" component={Companies}/>
               <Route path="/interests" component={Interests}/>
