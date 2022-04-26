@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header, Form, Loader } from 'semantic-ui-react';
-import { AutoForm, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
+import { AutoForm, TextField, SubmitField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -10,7 +10,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { updateCompaniesMethod } from '../../startup/both/Methods';
 
-import { Companies } from '../../api/companies/Companies.js'
+import { Companies } from '../../api/companies/Companies.js';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allCompanies) => new SimpleSchema({
@@ -20,7 +20,7 @@ const makeSchema = (allCompanies) => new SimpleSchema({
   state: { type: String, label: 'State', optional: true },
   city: { type: String, label: 'City', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
-  homepage: { type: String, optional: true}
+  homepage: { type: String, optional: true },
 });
 
 /** Renders the Home Page: what appears after the user logs in. */

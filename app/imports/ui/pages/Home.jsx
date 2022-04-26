@@ -14,7 +14,8 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { Projects } from '../../api/projects/Projects';
-import { updateProfileMethod } from '../../startup/both/Methods';
+// There were two update methods, updateStudentsMethod was assumed to fix ESLint error
+import { updateStudentsMethod } from '../../startup/both/Methods';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = (allInterests, allProjects) => new SimpleSchema({
@@ -35,7 +36,7 @@ class Home extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    Meteor.call(updateProfileMethod, data, (error) => {
+    Meteor.call(updateStudentsMethod, data, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {

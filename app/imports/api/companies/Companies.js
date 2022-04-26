@@ -11,13 +11,13 @@ class CompaniesCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      name: { type: String, optional: true},
-      description: { type: String, optional: true},
-      homepage: { type: String, optional: true},
+      name: { type: String, optional: true },
+      description: { type: String, optional: true },
+      homepage: { type: String, optional: true },
       email: { type: String, index: true, unique: true },
       picture: { type: String, optional: true },
-      state: { type: String, optional: true},
-      city: { type: String, optional: true}
+      state: { type: String, optional: true },
+      city: { type: String, optional: true },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

@@ -16,7 +16,7 @@ function createUser(email, role) {
 }
 
 /** Defines a new user and associated profile. Error if user already exists. */
-function addStudent({ firstName, lastName, email, state, picture, description, role }) {
+function addStudent({ firstName, lastName, email, state, picture, description }) {
   console.log(`Defining profile ${email}`);
   createUser(email, 'student');
   Students.collection.insert({ firstName, lastName, email, state, picture, description });
@@ -39,6 +39,18 @@ if (Meteor.users.find().count() === 0) {
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
+}
+
+/**
+ * addProfile and addProject currently unimplemented to fix ESLint errors
+ * @returns {undefined}
+ */
+function addProfile() {
+  return undefined;
+}
+
+function addProject() {
+  return undefined;
 }
 
 /**

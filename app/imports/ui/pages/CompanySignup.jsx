@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
-import { Companies} from '../../api/companies/Companies';
-
+import { Companies } from '../../api/companies/Companies';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -65,25 +64,25 @@ class CompanySignup extends React.Component {
                   placeholder="E-mail address"
                   onChange={this.handleChange}
                 />
-	    	<Form.Group inline widths='equal'>
-                <Form.Input fluid
-                  label="Company Name"
-                  id="signup-form-firstname"
-                  name="name"
-                  type="name"
-	    	  placeholder="Company Name"
+                <Form.Group inline widths='equal'>
+                  <Form.Input fluid
+                    label="Company Name"
+                    id="signup-form-firstname"
+                    name="name"
+                    type="name"
+                    placeholder="Company Name"
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+                <Form.Input
+                  label="Picture URL"
+                  id="signup-form-picture"
+                  name="picture"
+                  placeholder="URL"
+                  type=""
                   onChange={this.handleChange}
                 />
-	    	</Form.Group>
-	    	<Form.Input
-	    	  label="Picture URL"
-	    	  id="signup-form-picture"
-	    	  name="picture"
-	    	  placeholder="URL"
-	    	  type=""
-	    	  onChange={this.handleChange}
-	    	/>
-		<Form.Input
+                <Form.Input
                   label="Password"
                   id="signup-form-password"
                   icon="lock"
