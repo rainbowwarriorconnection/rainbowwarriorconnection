@@ -35,11 +35,11 @@ import { Companies } from '../../api/companies/Companies';
  * back if any of the intermediate updates failed. Left as an exercise to the reader.
  */
 
-const addStudentToRoleMethod = 'Roles.addUsersToRoles';
+const addCompanyToRoleMethod = 'Roles.addCompanyToRole';
 Meteor.methods({
-  'Roles.addUsersToRoles'() {
-    Roles.createRole('student', { unlessExists: true });
-    Roles.addUsersToRoles(this.userId, 'student');
+  'Roles.addCompanyToRole'() {
+    Roles.createRole('company', { unlessExists: true });
+    Roles.addUsersToRoles(this.userId, 'company');
   },
 });
 
@@ -88,4 +88,4 @@ Meteor.methods({
   },
 });
 
-export { addStudentToRoleMethod, updateStudentsMethod, updateCompaniesMethod, addProjectMethod };
+export { addCompanyToRoleMethod, addStudentToRoleMethod, updateStudentsMethod, updateCompaniesMethod, addProjectMethod };
