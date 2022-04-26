@@ -14,6 +14,7 @@ import { navBar } from './navbar.component';
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'johnson@hawaii.edu', password: 'foo', firstName: 'Philip', lastName: 'Johnson' };
+const newUser = { username: `user-${new Date().getTime()}@foo.com`, password: 'foo' };
 
 fixture('Bowfolios localhost test with default db')
   .page('http://localhost:3000');
@@ -22,20 +23,19 @@ test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
-test('Test that signin and signout work', async (testController) => {
-  await navBar.gotoSigninPage(testController);
-  await signinPage.signin(testController, credentials.username, credentials.password);
+test('Test that signup page, then logout works', async (testController) => {
+  // Create a new user email address that's guaranteed to be unique.
+  await navBar.gotoSignupPage(testController);
+  await signupPage.isDisplayed(testController);
+  await signupPage.signupUser(testController, newUser.username, newUser.password);
+  // New user has successfully logged in, so now let's logout.
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test that signup page, then logout works', async (testController) => {
-  // Create a new user email address that's guaranteed to be unique.
-  const newUser = `user-${new Date().getTime()}@foo.com`;
-  await navBar.gotoSignupPage(testController);
-  await signupPage.isDisplayed(testController);
-  await signupPage.signupUser(testController, newUser, credentials.password);
-  // New user has successfully logged in, so now let's logout.
+test('Test that signin and signout work', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, newUser.username, newUser.password);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
