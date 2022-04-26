@@ -8,7 +8,6 @@ import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
 
 import { Students } from '../../api/students/Students';
 import { updateStudentsMethod } from '../../startup/both/Methods';
@@ -68,7 +67,7 @@ class StudentHome extends React.Component {
                 <TextField name='state' id='state' showInlineError={true} placeholder={'State'}/>
               </Form.Group>
               <TextField name='picture' id='picture' showInlineError={true} placeholder={'URL for picture'}/>
-	      <LongTextField name='description' id='description' placeholder={'Description'}/>
+              <LongTextField name='description' id='description' placeholder={'Description'}/>
               <SubmitField id='home-page-submit' value='Submit'/>
             </Segment>
           </AutoForm>

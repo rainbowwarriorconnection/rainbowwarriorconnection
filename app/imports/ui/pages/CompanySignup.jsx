@@ -78,10 +78,10 @@ class CompanySignup extends React.Component {
                   label="Picture URL"
                   id="signup-form-picture"
                   name="picture"
-placeholder="URL"
-type=""
-onChange={this.handleChange}
-/>
+                  placeholder="URL"
+                  type=""
+                  onChange={this.handleChange}
+                />
                 <Form.Input
                   label="Password"
                   id="signup-form-password"

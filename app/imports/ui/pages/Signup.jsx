@@ -1,8 +1,9 @@
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
-import { Roles } from 'meteor/alanning:roles';
+// import { Roles } from 'meteor/alanning:roles';
 import { Accounts } from 'meteor/accounts-base';
 import { Students } from '../../api/students/Students';
 import { addStudentToRoleMethod } from '../../startup/both/Methods';
@@ -37,11 +38,11 @@ class Signup extends React.Component {
           }
         });
         Meteor.call(addStudentToRoleMethod, (err3) => {
-	   if (err3) {
+          if (err3) {
             this.setState({ error: err3.reason });
           } else {
-	     this.setState({ error: '', redirectToReferer: true });
-	   }
+            this.setState({ error: '', redirectToReferer: true });
+          }
         });
       }
     });
@@ -73,16 +74,16 @@ class Signup extends React.Component {
                   placeholder="E-mail address"
                   onChange={this.handleChange}
                 />
-	    	<Form.Group inline widths='equal'>
+                <Form.Group inline widths='equal'>
                   <Form.Input fluid
                     label="First Name"
                     id="signup-form-firstname"
                     name="firstName"
                     type="firstname"
-	    	  placeholder="First Name"
+                    placeholder="First Name"
                     onChange={this.handleChange}
                   />
-	    	<Form.Input fluid
+                  <Form.Input fluid
                     label="Last Name"
                     id="signup-form-lastname"
                     name="lastName"
@@ -90,15 +91,15 @@ class Signup extends React.Component {
                     type=""
                     onChange={this.handleChange}
                   />
-	    	</Form.Group>
-	    	<Form.Input
-	    	  label="Picture URL"
-	    	  id="signup-form-picture"
-	    	  name="picture"
-	    	  placeholder="URL"
-	    	  type=""
-	    	  onChange={this.handleChange}
-	    	/>
+                </Form.Group>
+                <Form.Input
+                  label="Picture URL"
+                  id="signup-form-picture"
+                  name="picture"
+                  placeholder="URL"
+                  type=""
+                  onChange={this.handleChange}
+                />
                 <Form.Input
                   label="Password"
                   id="signup-form-password"
