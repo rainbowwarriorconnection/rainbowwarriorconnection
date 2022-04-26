@@ -13,7 +13,7 @@ import { Students } from '../../api/students/Students';
 import { updateStudentsMethod } from '../../startup/both/Methods';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allStudents) => new SimpleSchema({
+const makeSchema = () => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   firstName: { type: String, label: 'First', optional: true },
   lastName: { type: String, label: 'Last', optional: true },
@@ -44,9 +44,8 @@ class StudentHome extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     const email = Meteor.user().username;
-    const allStudents = _.pluck(Students.collection.find().fetch(), 'name');
 
-    const formSchema = makeSchema(allStudents);
+    const formSchema = makeSchema();
     const bridge = new SimpleSchema2Bridge(formSchema);
     // Now create the model with all the user information
     const student = Students.collection.findOne({ email });

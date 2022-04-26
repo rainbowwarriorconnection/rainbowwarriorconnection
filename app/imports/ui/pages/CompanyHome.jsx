@@ -13,7 +13,7 @@ import { updateCompaniesMethod } from '../../startup/both/Methods';
 import { Companies } from '../../api/companies/Companies.js';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allCompanies) => new SimpleSchema({
+const makeSchema = () => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   name: { type: String, label: 'Company', optional: true },
   description: { type: String, label: 'Biography', optional: true },
@@ -45,8 +45,7 @@ class CompanyHome extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     const email = Meteor.user().username;
-    const allCompanies = _.pluck(Companies.collection.find().fetch(), 'name');
-    const formSchema = makeSchema(allCompanies);
+    const formSchema = makeSchema();
     const bridge = new SimpleSchema2Bridge(formSchema);
     // Now create the model with all the company information.
     const company = Companies.collection.findOne({ email });
