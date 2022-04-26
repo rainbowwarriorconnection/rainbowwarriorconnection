@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 import { Companies } from '../../api/companies/Companies';
+import { addCompanyToRoleMethod } from '../../startup/both/Methods';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -34,6 +35,15 @@ class CompanySignup extends React.Component {
             this.setState({ error: '', redirectToReferer: true });
           }
         });
+	Meteor.call(
+            addCompanyToRoleMethod, (err4) => {
+               if(err4) {
+                   this.setState({ error: err4.reason });
+	       } else {
+                   this.setState({ error: '', redirectToReferer: true });
+	       }
+	    }
+	);
       }
     });
   }
