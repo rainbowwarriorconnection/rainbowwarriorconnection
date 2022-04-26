@@ -30,7 +30,7 @@ class App extends React.Component {
           <NavBar/>
           <div style={{ paddingTop: '20px', paddingBottom: '30px' }}>
             <Switch>
-              <Route exact path="/" component={AdminHome}/>
+              <Route exact path="/" component={Landing}/>
               <RoleProtectedRoute path="/student-home" role='student' component={StudentHome}/>
               <RoleProtectedRoute path="/company-home" role='company' component={CompanyHome}/>
               <RoleProtectedRoute path="/admin-home" role='admin' component={AdminHome}/>
