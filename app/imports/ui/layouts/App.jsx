@@ -38,7 +38,7 @@ class App extends React.Component {
               <ProtectedRoute path="/addjob" component={AddJob}/>
               <ProtectedRoute path="/filter" component={Filter}/>
               <Route path="/signin" component={Signin}/>
-	      <Route path="/company-signup" component={CompanySignup}/>
+              <Route path="/company-signup" component={CompanySignup}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
@@ -88,8 +88,8 @@ const AdminProtectedRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-const RoleProtectedRoute = ({ component: Component, role, ...rest}) => (
- <Route
+const RoleProtectedRoute = ({ component: Component, role, ...rest }) => (
+  <Route
     {...rest}
     render={(props) => {
       const isLogged = Meteor.userId() !== null;

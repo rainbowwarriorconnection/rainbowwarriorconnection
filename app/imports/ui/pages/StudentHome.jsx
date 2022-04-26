@@ -87,6 +87,6 @@ export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(Students.userPublicationName);
   return {
-    ready: sub1.ready()
+    ready: sub1.ready(),
   };
 })(StudentHome);
