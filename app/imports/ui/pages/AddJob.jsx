@@ -51,7 +51,7 @@ class AddJob extends React.Component {
     return (
       <Grid id="add-job-page" container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Add Job Posting</Header>
+          <Header as="h2" textAlign="center" inverted>Add Job Posting</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <Form.Group widths={'equal'}>
