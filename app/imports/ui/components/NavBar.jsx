@@ -17,7 +17,7 @@ class NavBar extends React.Component {
         </Menu.Item>
 
         {this.props.currentUser && this.isInRole('student') ? (
-          [<Menu.Item as={NavLink} id="homeMenuItem" activeClassName="active" exact to="/student-home" key='student-home'
+          [<Menu.Item as={NavLink} id="studentHomeMenuItem" activeClassName="active" exact to="/student-home" key='student-home'
             style={{ color: 'white' }}>Student Home</Menu.Item>]
         ) : ''}
 

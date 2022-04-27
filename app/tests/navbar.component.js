@@ -17,7 +17,11 @@ class NavBar {
     await testController.click('#login-dropdown-sign-in');
   }
 
-  async gotoCompanySignupPage(testController){
+  async gotoStudentHomePage(testController) {
+    await testController.click('#studentHomeMenuItem');
+  }
+
+  async gotoCompanySignupPage(testController) {
     await testController.click('#login-dropdown');
     await testController.click('#login-dropdown-company-sign-up');
   }

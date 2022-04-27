@@ -5,11 +5,13 @@ import { signupPage } from './signup.page';
 import { navBar } from './navbar.component';
 import { companyHome } from './companyHome.page';
 import { companySignUp } from './companySignup.page';
+import { studentHomePage } from './home.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const newUser = { username: `user-${new Date().getTime()}@foo.com`, password: 'foo' };
+const studentAccount = { username: 'student@student.com', password: 'foo'};
 const newCompany = { username: `user-${new Date().getTime()}@foo.com`, password: 'oof' };
 
 fixture('Bowfolios localhost test with default db')
@@ -36,9 +38,16 @@ test('Test that signin and signout work', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test that company home page displays', async (testController) => {
+test('Test that company home page displays', async (testController) => {
   await navBar.gotoCompanySignupPage(testController);
   await companySignUp.signup(testController, newCompany.username, newCompany.password);
   await navBar.gotoCompanyHomePage(testController);
   await companyHome.isDisplayed(testController);
+});
+
+test.only('Test that student home page displays', async (testController) => {
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, studentAccount.username, studentAccount.password);
+  await navBar.gotoStudentHomePage(testController);
+  await studentHomePage.isDisplayed(testController);
 });
