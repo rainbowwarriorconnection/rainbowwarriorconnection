@@ -28,7 +28,7 @@ class NavBar extends React.Component {
           style={{ color: 'white' }}>Add Job</Menu.Item>]
         ) : ''}
 
-        <Menu.Item as={NavLink} id="profilesMenuItem" activeClassName="active" exact to="/profiles"
+        <Menu.Item as={NavLink} id="studentProfilesMenuItem" activeClassName="active" exact to="/profiles"
           key='profiles' style={{ color: 'white' }}>Browse Students</Menu.Item>
         <Menu.Item as={NavLink} id="projectsMenuItem" activeClassName="active" exact to="/companies"
           key='projects' style={{ color: 'white' }}>Browse Companies</Menu.Item>
