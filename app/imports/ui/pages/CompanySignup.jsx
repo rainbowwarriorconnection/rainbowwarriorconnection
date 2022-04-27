@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
@@ -17,12 +18,12 @@ class CompanySignup extends React.Component {
   }
 
   /** Update the form controls each time the user interacts with them. */
-  handleChange= (e, { name, value }) => {
+  handleChange = (e, { name, value }) => {
     this.setState({ [name]: value });
   }
 
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
-  submit= () => {
+  submit = () => {
     const { email, name, description, picture, state, city, homepage, password } = this.state;
     Accounts.createUser({ email, username: email, password, role: 'company' }, (err) => {
       if (err) {
@@ -35,15 +36,15 @@ class CompanySignup extends React.Component {
             this.setState({ error: '', redirectToReferer: true });
           }
         });
-	Meteor.call(
-            addCompanyToRoleMethod, (err4) => {
-               if(err4) {
-                   this.setState({ error: err4.reason });
-	       } else {
-                   this.setState({ error: '', redirectToReferer: true });
-	       }
-	    }
-	);
+        Meteor.call(
+          addCompanyToRoleMethod, (err4) => {
+            if (err4) {
+              this.setState({ error: err4.reason });
+            } else {
+              this.setState({ error: '', redirectToReferer: true });
+            }
+          },
+        );
       }
     });
   }
@@ -60,7 +61,7 @@ class CompanySignup extends React.Component {
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
             <Header as="h2" textAlign="center">
-                Sign up for a new account
+              Sign up for a new account
             </Header>
             <Form onSubmit={this.submit}>
               <Segment stacked>
@@ -106,7 +107,7 @@ class CompanySignup extends React.Component {
               </Segment>
             </Form>
             <Message>
-                Already have an account? Login <Link to="/signin">here</Link>
+              Already have an account? Login <Link to="/signin">here</Link>
             </Message>
             {this.state.error === '' ? (
               ''

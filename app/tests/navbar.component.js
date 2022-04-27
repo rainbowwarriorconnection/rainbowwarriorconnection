@@ -31,7 +31,11 @@ class NavBar {
   }
 
   async gotoCompanyHomePage(testController) {
-    await testController.click('#homeMenuItem');
+    await testController.click('#companyHomeMenuItem');
+  }
+
+  async gotoBrowseCompaniesPage(testController) {
+    await testController.click('#companyProfilesMenuItem');
   }
 
   async gotoInterestsPage(testController) {

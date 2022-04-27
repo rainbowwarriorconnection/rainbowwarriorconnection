@@ -6,7 +6,8 @@ import { navBar } from './navbar.component';
 import { companyHome } from './companyHome.page';
 import { companySignUp } from './companySignup.page';
 import { studentHomePage } from './home.page';
-import { browseStudentsPage } from './browseStudents.page.';
+import { browseStudentsPage } from './browseStudents.page';
+import { browseCompaniesPage } from './browseCompanies.page';
 
 /* global fixture:false, test:false */
 
@@ -65,5 +66,15 @@ test('Test that browse student page displays when signed in as a company and whe
   await navBar.gotoSigninPage(testController);
   await signinPage.signin(testController, newCompany.username, newCompany.password);
   await navBar.gotoBrowseStudentsPage(testController);
+  await browseStudentsPage.hasDefaultProfiles(testController);
+});
+
+test('Test that browse company page displays when signed in as a student and when the user is not signed in', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoBrowseCompaniesPage(testController);
+  await browseCompaniesPage.hasDefaultProfiles(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, studentAccount.username, studentAccount.password);
+  await navBar.gotoBrowseCompaniesPage(testController);
   await browseStudentsPage.hasDefaultProfiles(testController);
 });

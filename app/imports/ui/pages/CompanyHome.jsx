@@ -51,7 +51,7 @@ class CompanyHome extends React.Component {
     const company = Companies.collection.findOne({ email });
     const model = _.extend({}, company);
     return (
-      <Grid id="home-page" container centered>
+      <Grid id="companyHome-page" container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center">Your Company Profile</Header>
           <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
