@@ -66,7 +66,7 @@ class CompanySignup extends React.Component {
               <Segment stacked>
                 <Form.Input
                   label="Email"
-                  id="signup-form-email"
+                  id="companySignup-form-email"
                   icon="user"
                   iconPosition="left"
                   name="email"
