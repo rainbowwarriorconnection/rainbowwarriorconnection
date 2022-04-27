@@ -29,6 +29,7 @@ function addCompany({ name, homepage, email, description, picture, state, city }
   Companies.collection.insert({ name, homepage, email, description, picture, state, city });
 }
 
+
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultStudents && Meteor.settings.defaultCompanies) {

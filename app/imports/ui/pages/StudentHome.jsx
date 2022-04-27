@@ -53,7 +53,7 @@ class StudentHome extends React.Component {
     return (
       <Grid id="student-home-page" container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Your Student Profile</Header>
+          <Header as="h2" textAlign="center" inverted>Your Student Profile</Header>
           <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <Form.Group widths={'equal'}>
