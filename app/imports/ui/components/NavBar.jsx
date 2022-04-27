@@ -22,7 +22,8 @@ class NavBar extends React.Component {
         ) : ''}
 
         {this.props.currentUser && this.isInRole('company') ? ([<Menu.Item as={NavLink}
-          id="companyHomeMenuItem" activeClassName="active" exact to="/company-home" key='company-home' style={{ color: 'white' }}>Company Home</Menu.Item>,
+          id="companyHomeMenuItem" activeClassName="active" exact to="/company-home"
+          key='company-home' style={{ color: 'white' }}>Company Home</Menu.Item>,
         <Menu.Item as={NavLink} id="addJobMenuItem" activeClassName="active" exact to="/addJob" key='addP'
           style={{ color: 'white' }}>Add Job</Menu.Item>]
         ) : ''}

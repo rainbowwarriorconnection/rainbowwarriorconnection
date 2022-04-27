@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-class companyHomePage {
+class CompanyHomePage {
   constructor() {
     this.pageId = '#companyHome-page';
     this.pageSelector = Selector(this.pageId);
@@ -13,4 +13,4 @@ class companyHomePage {
   }
 }
 
-export const companyHome = new companyHomePage();
+export const companyHome = new CompanyHomePage();
