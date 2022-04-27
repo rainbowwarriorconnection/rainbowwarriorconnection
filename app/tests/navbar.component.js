@@ -23,7 +23,7 @@ class NavBar {
   }
 
   async gotoCompanyHomePage(testController) {
-    await testController.click('#companyHomeMenuItem');
+    await testController.click('#homeMenuItem');
   }
 
   async gotoInterestsPage(testController) {
