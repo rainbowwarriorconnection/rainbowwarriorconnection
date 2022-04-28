@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Card, Image, Label } from 'semantic-ui-react';
+import { Container, Loader, Card, Image } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -45,7 +45,7 @@ class CompaniesPage extends React.Component {
     const companies = _.pluck(Companies.collection.find().fetch(), 'name');
     const companyData = companies.map(company => getCompanyData(company));
     return (
-      <Container id="projects-page">
+      <Container id="company-profiles-page">
         <Card.Group>
           {_.map(companyData, (company, index) => <MakeCard key={index} project={company}/>)}
         </Card.Group>

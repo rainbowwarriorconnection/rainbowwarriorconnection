@@ -1,7 +1,11 @@
 import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { Projects } from '../../api/projects/Projects';
+/**
+ * Unused imports
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+ * */
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Students } from '../../api/students/Students';
@@ -31,6 +35,23 @@ import { Companies } from '../../api/companies/Companies';
  * back if any of the intermediate updates failed. Left as an exercise to the reader.
  */
 
+const addStudentToRoleMethod = 'Roles.addStudentToRole';
+Meteor.methods({
+  'Roles.addStudentToRole'() {
+    Roles.createRole('student', { unlessExists: true });
+    Roles.addUsersToRoles(this.userId, 'student');
+  },
+});
+
+
+const addCompanyToRoleMethod = 'Roles.addCompanyToRole';
+Meteor.methods({
+  'Roles.addCompanyToRole'() {
+    Roles.createRole('company', { unlessExists: true });
+    Roles.addUsersToRoles(this.userId, 'company');
+  },
+});
+
 const updateCompaniesMethod = 'Companies.update';
 
 /**
@@ -40,7 +61,7 @@ const updateCompaniesMethod = 'Companies.update';
  */
 Meteor.methods({
   'Companies.update'({ email, name, description, picture, state, city }) {
-   Companies.collection.update({ email }, { $set: {  email, name, description, picture, state, city } });
+    Companies.collection.update({ email }, { $set: { email, name, description, picture, state, city } });
   },
 });
 
@@ -53,7 +74,7 @@ const updateStudentsMethod = 'Students.update';
  */
 Meteor.methods({
   'Students.update'({ email, firstName, lastName, description, picture, state }) {
-   Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
+    Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
   },
 });
 
@@ -76,4 +97,4 @@ Meteor.methods({
   },
 });
 
-export { updateStudentsMethod, updateCompaniesMethod, addProjectMethod };
+export { addCompanyToRoleMethod, addStudentToRoleMethod, updateStudentsMethod, updateCompaniesMethod, addProjectMethod };

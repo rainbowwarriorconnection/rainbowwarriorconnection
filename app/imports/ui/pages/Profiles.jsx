@@ -43,7 +43,7 @@ class ProfilesPage extends React.Component {
     const emails = _.pluck(Students.collection.find().fetch(), 'email');
     const studentData = emails.map(email => getProfileData(email));
     return (
-      <Container id="profiles-page">
+      <Container id="student-profiles-page">
         <Card.Group>
           {_.map(studentData, (profile, index) => <MakeCard key={index} profile={profile}/>)}
         </Card.Group>

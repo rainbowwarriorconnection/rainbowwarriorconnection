@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header, Form, Loader } from 'semantic-ui-react';
-import { AutoForm, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
+import { AutoForm, TextField, SubmitField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -10,17 +10,17 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { updateCompaniesMethod } from '../../startup/both/Methods';
 
-import { Companies } from '../../api/companies/Companies.js'
+import { Companies } from '../../api/companies/Companies.js';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allCompanies) => new SimpleSchema({
+const makeSchema = () => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   name: { type: String, label: 'Company', optional: true },
   description: { type: String, label: 'Biography', optional: true },
   state: { type: String, label: 'State', optional: true },
   city: { type: String, label: 'City', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
-  homepage: { type: String, optional: true}
+  homepage: { type: String, optional: true },
 });
 
 /** Renders the Home Page: what appears after the user logs in. */
@@ -45,16 +45,15 @@ class CompanyHome extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     const email = Meteor.user().username;
-    const allCompanies = _.pluck(Companies.collection.find().fetch(), 'name');
-    const formSchema = makeSchema(allCompanies);
+    const formSchema = makeSchema();
     const bridge = new SimpleSchema2Bridge(formSchema);
     // Now create the model with all the company information.
     const company = Companies.collection.findOne({ email });
     const model = _.extend({}, company);
     return (
-      <Grid id="home-page" container centered>
+      <Grid id="companyHome-page" container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Your Company Profile</Header>
+          <Header as="h2" textAlign="center" inverted>Your Company Profile</Header>
           <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <Form.Group widths={'equal'}>

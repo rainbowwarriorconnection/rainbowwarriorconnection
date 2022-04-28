@@ -8,12 +8,11 @@ import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-
 import { Students } from '../../api/students/Students';
 import { updateStudentsMethod } from '../../startup/both/Methods';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allStudents) => new SimpleSchema({
+const makeSchema = () => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   firstName: { type: String, label: 'First', optional: true },
   lastName: { type: String, label: 'Last', optional: true },
@@ -44,18 +43,17 @@ class StudentHome extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     const email = Meteor.user().username;
-    const allStudents = _.pluck(Students.collection.find().fetch(), 'name');
 
-    const formSchema = makeSchema(allStudents);
+    const formSchema = makeSchema();
     const bridge = new SimpleSchema2Bridge(formSchema);
     // Now create the model with all the user information
     const student = Students.collection.findOne({ email });
     const model = _.extend({}, student);
 
     return (
-      <Grid id="home-page" container centered>
+      <Grid id="student-home-page" container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Your Student Profile</Header>
+          <Header as="h2" textAlign="center" inverted>Your Student Profile</Header>
           <AutoForm model={model} schema={bridge} onSubmit={data => this.submit(data)}>
             <Segment>
               <Form.Group widths={'equal'}>
@@ -68,7 +66,7 @@ class StudentHome extends React.Component {
               </Form.Group>
               <TextField name='picture' id='picture' showInlineError={true} placeholder={'URL for picture'}/>
               <LongTextField name='description' id='description' placeholder={'Description'}/>
-              <SubmitField id='home-page-submit' value='Submit'/>
+              <SubmitField id='student-home-submit' value='Submit'/>
             </Segment>
           </AutoForm>
         </Grid.Column>

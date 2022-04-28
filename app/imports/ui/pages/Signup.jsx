@@ -1,9 +1,12 @@
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+// import { Roles } from 'meteor/alanning:roles';
 import { Accounts } from 'meteor/accounts-base';
 import { Students } from '../../api/students/Students';
+import { addStudentToRoleMethod } from '../../startup/both/Methods';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -23,13 +26,20 @@ class Signup extends React.Component {
   /** Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   submit= () => {
     const { email, firstName, lastName, description, picture, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    Accounts.createUser({ email: email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Students.collection.insert({ email, firstName, lastName, picture, description }, (err2) => {
+        Students.collection.insert({ email, firstName, lastName, description, picture }, (err2) => {
           if (err2) {
             this.setState({ error: err2.reason });
+          } else {
+            this.setState({ error: '', redirectToReferer: true });
+          }
+        });
+        Meteor.call(addStudentToRoleMethod, (err3) => {
+          if (err3) {
+            this.setState({ error: err3.reason });
           } else {
             this.setState({ error: '', redirectToReferer: true });
           }
@@ -49,7 +59,7 @@ class Signup extends React.Component {
       <Container id="signup-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center">
+            <Header as="h2" textAlign="center" inverted>
                 Sign up for a new account
             </Header>
             <Form onSubmit={this.submit}>
@@ -64,33 +74,33 @@ class Signup extends React.Component {
                   placeholder="E-mail address"
                   onChange={this.handleChange}
                 />
-	    	<Form.Group inline widths='equal'>
-                <Form.Input fluid
-                  label="First Name"
-                  id="signup-form-firstname"
-                  name="firstName"
-                  type="firstname"
-	    	  placeholder="First Name"
-                  onChange={this.handleChange}
-                />
-	    	<Form.Input fluid
-                  label="Last Name"
-                  id="signup-form-lastname"
-                  name="lastName"
-                  placeholder="Last Name"
+                <Form.Group inline widths='equal'>
+                  <Form.Input fluid
+                    label="First Name"
+                    id="signup-form-firstname"
+                    name="firstName"
+                    type="firstname"
+                    placeholder="First Name"
+                    onChange={this.handleChange}
+                  />
+                  <Form.Input fluid
+                    label="Last Name"
+                    id="signup-form-lastname"
+                    name="lastName"
+                    placeholder="Last Name"
+                    type=""
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+                <Form.Input
+                  label="Picture URL"
+                  id="signup-form-picture"
+                  name="picture"
+                  placeholder="URL"
                   type=""
                   onChange={this.handleChange}
                 />
-	    	</Form.Group>
-	    	<Form.Input
-	    	  label="Picture URL"
-	    	  id="signup-form-picture"
-	    	  name="picture"
-	    	  placeholder="URL"
-	    	  type=""
-	    	  onChange={this.handleChange}
-	    	/>
-		<Form.Input
+                <Form.Input
                   label="Password"
                   id="signup-form-password"
                   icon="lock"

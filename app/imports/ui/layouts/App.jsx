@@ -19,6 +19,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import CompanySignup from '../pages/CompanySignup.jsx';
+import AdminHome from '../pages/AdminHome.jsx';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -30,15 +31,16 @@ class App extends React.Component {
           <div style={{ paddingTop: '20px', paddingBottom: '30px' }}>
             <Switch>
               <Route exact path="/" component={Landing}/>
-              <ProtectedRoute path="/student-home" component={StudentHome}/>
-              <ProtectedRoute path="/company-home" component={CompanyHome}/>
-              <Route path="/profiles" component={Profiles}/>
+              <RoleProtectedRoute path="/student-home" role='student' component={StudentHome}/>
+              <RoleProtectedRoute path="/company-home" role='company' component={CompanyHome}/>
+              <RoleProtectedRoute path="/admin-home" role='admin' component={AdminHome}/>
+              <RoleProtectedRoute path="/profiles" role='student' component={Profiles}/>
               <Route path="/companies" component={Companies}/>
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addjob" component={AddJob}/>
               <ProtectedRoute path="/filter" component={Filter}/>
               <Route path="/signin" component={Signin}/>
-	      <Route path="/company-signup" component={CompanySignup}/>
+              <Route path="/company-signup" component={CompanySignup}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
@@ -87,6 +89,26 @@ const AdminProtectedRoute = ({ component: Component, ...rest }) => (
     }}
   />
 );
+
+const RoleProtectedRoute = ({ component: Component, role, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) => {
+      const isLogged = Meteor.userId() !== null;
+      const isRole = Roles.userIsInRole(Meteor.userId(), role);
+      return (isLogged && isRole) ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+        );
+    }}
+  />
+);
+
+RoleProtectedRoute.propTypes = {
+  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  role: PropTypes.string,
+  location: PropTypes.object,
+};
 
 /** Require a component and location to be passed to each ProtectedRoute. */
 ProtectedRoute.propTypes = {
