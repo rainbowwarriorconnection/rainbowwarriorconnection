@@ -10,6 +10,7 @@ import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Students } from '../../api/students/Students';
 import { Companies } from '../../api/companies/Companies';
+import { StudentsInterests} from '../../api/students/StudentsInterest';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -73,8 +74,13 @@ const updateStudentsMethod = 'Students.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Students.update'({ email, firstName, lastName, description, picture, state }) {
+  'Students.update'({ email, firstName, lastName, description, picture, state, interests }) {
     Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
+    _.map(interests, 
+	 function(interest) { 
+	    StudentsInterests.collection.insert({ email, interest }) 
+	 }
+    );
   },
 });
 

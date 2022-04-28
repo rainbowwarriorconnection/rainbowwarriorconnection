@@ -54,8 +54,9 @@ class StudentHome extends React.Component {
     const bridge = new SimpleSchema2Bridge(formSchema);
     // Now create the model with all the user information
     const student = Students.collection.findOne({ email });
-    const model = _.extend({}, student);
-    
+    const interests = StudentsInterests.collection.findOne({ email });
+    const model = _.extend({}, student, interests);
+    console.log(interests) 
     
     return (
       <Grid id="student-home-page" container centered>
