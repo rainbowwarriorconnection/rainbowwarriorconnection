@@ -31,3 +31,7 @@
 .ui.menu.menu-background {
   background-color: #376551;
 }
+
+.min-height {
+  min-height: 535px;
+}

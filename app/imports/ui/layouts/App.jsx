@@ -28,7 +28,7 @@ class App extends React.Component {
       <Router>
         <div>
           <NavBar/>
-          <div style={{ paddingTop: '20px', paddingBottom: '30px' }}>
+          <div className="min-height" style={{ paddingTop: '20px', paddingBottom: '30px' }}>
             <Switch>
               <Route exact path="/" component={Landing}/>
               <RoleProtectedRoute path="/student-home" role='student' component={StudentHome}/>
