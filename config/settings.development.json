@@ -7,7 +7,128 @@
         },
         {
             "email": "john@foo.com",
-            "password": "changeme"
+            "password": "changeme",
+            "role": "student"
+        },
+        {
+          "email": "media@riotgames.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "info@mbtechnologies.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "support@google.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "jobs@titmouse.net",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "careers@twitter.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "careers@twitch.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "careers@slack.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "careers@2u.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "jobs@ubisoft.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "jobs@2k.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "jobs@supergiantgames.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "support@makaihr.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "Robert_Lawson@spe.sony.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "careers@dell.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "jobs@alienware.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "business@roosterteeth.com",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "TSM@solomid.gg",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "careers@cloud9.gg",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "jobs@dignatas.gg",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "jobs@evilgeniuses.gg",
+          "password": "changeme",
+          "role": "company"
+        },
+        {
+          "email": "ltonglee@hawaii.edu",
+          "password": "changeme",
+          "role": "student"
+        },
+        {
+          "email": "ajlau@hawaii.edu",
+          "password": "changeme",
+          "role": "student"
+        },
+        {
+          "email": "bretwitt@hawaii.edu",
+          "password": "changeme",
+          "role": "student"
+        },
+        {
+          "email": "jmacaban@hawaii.edu",
+          "password": "changeme",
+          "role": "student"
         }
     ],
     "defaultCompanies": [
@@ -16,9 +137,9 @@
             "homepage": "https://google.com",
             "name": "Google",
             "picture": "https://avatars0.githubusercontent.com/u/4641939",
-	    "state": "",
-	    "city" :"",
-	    "email" : "google@google.com"
+	          "state": "",
+	          "city" :"",
+	          "email" : "google@google.com"
         }
     ],
     "defaultStudents": [
@@ -30,13 +151,21 @@
             "picture": "https://picsum.photos/300/300",
             "state": "Hawaii"
         },
-	{
+	      {
             "description": "Student2",
             "email": "student2@student.com",
             "firstName": "Student2",
             "lastName": "Student2",
             "picture": "https://picsum.photos/300/300",
             "state": "Hawaii2"
+        },
+        {
+            "description": "Animation and ICS Student",
+            "email": "ltonglee@hawaii.edu",
+            "firstName": "Londy",
+            "lastName": "Tong-Lee",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQEeCU38DB3oSw/profile-displayphoto-shrink_200_200/0/1625194903449?e=1654732800&v=beta&t=qmkiTXOiwarXsDLx1jWVPmc6Vm0X2mxxG_wR3BDjHXA",
+            "state": "Hawaii"
         }
     ],
     "loadAssetsFile": false
