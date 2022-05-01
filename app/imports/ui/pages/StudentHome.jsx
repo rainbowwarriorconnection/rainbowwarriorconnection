@@ -10,15 +10,20 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Students } from '../../api/students/Students';
 import { updateStudentsMethod } from '../../startup/both/Methods';
+import MultiSelectField from '../forms/controllers/MultiSelectField';
+import { StudentsInterests } from '../../api/students/StudentsInterest';
+import { Interests } from '../../api/interests/Interests';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = () => new SimpleSchema({
+const makeSchema = (allInterests) => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   firstName: { type: String, label: 'First', optional: true },
   lastName: { type: String, label: 'Last', optional: true },
   description: { type: String, label: 'Biographical statement', optional: true },
   state: { type: String, label: 'State', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
+  interests: { type: Array, label: 'Interests', optional: true },
+  'interests.$': { type: String, label: 'Interests', optional: true, allowedValues: allInterests },
 });
 
 /** Renders the Home Page: what appears after the user logs in. */
@@ -43,13 +48,16 @@ class StudentHome extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     const email = Meteor.user().username;
+    const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
 
-    const formSchema = makeSchema();
+    const formSchema = makeSchema(allInterests);
     const bridge = new SimpleSchema2Bridge(formSchema);
     // Now create the model with all the user information
     const student = Students.collection.findOne({ email });
-    const model = _.extend({}, student);
-
+    const interests = StudentsInterests.collection.findOne({ email });
+    const model = _.extend({}, student, interests);
+    console.log(interests) 
+    
     return (
       <Grid id="student-home-page" container centered>
         <Grid.Column>
@@ -66,6 +74,7 @@ class StudentHome extends React.Component {
               </Form.Group>
               <TextField name='picture' id='picture' showInlineError={true} placeholder={'URL for picture'}/>
               <LongTextField name='description' id='description' placeholder={'Description'}/>
+	      <MultiSelectField name='interests' showInlineError={true} placeholder={'Interests'}/>
               <SubmitField id='student-home-submit' value='Submit'/>
             </Segment>
           </AutoForm>
@@ -83,7 +92,9 @@ StudentHome.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(Students.userPublicationName);
+  const sub2 = Meteor.subscribe(StudentsInterests.userPublicationName);
+  const sub3 = Meteor.subscribe(Interests.userPublicationName);
   return {
-    ready: sub1.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready(),
   };
 })(StudentHome);
