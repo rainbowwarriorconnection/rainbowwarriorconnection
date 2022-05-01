@@ -9,137 +9,188 @@
             "email": "john@foo.com",
             "password": "changeme",
             "role": "student"
-        },
-        {
-          "email": "media@riotgames.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "info@mbtechnologies.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "support@google.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "jobs@titmouse.net",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "careers@twitter.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "careers@twitch.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "careers@slack.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "careers@2u.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "jobs@ubisoft.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "jobs@2k.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "jobs@supergiantgames.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "support@makaihr.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "Robert_Lawson@spe.sony.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "careers@dell.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "jobs@alienware.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "business@roosterteeth.com",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "TSM@solomid.gg",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "careers@cloud9.gg",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "jobs@dignatas.gg",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "jobs@evilgeniuses.gg",
-          "password": "changeme",
-          "role": "company"
-        },
-        {
-          "email": "ltonglee@hawaii.edu",
-          "password": "changeme",
-          "role": "student"
-        },
-        {
-          "email": "ajlau@hawaii.edu",
-          "password": "changeme",
-          "role": "student"
-        },
-        {
-          "email": "bretwitt@hawaii.edu",
-          "password": "changeme",
-          "role": "student"
-        },
-        {
-          "email": "jmacaban@hawaii.edu",
-          "password": "changeme",
-          "role": "student"
         }
     ],
     "defaultCompanies": [
         {
-            "description": "Your data is now our data",
+            "description": "Google LLC is an American multinational technology company that focuses on artificial intelligence, search engine, online advertising, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics\",\n\"homepage\": \"http://www.mbtechnologies.com/",
             "homepage": "https://google.com",
             "name": "Google",
-            "picture": "https://avatars0.githubusercontent.com/u/4641939",
-	          "state": "",
-	          "city" :"",
+            "picture": "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png",
+	          "state": "Menlo Park",
+	          "city" :"California",
 	          "email" : "google@google.com"
+        },
+        {
+            "description": "Dare TO DREAM. We believe the courage to chase bold ideas will make impossible dreams come true for players. We make bold, focused bets aimed at advancing the gaming landscape.",
+            "homepage": "https://www.riotgames.com/en",
+            "name": "Riot Games",
+            "picture": "https://media-exp1.licdn.com/dms/image/C560BAQEm5_MWMN6kmg/company-logo_200_200/0/1647035686235?e=2147483647&v=beta&t=Wzv1NbNUCxQrxU98NnhzzjzPCsPQqBOSkMtOuvbHIJE",
+	          "state": "California",
+	          "city" :"Los Angeles",
+	          "email" : "media@riotgames.com"
+        },
+        {
+            "description": "An Outsource IT Vendor located in Honolulu, Hawaii with an office operating from the Executive Center. We have been in business and providing excellent and prompt technical services for over ten years to a wide variety of clientele.",
+            "homepage": "http://www.mbtechnologies.com/",
+            "name": "MB Techonologies",
+            "picture": "https://scontent.fhnl1-1.fna.fbcdn.net/v/t31.18172-8/325614_320824311297602_849220528_o.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=mZDt3ya3b2QAX_OY3qK&_nc_ht=scontent.fhnl1-1.fna&oh=00_AT_jQlNtDNYjTP3xhXBvjzbkhU9B2aySIR2ttKptpoEaxA&oe=6295395E",
+	          "state": "Honolulu",
+	          "city" :"Hawaii",
+	          "email" : "info@mbtechnologies.com"
+        },
+        {
+            "description": "Titmouse is an independent award-winning animation production company.\n\nWe have everything it takes to make your cartoons from start to finish. Projects of any scale are produced at our three studio locations in Los Angeles, New York City, and Vancouver. Titmouse employs over 700 of the most talented people in the industry (that are guaranteed 100% human).",
+            "homepage": "https://titmouse.net/",
+            "name": "Titmouse",
+            "picture": "https://www.awn.com/sites/default/files/styles/inline_medium/public/image/attached/1047461-titmouselogo.jpg?itok=PSyk0fKj",
+	          "state": "Los Angeles",
+	          "city" :"California",
+	          "email" : "jobs@titmouse.net"
+        },
+        {
+            "description": "Twitter is an American microblogging and social networking service on which users post and interact with messages known as \"tweets\". Registered users can post, like, and retweet tweets, but unregistered users can only read those that are publicly available.",
+            "homepage": "https://twitter.com/home",
+            "name": "Twitter",
+            "picture": "https://about.twitter.com/content/dam/about-twitter/en/brand-toolkit/brand-download-img-1.jpg.twimg.1920.jpg",
+	          "state": "San Francisco",
+	          "city" :"California",
+	          "email" : "careers@twitter.com"
+        },
+        {
+            "description": "Twitch is an interactive livestreaming service for content spanning gaming, entertainment, sports, music, and more.",
+            "homepage": "https://www.twitch.tv/",
+            "name": "Twitch",
+            "picture": "https://cdn.pixabay.com/photo/2021/12/10/16/38/twitch-6860918_960_720.png",
+	          "state": "San Francisco",
+	          "city" :"California",
+	          "email" : "careers@twitch.com"
+        },
+        {
+            "description": "Slack is a new way to communicate with your team. It's faster, better organized, and more secure than email.",
+            "homepage": "https://slack.com/",
+            "name": "Slack",
+            "picture": "https://cdn.dribbble.com/users/121337/screenshots/5885287/slack.png?compress=1&resize=400x300",
+	          "state": "San Francisco",
+	          "city" :"California",
+	          "email" : "careers@slack.com"
+        },
+        {
+            "description": "As the parent company of edX, 2U works with top-tier partners to offer high-quality online education and services that span free courses to degree programs. Our mission-driven, student-focused culture drives us to help partners thrive in the digital age.",
+            "homepage": "https://2u.com/",
+            "name": "2U",
+            "picture": "https://2u.com/static/ca12e19db2fddb4043175117c6d6d41b/09384/2u-logo.png",
+	          "state": "Brooklyn",
+	          "city" :"New York",
+	          "email" : "careers@2u.com"
+        },
+        {
+            "description": "Ubisoft Entertainment SA is a French video game company headquartered in Montreuil with development studios across the world. Its video game franchises include Assassin's Creed, Far Cry, For Honor, Just Dance, Prince of Persia, Rabbids, Rayman, Tom Clancy's, and Watch Dogs.",
+            "homepage": "https://www.ubisoft.com/en-us/",
+            "name": "Ubisoft",
+            "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ubisoft_logo.svg/1000px-Ubisoft_logo.svg.png",
+	          "state": "San Francisco",
+	          "city" :"California",
+	          "email" : "jobs@ubisoft.com"
+        },
+        {
+            "description": "2K is an American video game publisher based in Novato, California. 2K was founded under Take-Two Interactive in January 2005 through the 2K Games and 2K Sports labels, following Take-Two Interactive's acquisition of Visual Concepts that same month. Originally based in New York City, it moved to Novato in 2007.",
+            "homepage": "https://2k.com/en-US/",
+            "name": "2K Games",
+            "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1f/2K_2021_Logo.svg",
+	          "state": "Novato",
+	          "city" :"California",
+	          "email" : "jobs@2k.com"
+        },
+        {
+            "description": "Supergiant Games is a small independent game development studio in San Francisco, known for its award-winning titles Hades, Pyre, Transistor, and Bastion.",
+            "homepage": "https://www.supergiantgames.com/",
+            "name": "Supergiant Games",
+            "picture": "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1414331468/nytqzynhnbpkf8e3kgv1.png",
+	          "state": "San Francisco",
+	          "city" :"California",
+	          "email" : "jobs@supergiantgames.com"
+        },
+        {
+            "description": "Much like the trend of folks “cutting the cord” with their cable company and choosing more cost effective, targeted solutions in their own homes, so is Makai HR for small to medium size business owners who are realizing that their larger HR provider has not evolved its offerings to fit their needs and instead continues to charge them an arm and a leg for stuff they simple don’t use or need.",
+            "homepage": "https://makaihr.com/",
+            "name": "Makai HR",
+            "picture": "https://media-exp1.licdn.com/dms/image/C560BAQFlE08Ke68FfA/company-logo_200_200/0/1522987698388?e=2147483647&v=beta&t=F4hztUKANkVeUWz4vhZWhaT4gb3ZxSdYICpBzZBagwg",
+	          "state": "Honolulu",
+	          "city" :"Hawaii",
+	          "email" : "support@makaihr.com"
+        },
+        {
+            "description": "Sony's Purpose & Values\nPurpose\nFill the world with emotion, through the power of creativity and technology.",
+            "homepage": "https://www.sony.com/en/",
+            "name": "Sony US",
+            "picture": "https://static.wikia.nocookie.net/closinglogogroup/images/3/35/Sony_black_background.jpg/revision/latest?cb=20150522013035",
+	          "state": "New York",
+	          "city" :"New York",
+	          "email" : "Robert_Lawson@spe.sony.com"
+        },
+        {
+            "description": "Dell is an American company that develops, sells, repairs, and supports computers and related products and services, and is owned by its parent company of Dell Technologies.",
+            "homepage": "https://www.dell.com/en-us",
+            "name": "Dell",
+            "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/2048px-Dell_Logo.svg.png",
+	          "state": "Round Rock",
+	          "city" :"Texas",
+	          "email" : "careers@dell.com"
+        },
+        {
+            "description": "Alienware is an American computer hardware subsidiary of Dell. Their product range is dedicated to gaming computers which can be identified by their alien-themed designs. Alienware was founded in 1996 by Nelson Gonzalez and Alex Aguila, and is currently led by Vivian Lien.",
+            "homepage": "https://www.dell.com/en-us/gaming/alienware",
+            "name": "Alienware",
+            "picture": "https://logos-world.net/wp-content/uploads/2020/03/Alienware-emblem.jpg",
+	          "state": "Miami",
+	          "city" :"Florida",
+	          "email" : "jobs@alienware.com"
+        },
+        {
+            "description": "Rooster Teeth Productions, LLC is an American audio-video production company headquartered in Austin, Texas. Founded in 2003 by Burnie Burns, Matt Hullum, Geoff Ramsey, Jason Saldaña, Gus Sorola, and Joel Heyman, Rooster Teeth is a subsidiary of Otter Media, which is itself a subsidiary of Warner Bros. Discovery.",
+            "homepage": "https://roosterteeth.com/",
+            "name": "Rooster Teeth",
+            "picture": "https://static.wikia.nocookie.net/youtube/images/9/90/Rooster_Teeth.jpg/revision/latest?cb=20201209213906",
+	          "state": "Austin",
+	          "city" :"Texas",
+	          "email" : "business@roosterteeth.com"
+        },
+        {
+            "description": "With offices in Los Angeles and remote employees both in the country and across the globe, we’re a passionate group of people from around the world.\n\nOur collaborative, dynamic culture allows our teams to work cross-functionally and optimize productivity. We maintain a progressive outlook, always looking to the future and identifying trends to set ourselves apart from the competition and to be at the forefront of the world of Esports.",
+            "homepage": "https://tsm.gg/",
+            "name": "TSMFTX",
+            "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/302px-TSM_Logo.svg.png",
+	          "state": "Los Angeles",
+	          "city" :"California",
+	          "email" : "TSM@solomid.gg"
+        },
+        {
+            "description": "WHAT IS CLOUD9?\nSince 2013, Cloud9 has become one of the most recognizable esports organizations in the world. With championships industry-wide, unmatched viewership hours, and extensive benefits packages for players and staff, Cloud9 prides itself on being the best in all categories.",
+            "homepage": "https://cloud9.gg/",
+            "name": "Cloud9",
+            "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Cloud9_logo.svg/1200px-Cloud9_logo.svg.png",
+	          "state": "Los Angeles",
+	          "city" :"California",
+	          "email" : "careers@cloud9.gg"
+        },
+        {
+            "description": "Dignitas is an international esports organization that fields teams in many of esports' largest and most popular games as one of the most iconic and recognizable brands in the professional gaming industry.",
+            "homepage": "https://dignitas.gg/",
+            "name": "Dignitas",
+            "picture": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Dignitas_logo.svg/1200px-Dignitas_logo.svg.png",
+	          "state": "Los Angeles",
+	          "city" :"California",
+	          "email" : "jobs@dignitas.gg"
+        },
+        {
+            "description": "Life as an Evil Genius means the freedom to choose your own path and to be bold without being bound by expectations. As an organization, we set new bars by consistently choosing what’s right, not just what’s typical—high standards of how to treat our players and teammates with care and respect and new ways to reward our viewers and fans.",
+            "homepage": "https://evilgeniuses.gg/",
+            "name": "Evil Geniuses",
+            "picture": "https://evilgeniuses.gg/wp-content/uploads/2020/05/Crest-Dark-1.png",
+	          "state": "Seattle",
+	          "city" :"Washington",
+	          "email" : "jobs@evilgeniuses.gg"
         }
     ],
     "defaultStudents": [
@@ -168,19 +219,21 @@
             "state": "Hawaii"
         }
     ],
+
     "defaultInterests": [
 	{
 	    "name" : "Software Engineering"
 	},
 	{
-            "name" : "Machine Learning"
+      "name" : "Machine Learning"
 	},
 	{
-            "name" : "Web Development"
+      "name" : "Web Development"
 	},
 	{
 	    "name" : "Robotics"
 	}
     ],
+
     "loadAssetsFile": false
 }

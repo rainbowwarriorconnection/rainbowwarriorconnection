@@ -35,3 +35,7 @@
 .min-height {
   min-height: 535px;
 }
+
+.ui.small.label.label-format {
+  margin: 0.25em;
+}
