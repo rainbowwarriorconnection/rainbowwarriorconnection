@@ -46,7 +46,6 @@ class ProfilesPage extends React.Component {
   renderPage() {
     const emails = _.pluck(Students.collection.find().fetch(), 'email');
     const studentData = emails.map(email => getProfileData(email));
-    console.log(studentData)
     return (
       <Container id="student-profiles-page">
         <Card.Group>
