@@ -56,7 +56,6 @@ class StudentHome extends React.Component {
     const student = Students.collection.findOne({ email });
     const interests = StudentsInterests.collection.findOne({ email });
     const model = _.extend({}, student, interests);
-    console.log(interests) 
     
     return (
       <Grid id="student-home-page" container centered>
