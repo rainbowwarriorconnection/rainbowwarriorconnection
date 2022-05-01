@@ -76,10 +76,12 @@ const updateStudentsMethod = 'Students.update';
 Meteor.methods({
   'Students.update'({ email, firstName, lastName, description, picture, state, interests }) {
     Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
-    _.map(interests, 
-	 function(interest) { 
-	    StudentsInterests.collection.insert({ email, interest }) 
-	 }
+    
+    StudentsInterests.collection.remove({email});
+
+    _.map(interests, function(interest) {
+        StudentsInterests.collection.insert({ email, interest })
+    }
     );
   },
 });

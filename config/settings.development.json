@@ -168,5 +168,19 @@
             "state": "Hawaii"
         }
     ],
+    "defaultInterests": [
+	{
+	    "name" : "Software Engineering"
+	},
+	{
+            "name" : "Machine Learning"
+	},
+	{
+            "name" : "Web Development"
+	},
+	{
+	    "name" : "Robotics"
+	}
+    ],
     "loadAssetsFile": false
 }
