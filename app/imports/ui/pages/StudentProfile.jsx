@@ -22,10 +22,11 @@ class StudentProfile extends React.Component {
   renderPage() {
     return (
       <Container id="student-profiles-page">
+        <Header>{this.props.doc.firstName}</Header>
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center" inverted>Edit Contacts</Header>
-            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
+            <AutoForm schema={bridge} model={this.props.doc}>
               <Segment>
                 <TextField name='firstName'/>
                 <TextField name='lastName'/>
