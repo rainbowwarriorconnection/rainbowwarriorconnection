@@ -40,15 +40,15 @@ MakeCard.propTypes = {
 /** Renders the Profile Collection as a set of Cards. */
 class ProfilesPage extends React.Component {
 
-
   constructor(props) {
-     super(props)
-     this.state = {
-	filterType: "search",
-	filterValue: ""
-     }
+    super(props);
+    this.state = {
+      filterType: 'search',
+      filterValue: '',
+    };
   }
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
+
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
   }
@@ -79,10 +79,10 @@ class ProfilesPage extends React.Component {
     const interests = _.pluck(Interests.collection.find().fetch(), 'name');
     return (
       <Container>
-	<FilterBar onFilter={this.onFilter} interests={interests}/>
-        <Card.Group className="card-format" centered>
-          {_.map(studentData, (profile, index) => this.renderCard(profile, index))}
-        </Card.Group>
+        <FilterBar onFilter={this.onFilter} interests={interests} className="filter-format"/>
+          <Card.Group className="card-format" centered>
+            {_.map(studentData, (profile, index) => this.renderCard(profile, index))}
+          </Card.Group>
       </Container>
     );
   }
