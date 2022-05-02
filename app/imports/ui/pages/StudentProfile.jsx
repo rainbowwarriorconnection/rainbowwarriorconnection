@@ -1,53 +1,17 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Card, Image, Label, Header } from 'semantic-ui-react';
+import { Container, Loader, Header, Grid, Segment } from 'semantic-ui-react';
+import { AutoForm, TextField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import { Profiles } from '../../api/profiles/Profiles';
-import { StudentProfiles } from '../../api/profiles/StudentProfiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Students } from '../../api/students/Students.js';
 
-/** Returns the Profile and associated Projects and Interests associated with the passed user email. */
-function getProfileData(email) {
-  const data = StudentProfiles.collection.findOne({ email });
-  const interests = _.pluck(ProfilesInterests.collection.find({ profile: email }).fetch(), 'interest');
-  const projects = _.pluck(ProfilesProjects.collection.find({ profile: email }).fetch(), 'project');
-  const projectPictures = projects.map(project => Projects.collection.findOne({ name: project }).picture);
-  // console.log(_.extend({ }, data, { interests, projects: projectPictures }));
-  return _.extend({ }, data, { interests, projects: projectPictures });
-}
-
-/** Component for layout out a Profile Card. */
-const MakeCard = (props) => (
-  <Card>
-    <Card.Content>
-      <Image floated='right' size='mini' src={<props className=""></props>} />
-      <Card.Header>{props.profile.firstName} {props.profile.lastName}</Card.Header>
-      <Card.Meta>
-        <span className='date'>{props.profile.state}</span>
-        <span className='date'>{props.profile.city}</span>
-      </Card.Meta>
-    </Card.Content>
-    <Card.Content extra>
-      {_.map(props.profile.interests,
-        (interest, index) => <Label key={index} size='tiny' color='teal'>{interest}</Label>)}
-    </Card.Content>
-    <Card.Content extra>
-      <Header as='h5'>Projects</Header>
-      {_.map(props.profile.projects, (project, index) => <Image key={index} size='mini' src={project}/>)}
-    </Card.Content>
-  </Card>
-);
-
-MakeCard.propTypes = {
-  profile: PropTypes.object.isRequired,
-};
+const bridge = new SimpleSchema2Bridge(Students.schema);
 
 /** Renders the Profile Collection as a set of Cards. */
-class ProfilesPage extends React.Component {
+class StudentProfile extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -56,29 +20,39 @@ class ProfilesPage extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
-    const emails = _.pluck(StudentProfiles.collection.find().fetch(), 'email');
-    const profileData = emails.map(email => getProfileData(email));
     return (
       <Container id="student-profiles-page">
-        <Image src={profileData.picture}/>
-        <Header as='h2'>{profileData.firstName}</Header>
+        <Grid container centered>
+          <Grid.Column>
+            <Header as="h2" textAlign="center" inverted>Edit Contacts</Header>
+            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
+              <Segment>
+                <TextField name='firstName'/>
+                <TextField name='lastName'/>
+              </Segment>
+            </AutoForm>
+          </Grid.Column>
+        </Grid>
       </Container>
     );
   }
 }
 
-ProfilesPage.propTypes = {
+StudentProfile.propTypes = {
   ready: PropTypes.bool.isRequired,
+  doc: PropTypes.object,
+  model: PropTypes.object,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(() => {
-  // Ensure that minimongo is populated with all collections prior to running render().
-  const sub1 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub2 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-  const sub3 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub4 = Meteor.subscribe(Projects.userPublicationName);
+export default withTracker(({ match }) => {
+  const documentId = match.params._id;
+  const sub1 = Meteor.subscribe(Students.userPublicationName);
+  const ready = sub1.ready();
+  const doc = Students.collection.findOne(documentId);
+
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
+    ready,
+    doc,
   };
-})(ProfilesPage);
+})(StudentProfile);

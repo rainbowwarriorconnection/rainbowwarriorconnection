@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Card, Image } from 'semantic-ui-react';
+import { Container, Loader, Card, Image, Link } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -22,6 +22,9 @@ const MakeCard = (props) => (
     </Card.Content>
     <Card.Content>
       {props.profile.description}
+    </Card.Content>
+    <Card.Content extra>
+      <Link to={`/view-student/${props.profile._id}`}>View Profile</Link>
     </Card.Content>
   </Card>
 );
