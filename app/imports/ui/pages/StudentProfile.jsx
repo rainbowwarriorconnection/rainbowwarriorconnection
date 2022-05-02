@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Header, Grid, Segment } from 'semantic-ui-react';
+import { Container, Loader, Header, Grid, Segment, Image } from 'semantic-ui-react';
 import { AutoForm, TextField } from 'uniforms-semantic';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -22,15 +22,9 @@ class StudentProfile extends React.Component {
   renderPage() {
     return (
       <Container id="student-profiles-page">
-        <Grid container centered>
-          <Grid.Column>
-            <Header as="h2" textAlign="center" inverted>Edit Contacts</Header>
-            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
-              <Segment>
-                <TextField name='firstName'/>
-                <TextField name='lastName'/>
-              </Segment>
-            </AutoForm>
+        <Grid verticalAlign='middle' textAlign='center'>
+          <Grid.Column width={3}>
+            <Image size='small' circular src={this.props.doc.picture}/>
           </Grid.Column>
         </Grid>
       </Container>

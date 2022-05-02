@@ -1,37 +1,17 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Card, Image, Link } from 'semantic-ui-react';
+import { Container, Loader, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Students } from '../../api/students/Students';
+import MakeCard from '../components/MakeCard';
 
 /** Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {
   const data = Students.collection.findOne({ email });
   return _.extend({ }, data);
 }
-
-/** Component for layout out a Profile Card. */
-const MakeCard = (props) => (
-  <Card>
-    <Card.Content>
-      <Image floated='right' size='mini' src={props.profile.picture} />
-      <Card.Header>{props.profile.firstName} {props.profile.lastName} </Card.Header>
-      <Card.Meta> {props.profile.state} </Card.Meta>
-    </Card.Content>
-    <Card.Content>
-      {props.profile.description}
-    </Card.Content>
-    <Card.Content extra>
-      <Link to={`/view-student/${props.profile._id}`}>View Profile</Link>
-    </Card.Content>
-  </Card>
-);
-
-MakeCard.propTypes = {
-  profile: PropTypes.object.isRequired,
-};
 
 /** Renders the Profile Collection as a set of Cards. */
 class ProfilesPage extends React.Component {

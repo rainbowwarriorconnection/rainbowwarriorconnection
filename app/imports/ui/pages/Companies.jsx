@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Companies } from '../../api/companies/Companies';
+import MakeCard from '../components/MakeCard';
 
 /** Gets the Project data as well as Profiles and Interests associated with the passed Project name. */
 function getCompanyData(name) {
@@ -14,7 +15,8 @@ function getCompanyData(name) {
 
 /** Component for layout out a Project Card. */
 const MakeCard = (props) => (
-  <Card>
+  <Card
+    href={`#view-student/${this.props.profile._id}`}>
     <Card.Content>
       <Image floated='left' avatar src={props.project.picture}/>
       <Card.Header style={{ marginTop: '0px' }}>{props.project.name}</Card.Header>
