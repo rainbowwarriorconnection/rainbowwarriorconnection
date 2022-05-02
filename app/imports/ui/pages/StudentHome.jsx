@@ -30,7 +30,6 @@ const makeSchema = (allInterests, userInterests) => new SimpleSchema({
 class StudentHome extends React.Component {
   /** On submit, insert the data. */
   submit(data) {
-    console.log(data);
     Meteor.call(updateStudentsMethod, data, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
