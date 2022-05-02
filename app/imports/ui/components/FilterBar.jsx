@@ -20,21 +20,23 @@ export default class FilterBar extends React.Component {
   }
 
   renderSearchBar() {
-     return <Input onChange={this.onSearchBarChange}/>
+     return <Input onChange={this.onSearchInputChange} placeholder="Search name..." />
   }
 
-  renderDropdown() {
-     return <Select options={this.interests} onChange={this.onSelectChange} />
+  renderInterestDropdown() {
+     return <Select options={this.interests} onChange={this.onInterestDropdownChange} placeholder="Select one..." />
   }
 
   onDropdownChange = (props, val) => {
      this.setState( { filterMode: (val.value === "interests") ? "interests" : "students" } );
+     this.onFilter("", "")
   }
-  onSearchBarChange = (props, val) => {
+
+  onSearchInputChange = (props, val) => {
     this.onFilter("search", val.value)
   }
 
-  onSelectChange = (props, val) => {
+  onInterestDropdownChange = (props, val) => {
     this.onFilter("interests", val.value)
   }
 
@@ -42,7 +44,7 @@ export default class FilterBar extends React.Component {
     return (
       <Container className="filter-format">
         <Select className="selection-format" compact options={this.state.options} defaultValue='interests' onChange={this.onDropdownChange}/>
-        {(this.state.filterMode === "interests") ? this.renderDropdown() : this.renderSearchBar()}
+        {(this.state.filterMode === "interests") ? this.renderInterestDropdown() : this.renderSearchBar()}
       </Container>
     );
   }

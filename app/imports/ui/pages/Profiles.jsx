@@ -68,9 +68,10 @@ class ProfilesPage extends React.Component {
     if(this.state.filterType == "search") {
        const fullName = profile.firstName.toUpperCase() + " " + profile.lastName.toUpperCase();
        return (fullName.indexOf(val.toUpperCase()) > -1) ? <MakeCard key={index} profile={profile}/> : ""
-    } else {
+    } else if (this.state.filterType == "interests") {
        return (profile.interests.includes(val)) ? <MakeCard key={index} profile={profile}/> : ""
-    }
+    } 
+    return <MakeCard key={index} profile={profile}/>
   }
   /** Render the page once subscriptions have been received. */
   renderPage() {
