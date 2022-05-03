@@ -18,19 +18,21 @@ function getProfileData(email) {
 
 /** Component for layout out a Profile Card. */
 const MakeCard = (props) => (
-  <Card>
-    <Card.Content>
-      <Image floated='right' size='mini' src={props.profile.picture} />
-      <Card.Header>{props.profile.firstName} {props.profile.lastName} </Card.Header>
-      <Card.Meta> {props.profile.state} </Card.Meta>
-    </Card.Content>
-    <Card.Content>
-      {props.profile.description}
-    </Card.Content>
-    <Card.Content extra className="interest-format">
-      { _.map(props.profile.interests, (interest, index) => <Label key={index} size='small' className="label-format">{interest}</Label>)}
-    </Card.Content>
-  </Card>
+  <Link to={}>
+    <Card>
+      <Card.Content>
+        <Image floated='right' size='mini' src={props.profile.picture} />
+        <Card.Header>{props.profile.firstName} {props.profile.lastName} </Card.Header>
+        <Card.Meta> {props.profile.state} </Card.Meta>
+      </Card.Content>
+      <Card.Content>
+        {props.profile.description}
+      </Card.Content>
+      <Card.Content extra className="interest-format">
+        { _.map(props.profile.interests, (interest, index) => <Label key={index} size='small' className="label-format">{interest}</Label>)}
+      </Card.Content>
+    </Card>
+  </Link>
 );
 
 MakeCard.propTypes = {
