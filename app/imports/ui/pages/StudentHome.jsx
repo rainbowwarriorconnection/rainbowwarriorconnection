@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Segment, Header, Form, Loader } from 'semantic-ui-react';
-import { AutoForm, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
+import { Dropdown, Label, Grid, Segment, Header, Form, Loader } from 'semantic-ui-react';
+import { AutoForm,TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -15,14 +15,14 @@ import { StudentsInterests } from '../../api/students/StudentsInterest';
 import { Interests } from '../../api/interests/Interests';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests) => new SimpleSchema({
+const makeSchema = (allInterests, userInterests) => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   firstName: { type: String, label: 'First', optional: true },
   lastName: { type: String, label: 'Last', optional: true },
   description: { type: String, label: 'Biographical statement', optional: true },
   state: { type: String, label: 'State', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
-  interests: { type: Array, label: 'Interests', optional: true },
+  interests: { type: Array, label: 'Interests', optional: true, defaultValue: userInterests},
   'interests.$': { type: String, label: 'Interests', optional: true, allowedValues: allInterests },
 });
 
@@ -30,7 +30,6 @@ const makeSchema = (allInterests) => new SimpleSchema({
 class StudentHome extends React.Component {
   /** On submit, insert the data. */
   submit(data) {
-    console.log(data);
     Meteor.call(updateStudentsMethod, data, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
@@ -49,14 +48,16 @@ class StudentHome extends React.Component {
   renderPage() {
     const email = Meteor.user().username;
     const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
-
-    const formSchema = makeSchema(allInterests);
-    const bridge = new SimpleSchema2Bridge(formSchema);
+    
     // Now create the model with all the user information
     const student = Students.collection.findOne({ email });
-    const model = _.extend({}, student);
+    var interests = _.where(StudentsInterests.collection.find().fetch(), { email: email })
+    var interestsArr = _.pluck(interests, "interest");
     
-    
+    const formSchema = makeSchema(allInterests, interestsArr);
+    const bridge = new SimpleSchema2Bridge(formSchema);
+  
+    const model = _.extend({}, student, interests);
     return (
       <Grid id="student-home-page" container centered>
         <Grid.Column>
@@ -73,8 +74,8 @@ class StudentHome extends React.Component {
               </Form.Group>
               <TextField name='picture' id='picture' showInlineError={true} placeholder={'URL for picture'}/>
               <LongTextField name='description' id='description' placeholder={'Description'}/>
-	      <MultiSelectField name='interests' showInlineError={true} placeholder={'Interests'}/>
-              <SubmitField id='student-home-submit' value='Submit'/>
+              <MultiSelectField name='interests' id='interests' placeholder='Interests' defaultValue={ (interestsArr) ? interestsArr : [] } allowedValues={allInterests}/>
+	      <SubmitField id='student-home-submit' value='Submit'/>
             </Segment>
           </AutoForm>
         </Grid.Column>

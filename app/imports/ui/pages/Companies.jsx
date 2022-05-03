@@ -27,7 +27,7 @@ class CompaniesPage extends React.Component {
     const companyData = companies.map(company => getCompanyData(company));
     return (
       <Container id="company-profiles-page">
-        <Card.Group>
+        <Card.Group centered>
           {_.map(companyData, (company, index) => <MakeCard key={index} project={company}/>)}
         </Card.Group>
       </Container>

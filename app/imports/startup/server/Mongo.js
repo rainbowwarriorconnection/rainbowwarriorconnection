@@ -3,6 +3,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { Roles } from 'meteor/alanning:roles';
 import { Students } from '../../api/students/Students';
 import { Companies } from '../../api/companies/Companies';
+import { Interests } from '../../api/interests/Interests';
 
 /* eslint-disable no-console */
 
@@ -29,6 +30,11 @@ function addCompany({ name, homepage, email, description, picture, state, city }
   Companies.collection.insert({ name, homepage, email, description, picture, state, city });
 }
 
+function addInterest({ name }) {
+   console.log('Defining interest ${name}');
+   Interests.collection.insert({ name });
+}
+
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultStudents && Meteor.settings.defaultCompanies) {
@@ -39,6 +45,13 @@ if (Meteor.users.find().count() === 0) {
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
+}
+
+if(Interests.collection.find().count() == 0) {
+    if(Meteor.settings.defaultInterests) {
+        console.log("Creating the default interests");
+	Meteor.settings.defaultInterests.map(interest => addInterest(interest));
+    }
 }
 
 /**

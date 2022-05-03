@@ -31,3 +31,24 @@
 .ui.menu.menu-background {
   background-color: #376551;
 }
+
+.min-height {
+  min-height: 535px;
+}
+
+.ui.small.label.label-format {
+  margin: 0.25em;
+}
+
+.ui.centered-cards {
+  padding-top: 100px;
+}
+
+.ui.container.filter-format {
+  padding-bottom: 2.0em;
+}
+
+.ui.compact.selection.dropdown.selection-format {
+  margin-bottom: 1.45em;
+  margin-right: 1.0em;
+}
