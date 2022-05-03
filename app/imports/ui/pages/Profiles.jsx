@@ -8,6 +8,7 @@ import { Students } from '../../api/students/Students';
 import { StudentsInterests } from '../../api/students/StudentsInterest';
 import { Interests } from '../../api/interests/Interests';
 import FilterBar from '../components/FilterBar';
+import MakeCard from '../components/MakeCard';
 
 /** Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {
@@ -15,27 +16,6 @@ function getProfileData(email) {
   const interests = _.pluck(StudentsInterests.collection.find({ email }).fetch(), 'interest');
   return _.extend({ }, data, { interests: interests });
 }
-
-/** Component for layout out a Profile Card. */
-const MakeCard = (props) => (
-  <Card>
-    <Card.Content>
-      <Image floated='right' size='mini' src={props.profile.picture} />
-      <Card.Header>{props.profile.firstName} {props.profile.lastName} </Card.Header>
-      <Card.Meta> {props.profile.state} </Card.Meta>
-    </Card.Content>
-    <Card.Content>
-      {props.profile.description}
-    </Card.Content>
-    <Card.Content extra className="interest-format">
-      { _.map(props.profile.interests, (interest, index) => <Label key={index} size='small' className="label-format">{interest}</Label>)}
-    </Card.Content>
-  </Card>
-);
-
-MakeCard.propTypes = {
-  profile: PropTypes.object.isRequired,
-};
 
 /** Renders the Profile Collection as a set of Cards. */
 class ProfilesPage extends React.Component {
