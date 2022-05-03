@@ -13,27 +13,6 @@ function getCompanyData(name) {
   return _.extend({ }, data);
 }
 
-/** Component for layout out a Project Card. */
-const MakeCard = (props) => (
-  <Card
-    href={`#view-student/${this.props.profile._id}`}>
-    <Card.Content>
-      <Image floated='left' avatar src={props.project.picture}/>
-      <Card.Header style={{ marginTop: '0px' }}>{props.project.name}</Card.Header>
-      <Card.Meta>
-        <span className='city'>{props.project.city}, { props.project.state} </span>
-      </Card.Meta>
-      <Card.Description>
-        { props.project.description }
-      </Card.Description>
-    </Card.Content>
-  </Card>
-);
-
-MakeCard.propTypes = {
-  project: PropTypes.object.isRequired,
-};
-
 /** Renders the Project Collection as a set of Cards. */
 class CompaniesPage extends React.Component {
 

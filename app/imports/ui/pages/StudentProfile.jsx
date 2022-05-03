@@ -26,6 +26,9 @@ class StudentProfile extends React.Component {
           <Grid.Column width={3}>
             <Image size='small' circular src={this.props.doc.picture}/>
           </Grid.Column>
+          <Grid.Column>
+            <Header as='h2'>{this.props.doc.firstName}</Header>
+          </Grid.Column>
         </Grid>
       </Container>
     );
