@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Card, Image } from 'semantic-ui-react';
+import { Container, Loader, Card, Image, Link } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -44,6 +44,8 @@ class CompaniesPage extends React.Component {
   renderPage() {
     const companies = _.pluck(Companies.collection.find().fetch(), 'name');
     const companyData = companies.map(company => getCompanyData(company));
+    console.log(companyData[0]);
+    console.log(companyData[0]._id);
     return (
       <Container id="company-profiles-page">
         <Card.Group centered>

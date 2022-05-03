@@ -20,7 +20,7 @@ const makeSchema = () => new SimpleSchema({
   state: { type: String, label: 'State', optional: true },
   city: { type: String, label: 'City', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
-  homepage: { type: String, optional: true },
+  homepage: { type: String, label: 'Home Page', optional: true },
 });
 
 /** Renders the Home Page: what appears after the user logs in. */
@@ -63,6 +63,7 @@ class CompanyHome extends React.Component {
               </Form.Group>
               <Form.Group widths={'equal'}>
                 <TextField name='email' showInlineError={true} placeholder={'Email'}/>
+                <TextField name='homepage' showInlineError={true} placeholder={'Home Page'}/>
                 <TextField name='picture' showInlineError={true} placeholder={'Provide a link for your Company Logo'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>

@@ -20,6 +20,7 @@ import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import CompanySignup from '../pages/CompanySignup.jsx';
 import AdminHome from '../pages/AdminHome.jsx';
+import CompanyProfile from '../pages/CompanyProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
               <RoleProtectedRoute path="/company-home" role='company' component={CompanyHome}/>
               <RoleProtectedRoute path="/admin-home" role='admin' component={AdminHome}/>
               <RoleProtectedRoute path="/profiles" role='student' component={Profiles}/>
+              <ProtectedRoute path="/company-profile" role='company' component={CompanyProfile}/>
               <Route path="/companies" component={Companies}/>
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addjob" component={AddJob}/>

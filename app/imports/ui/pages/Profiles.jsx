@@ -18,7 +18,6 @@ function getProfileData(email) {
 
 /** Component for layout out a Profile Card. */
 const MakeCard = (props) => (
-  <Link to={}>
     <Card>
       <Card.Content>
         <Image floated='right' size='mini' src={props.profile.picture} />
@@ -32,7 +31,6 @@ const MakeCard = (props) => (
         { _.map(props.profile.interests, (interest, index) => <Label key={index} size='small' className="label-format">{interest}</Label>)}
       </Card.Content>
     </Card>
-  </Link>
 );
 
 MakeCard.propTypes = {
