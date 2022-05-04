@@ -13,12 +13,12 @@
     ],
     "defaultCompanies": [
         {
-            "description": "Google LLC is an American multinational technology company that focuses on artificial intelligence, search engine, online advertising, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics\",\n\"homepage\": \"http://www.mbtechnologies.com/",
+            "description": "Google LLC is an American multinational technology company that focuses on artificial intelligence, search engine, online advertising, cloud computing, computer software, quantum computing, e-commerce, and consumer electronics.",
             "homepage": "https://google.com",
             "name": "Google",
             "picture": "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png",
-	          "state": "Menlo Park",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"Menlo Park",
 	          "email" : "google@google.com"
         },
         {
@@ -35,8 +35,8 @@
             "homepage": "http://www.mbtechnologies.com/",
             "name": "MB Techonologies",
             "picture": "https://scontent.fhnl1-1.fna.fbcdn.net/v/t31.18172-8/325614_320824311297602_849220528_o.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=mZDt3ya3b2QAX_OY3qK&_nc_ht=scontent.fhnl1-1.fna&oh=00_AT_jQlNtDNYjTP3xhXBvjzbkhU9B2aySIR2ttKptpoEaxA&oe=6295395E",
-	          "state": "Honolulu",
-	          "city" :"Hawaii",
+	          "state": "Hawaii",
+	          "city" :"Honolulu",
 	          "email" : "info@mbtechnologies.com"
         },
         {
@@ -44,8 +44,8 @@
             "homepage": "https://titmouse.net/",
             "name": "Titmouse",
             "picture": "https://www.awn.com/sites/default/files/styles/inline_medium/public/image/attached/1047461-titmouselogo.jpg?itok=PSyk0fKj",
-	          "state": "Los Angeles",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"Los Angeles",
 	          "email" : "jobs@titmouse.net"
         },
         {
@@ -53,8 +53,8 @@
             "homepage": "https://twitter.com/home",
             "name": "Twitter",
             "picture": "https://about.twitter.com/content/dam/about-twitter/en/brand-toolkit/brand-download-img-1.jpg.twimg.1920.jpg",
-	          "state": "San Francisco",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"San Francisco",
 	          "email" : "careers@twitter.com"
         },
         {
@@ -62,8 +62,8 @@
             "homepage": "https://www.twitch.tv/",
             "name": "Twitch",
             "picture": "https://cdn.pixabay.com/photo/2021/12/10/16/38/twitch-6860918_960_720.png",
-	          "state": "San Francisco",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"San Francisco",
 	          "email" : "careers@twitch.com"
         },
         {
@@ -71,8 +71,8 @@
             "homepage": "https://slack.com/",
             "name": "Slack",
             "picture": "https://cdn.dribbble.com/users/121337/screenshots/5885287/slack.png?compress=1&resize=400x300",
-	          "state": "San Francisco",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"San Francisco",
 	          "email" : "careers@slack.com"
         },
         {
@@ -80,8 +80,8 @@
             "homepage": "https://2u.com/",
             "name": "2U",
             "picture": "https://2u.com/static/ca12e19db2fddb4043175117c6d6d41b/09384/2u-logo.png",
-	          "state": "Brooklyn",
-	          "city" :"New York",
+	          "state": "New York",
+	          "city" :"Brooklyn",
 	          "email" : "careers@2u.com"
         },
         {
@@ -89,8 +89,8 @@
             "homepage": "https://www.ubisoft.com/en-us/",
             "name": "Ubisoft",
             "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ubisoft_logo.svg/1000px-Ubisoft_logo.svg.png",
-	          "state": "San Francisco",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"San Francisco",
 	          "email" : "jobs@ubisoft.com"
         },
         {
@@ -98,8 +98,8 @@
             "homepage": "https://2k.com/en-US/",
             "name": "2K Games",
             "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1f/2K_2021_Logo.svg",
-	          "state": "Novato",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"Novato",
 	          "email" : "jobs@2k.com"
         },
         {
@@ -107,8 +107,8 @@
             "homepage": "https://www.supergiantgames.com/",
             "name": "Supergiant Games",
             "picture": "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1414331468/nytqzynhnbpkf8e3kgv1.png",
-	          "state": "San Francisco",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"San Francisco",
 	          "email" : "jobs@supergiantgames.com"
         },
         {
@@ -116,15 +116,15 @@
             "homepage": "https://makaihr.com/",
             "name": "Makai HR",
             "picture": "https://media-exp1.licdn.com/dms/image/C560BAQFlE08Ke68FfA/company-logo_200_200/0/1522987698388?e=2147483647&v=beta&t=F4hztUKANkVeUWz4vhZWhaT4gb3ZxSdYICpBzZBagwg",
-	          "state": "Honolulu",
-	          "city" :"Hawaii",
+	          "state": "Hawaii",
+	          "city" :"Honolulu",
 	          "email" : "support@makaihr.com"
         },
         {
             "description": "Sony's Purpose & Values\nPurpose\nFill the world with emotion, through the power of creativity and technology.",
             "homepage": "https://www.sony.com/en/",
             "name": "Sony US",
-            "picture": "https://static.wikia.nocookie.net/closinglogogroup/images/3/35/Sony_black_background.jpg/revision/latest?cb=20150522013035",
+            "picture": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/3cc930b3-d69d-4430-a93e-0270864ebdeb/d7xuhtw-7c85d0a6-a811-47a0-b4ab-aaac71ad592e.png",
 	          "state": "New York",
 	          "city" :"New York",
 	          "email" : "Robert_Lawson@spe.sony.com"
@@ -134,8 +134,8 @@
             "homepage": "https://www.dell.com/en-us",
             "name": "Dell",
             "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/2048px-Dell_Logo.svg.png",
-	          "state": "Round Rock",
-	          "city" :"Texas",
+	          "state": "Texas",
+	          "city" :"Round Rock",
 	          "email" : "careers@dell.com"
         },
         {
@@ -143,17 +143,17 @@
             "homepage": "https://www.dell.com/en-us/gaming/alienware",
             "name": "Alienware",
             "picture": "https://logos-world.net/wp-content/uploads/2020/03/Alienware-emblem.jpg",
-	          "state": "Miami",
-	          "city" :"Florida",
+	          "state": "Florida",
+	          "city" :"Miami",
 	          "email" : "jobs@alienware.com"
         },
         {
             "description": "Rooster Teeth Productions, LLC is an American audio-video production company headquartered in Austin, Texas. Founded in 2003 by Burnie Burns, Matt Hullum, Geoff Ramsey, Jason Saldaña, Gus Sorola, and Joel Heyman, Rooster Teeth is a subsidiary of Otter Media, which is itself a subsidiary of Warner Bros. Discovery.",
             "homepage": "https://roosterteeth.com/",
             "name": "Rooster Teeth",
-            "picture": "https://static.wikia.nocookie.net/youtube/images/9/90/Rooster_Teeth.jpg/revision/latest?cb=20201209213906",
-	          "state": "Austin",
-	          "city" :"Texas",
+            "picture": "https://play-lh.googleusercontent.com/8A60b87neNLxUlAyWWCKDfvVUg2QiTdrRwxFv1ZIZjRDHQHOIJ3nrH7zotHDxZZupg",
+	          "state": "Texas",
+	          "city" :"Austin",
 	          "email" : "business@roosterteeth.com"
         },
         {
@@ -161,8 +161,8 @@
             "homepage": "https://tsm.gg/",
             "name": "TSMFTX",
             "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/TSM_Logo.svg/302px-TSM_Logo.svg.png",
-	          "state": "Los Angeles",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"Los Angeles",
 	          "email" : "TSM@solomid.gg"
         },
         {
@@ -170,8 +170,8 @@
             "homepage": "https://cloud9.gg/",
             "name": "Cloud9",
             "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Cloud9_logo.svg/1200px-Cloud9_logo.svg.png",
-	          "state": "Los Angeles",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"Los Angeles",
 	          "email" : "careers@cloud9.gg"
         },
         {
@@ -179,8 +179,8 @@
             "homepage": "https://dignitas.gg/",
             "name": "Dignitas",
             "picture": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Dignitas_logo.svg/1200px-Dignitas_logo.svg.png",
-	          "state": "Los Angeles",
-	          "city" :"California",
+	          "state": "California",
+	          "city" :"Los Angeles",
 	          "email" : "jobs@dignitas.gg"
         },
         {
@@ -188,8 +188,8 @@
             "homepage": "https://evilgeniuses.gg/",
             "name": "Evil Geniuses",
             "picture": "https://evilgeniuses.gg/wp-content/uploads/2020/05/Crest-Dark-1.png",
-	          "state": "Seattle",
-	          "city" :"Washington",
+	          "state": "Washington",
+	          "city" :"Seattle",
 	          "email" : "jobs@evilgeniuses.gg"
         }
     ],
@@ -219,21 +219,152 @@
             "state": "Hawaii"
         }
     ],
-
-    "defaultInterests": [
-	{
-	    "name" : "Software Engineering"
-	},
-	{
-      "name" : "Machine Learning"
-	},
-	{
-      "name" : "Web Development"
-	},
-	{
-	    "name" : "Robotics"
-	}
-    ],
+  "defaultInterests": [
+    {
+      "name": "Software Engineering"
+    },
+    {
+      "name": "Machine Learning"
+    },
+    {
+      "name": "Web Development"
+    },
+    {
+      "name": "Robotics"
+    },
+    {
+      "name": "Game Design"
+    },
+    {
+      "name": "Communication"
+    },
+    {
+      "name": "Python"
+    },
+    {
+      "name": "PyQT"
+    },
+    {
+      "name": "PySide"
+    },
+    {
+      "name": "Photoshop"
+    },
+    {
+      "name": "Maya"
+    },
+    {
+      "name": "Illustration"
+    },
+    {
+      "name": "Animation"
+    },
+    {
+      "name": "ZBrush"
+    },
+    {
+      "name": "Clip Studio Pro"
+    },
+    {
+      "name": "Blender"
+    },
+    {
+      "name": "Storyboard Pro"
+    },
+    {
+      "name": "Data Management"
+    },
+    {
+      "name": "AI"
+    },
+    {
+      "name": "Cyber Security"
+    },
+    {
+      "name": "Google Workspace"
+    },
+    {
+      "name": "Problem-Solving"
+    },
+    {
+      "name": "Background Design"
+    },
+    {
+      "name": "Sketch-Up"
+    },
+    {
+      "name": "FX"
+    },
+    {
+      "name": "Color"
+    },
+    {
+      "name": "Scala"
+    },
+    {
+      "name": "Java"
+    },
+    {
+      "name": "C/C++"
+    },
+    {
+      "name": "Go"
+    },
+    {
+      "name": "Android"
+    },
+    {
+      "name": "GraphQL"
+    },
+    {
+      "name": "API"
+    },
+    {
+      "name": "Typescript"
+    },
+    {
+      "name": "HTML"
+    },
+    {
+      "name": "CSS"
+    },
+    {
+      "name": "Django"
+    },
+    {
+      "name": "MySQL"
+    },
+    {
+      "name": "Social Media"
+    },
+    {
+      "name": "Level Design"
+    },
+    {
+      "name": "Law"
+    },
+    {
+      "name": "Team-Oriented"
+    },
+    {
+      "name": "MS Excel"
+    },
+    {
+      "name": "MS Office"
+    },
+    {
+      "name": "Organization"
+    },
+    {
+      "name": "TensorFlow"
+    },
+    {
+      "name": "PsyTorch"
+    },
+    {
+      "name": "Linux"
+    }
+  ],
 
     "loadAssetsFile": false
 }
