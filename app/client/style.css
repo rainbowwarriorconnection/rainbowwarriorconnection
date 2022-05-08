@@ -52,3 +52,22 @@
   margin-bottom: 1.45em;
   margin-right: 1.0em;
 }
+
+.student-profile-page-grids {
+  padding-bottom: 30px;
+}
+
+.ui.big.label.student-profile-page-interests-label {
+  margin: 5px;
+}
+
+.column.student-profile-page-border {
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.ui.container.student-profile-page-border {
+  padding: 25px;
+  border: 2px solid white;
+  border-radius: 10px;
+}

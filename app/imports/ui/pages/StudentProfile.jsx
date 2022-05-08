@@ -1,14 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Header, Grid, Segment, Image } from 'semantic-ui-react';
-import { AutoForm, TextField } from 'uniforms-semantic';
+import { Container, Loader, Header, Grid, Image, Label } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Students } from '../../api/students/Students.js';
-
-const bridge = new SimpleSchema2Bridge(Students.schema);
+import { StudentsInterests } from '../../api/students/StudentsInterest';
 
 /** Renders the Profile Collection as a set of Cards. */
 class StudentProfile extends React.Component {
@@ -20,16 +17,39 @@ class StudentProfile extends React.Component {
 
   /** Render the page once subscriptions have been received. */
   renderPage() {
+    const email = this.props.student.email;
+    const studentInterests = _.pluck(StudentsInterests.collection.find({ email }).fetch(), 'interest');
     return (
-      <Container id="student-profiles-page">
-        <Grid verticalAlign='middle' textAlign='center'>
-          <Grid.Column width={3}>
-            <Image size='small' circular src={this.props.doc.picture}/>
-          </Grid.Column>
-          <Grid.Column>
-            <Header as='h2'>{this.props.doc.firstName}</Header>
-          </Grid.Column>
-        </Grid>
+      <Container id="student-profile-page">
+        <Container className='student-profile-page-grids'>
+          <Grid verticalAlign='middle' textAlign='center'>
+            <Grid.Column width={4}>
+              <Image size='small' circular src={this.props.student.picture}/>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Header as='h1' inverted>{this.props.student.firstName} {this.props.student.lastName}</Header>
+            </Grid.Column>
+          </Grid>
+        </Container>
+        <Container className='student-profile-page-grids' verticalAlign='top'>
+          <Grid columns={2}>
+            <Grid.Column className='student-profile-page-border'>
+              <Header as='h2' inverted>Skills: </Header>
+              {_.map(studentInterests, (interests, index) => <Label size='big'
+                className='student-profile-page-interests-label' key={index}>{interests}</Label>)}
+            </Grid.Column>
+            <Grid.Column className='student-profile-page-border'>
+              <Header as='h2' inverted>Location Preference: </Header>
+              <Header as='h3' inverted textAlign='center'>
+                {this.props.student.state}
+              </Header>
+            </Grid.Column>
+          </Grid>
+        </Container>
+        <Container className='student-profile-page-border'>
+          <Header as='h2' inverted> Description</Header>
+          <Header as='h5' inverted>{this.props.student.description}</Header>
+        </Container>
       </Container>
     );
   }
@@ -37,19 +57,19 @@ class StudentProfile extends React.Component {
 
 StudentProfile.propTypes = {
   ready: PropTypes.bool.isRequired,
-  doc: PropTypes.object,
-  model: PropTypes.object,
+  student: PropTypes.object,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
   const documentId = match.params._id;
   const sub1 = Meteor.subscribe(Students.userPublicationName);
-  const ready = sub1.ready();
-  const doc = Students.collection.findOne(documentId);
+  const sub2 = Meteor.subscribe(StudentsInterests.userPublicationName);
+  const ready = sub1.ready() && sub2.ready();
+  const student = Students.collection.findOne(documentId);
 
   return {
     ready,
-    doc,
+    student,
   };
 })(StudentProfile);

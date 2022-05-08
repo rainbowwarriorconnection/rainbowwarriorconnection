@@ -19,8 +19,8 @@ const makeSchema = (allInterests, userInterests) => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   firstName: { type: String, label: 'First', optional: true },
   lastName: { type: String, label: 'Last', optional: true },
-  description: { type: String, label: 'Biographical statement', optional: true },
-  state: { type: String, label: 'State', optional: true },
+  description: { type: String, label: 'Description', optional: true },
+  state: { type: String, label: 'Location Preference', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
   interests: { type: Array, label: 'Interests', optional: true, defaultValue: userInterests},
   'interests.$': { type: String, label: 'Interests', optional: true, allowedValues: allInterests },
@@ -52,7 +52,7 @@ class StudentHome extends React.Component {
     // Now create the model with all the user information
     const student = Students.collection.findOne({ email });
     var interests = _.where(StudentsInterests.collection.find().fetch(), { email: email })
-    var interestsArr = _.pluck(interests, "interest");
+    var interestsArr = _.pluck(interests, 'interest');
     
     const formSchema = makeSchema(allInterests, interestsArr);
     const bridge = new SimpleSchema2Bridge(formSchema);
@@ -70,7 +70,7 @@ class StudentHome extends React.Component {
                 <TextField name='email' id='email' showInlineError={true} placeholder={'email'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <TextField name='state' id='state' showInlineError={true} placeholder={'State'}/>
+                <TextField name='state' id='state' showInlineError={true} placeholder={'Location Preference'}/>
               </Form.Group>
               <TextField name='picture' id='picture' showInlineError={true} placeholder={'URL for picture'}/>
               <LongTextField name='description' id='description' placeholder={'Description'}/>
