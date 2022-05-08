@@ -26,4 +26,4 @@ class CompanyProfilesCollection {
   }
 }
 
-export const StudentProfiles = new CompanyProfilesCollection();
+export const CompanyProfiles = new CompanyProfilesCollection();
