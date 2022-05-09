@@ -4,18 +4,20 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class MakeCard extends React.Component {
+class MakeCompanyCard extends React.Component {
   render() {
     return (
       <Card
-        href={`#view-student/${this.props.profile._id}`}>
+        href={`#view-company/${this.props.project._id}`}>
         <Card.Content>
-          <Image floated='right' size='mini' src={this.props.profile.picture}/>
-          <Card.Header>{this.props.profile.firstName} {this.props.profile.lastName} </Card.Header>
-          <Card.Meta> {this.props.profile.state} </Card.Meta>
-        </Card.Content>
-        <Card.Content>
-          {this.props.profile.description}
+          <Image floated='left' avatar src={this.props.project.picture}/>
+          <Card.Header style={{ marginTop: '0px' }}>{this.props.project.name}</Card.Header>
+          <Card.Meta>
+            <span className='city'>{this.props.project.city}, { this.props.project.state} </span>
+          </Card.Meta>
+          <Card.Description>
+            { this.props.project.description }
+          </Card.Description>
         </Card.Content>
       </Card>
     );
@@ -23,9 +25,9 @@ class MakeCard extends React.Component {
 }
 
 // Require a document to be passed to this component.
-MakeCard.propTypes = {
+MakeCompanyCard.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(MakeCard);
+export default withRouter(MakeCompanyCard);

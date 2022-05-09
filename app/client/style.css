@@ -71,3 +71,23 @@
   border: 2px solid white;
   border-radius: 10px;
 }
+.company-profile-page-grids {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.ui.big.label.company-page-interests-label {
+  margin: 5px;
+}
+
+.column.company-profile-page-border {
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.ui.container.company-profile-page-border {
+  position: relative;
+  padding: 30px;
+  border: 2px solid white;
+  border-radius: 10px;
+}

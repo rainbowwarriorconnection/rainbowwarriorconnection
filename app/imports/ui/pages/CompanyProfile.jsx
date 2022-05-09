@@ -1,11 +1,11 @@
 import React from 'react';
-import { Grid, Loader, Image, Header, Container, Route } from 'semantic-ui-react';
+import { Grid, Loader, Image, Header, Container, Label } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-
 import { Companies } from '../../api/companies/Companies.js';
+
 
 /** Renders the Home Page: what appears after the user logs in. */
 class CompanyProfile extends React.Component {
@@ -18,45 +18,54 @@ class CompanyProfile extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     /** Get company information and create model */
-    const email = Meteor.user().username;
-    const company = Companies.collection.findOne({ email });
-    const model = _.extend({}, company);
     return (
-      <Grid id="companyProfile-page" style={{ background: 'white' }} celled>
-        <Grid.Column width={9}>
-          <Grid container>
-            <Grid.Row>
-              <Grid.Column width={4}>
-                <Image src={model.picture} style={{ width: '200px' }} ></Image>
-              </Grid.Column>
-              <Grid.Column width={4}>
-                <Header as='h1'>{model.name}</Header>
-                <Container>{model.city}, {model.state}</Container>
-                <Container>{model.homepage}</Container>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Container>{model.description}</Container>
-            </Grid.Row>
+      <Container id="company-profile-page">
+        <Container className='company-profile-page-grids'>
+          <Grid verticalAlign='middle' textAlign='center'>
+            <Grid.Column width={4}>
+              <Image size='small' circular src={this.props.company.picture}/>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Header as='h1' inverted>{this.props.company.name}</Header>
+            </Grid.Column>
           </Grid>
-        </Grid.Column>
-        <Grid.Column>
-          Jobs
-        </Grid.Column>
-      </Grid>
+        </Container>
+        <Container className='company-profile-page-border'>
+          <Header as='h3' inverted>{this.props.company.description}</Header>
+        </Container>
+        <Container className='company-profile-page-grids'>
+          <Grid columns={2}>
+            <Grid.Column className='company-profile-page-border'>
+              <Header as='h3' inverted>Location: {this.props.company.city}, {this.props.company.state} </Header>
+              <Header as='h3' inverted>Contact us: {this.props.company.email}</Header>
+              <Header href={`{this.props.company.homepage}`} as='h3' inverted>{this.props.company.homepage}</Header>
+            </Grid.Column>
+            <Grid.Column className='company-profile-page-border'>
+              <Header as='h3' inverted>Available Positions: </Header>
+              <Header as='h3' inverted textAlign='center'> jobs here
+              </Header>
+            </Grid.Column>
+          </Grid>
+        </Container>
+      </Container>
     );
   }
 }
 
 CompanyProfile.propTypes = {
   ready: PropTypes.bool.isRequired,
+  company: PropTypes.object,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(() => {
+export default withTracker(({ match }) => {
   // Ensure that minimongo is populated with all collections prior to running render().
+  const documentId = match.params._id;
   const sub1 = Meteor.subscribe(Companies.userPublicationName);
+  const ready = sub1.ready();
+  const company = Companies.collection.findOne(documentId);
   return {
-    ready: sub1.ready(),
+    ready,
+    company,
   };
 })(CompanyProfile);
