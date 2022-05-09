@@ -11,8 +11,8 @@ class StudentsInterestsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-        email: String,
-	interest: { type: String },
+      email: String,
+      interest: { type: String },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);

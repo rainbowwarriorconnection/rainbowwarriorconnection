@@ -10,7 +10,7 @@ class MakeCard extends React.Component {
       <Card
         href={`#view-student/${this.props.profile._id}`}>
         <Card.Content>
-          <Image floated='right' size='mini' src={this.props.profile.picture}/>
+          <Image floated='right' size='mini' src={this.props.profile.picture} />
           <Card.Header>{this.props.profile.firstName} {this.props.profile.lastName} </Card.Header>
           <Card.Meta> {this.props.profile.state} </Card.Meta>
         </Card.Content>
