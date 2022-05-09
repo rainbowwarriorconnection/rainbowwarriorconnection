@@ -25,7 +25,9 @@ class NavBar extends React.Component {
           id="companyHomeMenuItem" activeClassName="active" exact to="/company-home"
           key='company-home' style={{ color: 'white' }}>Company Home</Menu.Item>,
         <Menu.Item as={NavLink} id="addJobMenuItem" activeClassName="active" exact to="/addJob" key='addP'
-          style={{ color: 'white' }}>Add Job</Menu.Item>]
+          style={{ color: 'white' }}>Add Job</Menu.Item>,
+        <Menu.Item as={NavLink} id="companyProfileItem" activeClassName="active" exact to="/company-profile" key='companyProfile'
+          style={{ color: 'white' }}>Company Profile</Menu.Item>]
         ) : ''}
 
         <Menu.Item as={NavLink} id="studentProfilesMenuItem" activeClassName="active" exact to="/profiles"

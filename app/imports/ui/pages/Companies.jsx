@@ -5,7 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Companies } from '../../api/companies/Companies';
-import MakeCard from '../components/MakeCard';
+import MakeCompanyCard from '../components/MakeCompanyCard';
 
 /** Gets the Project data as well as Profiles and Interests associated with the passed Project name. */
 function getCompanyData(name) {
@@ -28,7 +28,7 @@ class CompaniesPage extends React.Component {
     return (
       <Container id="company-profiles-page">
         <Card.Group centered>
-          {_.map(companyData, (company, index) => <MakeCard key={index} project={company}/>)}
+          {_.map(companyData, (company, index) => <MakeCompanyCard key={index} project={company}/>)}
         </Card.Group>
       </Container>
     );
