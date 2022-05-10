@@ -31,8 +31,7 @@ function addCompany({ name, homepage, email, description, picture, state, city }
 }
 
 function addInterest({ name }) {
-   console.log('Defining interest ${name}');
-   Interests.collection.insert({ name });
+  Interests.collection.insert({ name });
 }
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
@@ -47,11 +46,11 @@ if (Meteor.users.find().count() === 0) {
   }
 }
 
-if(Interests.collection.find().count() == 0) {
-    if(Meteor.settings.defaultInterests) {
-        console.log("Creating the default interests");
-	Meteor.settings.defaultInterests.map(interest => addInterest(interest));
-    }
+if (Interests.collection.find().count() === 0) {
+  if (Meteor.settings.defaultInterests) {
+    console.log('Creating the default interests');
+    Meteor.settings.defaultInterests.map(interest => addInterest(interest));
+  }
 }
 
 /**

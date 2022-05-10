@@ -1,16 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { _ } from 'meteor/underscore';
 import { Projects } from '../../api/projects/Projects';
-/**
- * Unused imports
-import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
- * */
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Students } from '../../api/students/Students';
 import { Companies } from '../../api/companies/Companies';
-import { StudentsInterests} from '../../api/students/StudentsInterest';
+import { StudentsInterests } from '../../api/students/StudentsInterest';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -44,7 +40,6 @@ Meteor.methods({
   },
 });
 
-
 const addCompanyToRoleMethod = 'Roles.addCompanyToRole';
 Meteor.methods({
   'Roles.addCompanyToRole'() {
@@ -76,13 +71,12 @@ const updateStudentsMethod = 'Students.update';
 Meteor.methods({
   'Students.update'({ email, firstName, lastName, description, picture, state, interests }) {
     Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
-    
-    StudentsInterests.collection.remove({email});
 
-    _.map(interests, function(interest) {
-        StudentsInterests.collection.insert({ email, interest })
-    }
-    );
+    StudentsInterests.collection.remove({ email });
+
+    _.map(interests, function (interest) {
+      StudentsInterests.collection.insert({ email, interest });
+    });
   },
 });
 
