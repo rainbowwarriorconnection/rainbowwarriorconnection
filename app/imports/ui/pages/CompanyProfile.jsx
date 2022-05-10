@@ -1,11 +1,9 @@
 import React from 'react';
-import { Grid, Loader, Image, Header, Container, Label } from 'semantic-ui-react';
+import { Grid, Loader, Image, Header, Container } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
-import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Companies } from '../../api/companies/Companies.js';
-
 
 /** Renders the Home Page: what appears after the user logs in. */
 class CompanyProfile extends React.Component {
@@ -38,7 +36,7 @@ class CompanyProfile extends React.Component {
             <Grid.Column className='company-profile-page-border'>
               <Header as='h3' inverted>Location: {this.props.company.city}, {this.props.company.state} </Header>
               <Header as='h3' inverted>Contact us: {this.props.company.email}</Header>
-              <Header href={`{this.props.company.homepage}`} as='h3' inverted>{this.props.company.homepage}</Header>
+              <Header href={'{this.props.company.homepage}'} as='h3' inverted>{this.props.company.homepage}</Header>
             </Grid.Column>
             <Grid.Column className='company-profile-page-border'>
               <Header as='h3' inverted>Available Positions: </Header>

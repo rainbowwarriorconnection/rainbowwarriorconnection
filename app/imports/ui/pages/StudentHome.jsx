@@ -1,6 +1,6 @@
 import React from 'react';
-import { Dropdown, Label, Grid, Segment, Header, Form, Loader } from 'semantic-ui-react';
-import { AutoForm,TextField, LongTextField, SubmitField } from 'uniforms-semantic';
+import { Grid, Segment, Header, Form, Loader } from 'semantic-ui-react';
+import { AutoForm, TextField, LongTextField, SubmitField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -22,7 +22,7 @@ const makeSchema = (allInterests, userInterests) => new SimpleSchema({
   description: { type: String, label: 'Description', optional: true },
   state: { type: String, label: 'Location Preference', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
-  interests: { type: Array, label: 'Interests', optional: true, defaultValue: userInterests},
+  interests: { type: Array, label: 'Interests', optional: true, defaultValue: userInterests },
   'interests.$': { type: String, label: 'Interests', optional: true, allowedValues: allInterests },
 });
 
@@ -48,15 +48,15 @@ class StudentHome extends React.Component {
   renderPage() {
     const email = Meteor.user().username;
     const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
-    
+
     // Now create the model with all the user information
     const student = Students.collection.findOne({ email });
-    var interests = _.where(StudentsInterests.collection.find().fetch(), { email: email })
-    var interestsArr = _.pluck(interests, 'interest');
-    
+    const interests = _.where(StudentsInterests.collection.find().fetch(), { email: email });
+    const interestsArr = _.pluck(interests, 'interest');
+
     const formSchema = makeSchema(allInterests, interestsArr);
     const bridge = new SimpleSchema2Bridge(formSchema);
-  
+
     const model = _.extend({}, student, interests);
     return (
       <Grid id="student-home-page" container centered>
@@ -74,8 +74,9 @@ class StudentHome extends React.Component {
               </Form.Group>
               <TextField name='picture' id='picture' showInlineError={true} placeholder={'URL for picture'}/>
               <LongTextField name='description' id='description' placeholder={'Description'}/>
-              <MultiSelectField name='interests' id='interests' placeholder='Interests' defaultValue={ (interestsArr) ? interestsArr : [] } allowedValues={allInterests}/>
-	      <SubmitField id='student-home-submit' value='Submit'/>
+              <MultiSelectField name='interests' id='interests' placeholder='Interests' defaultValue={
+                (interestsArr) || [] } allowedValues={allInterests}/>
+              <SubmitField id='student-home-submit' value='Submit'/>
             </Segment>
           </AutoForm>
         </Grid.Column>

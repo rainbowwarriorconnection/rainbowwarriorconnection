@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Students } from '../../api/students/Students';
 import { Companies } from '../../api/companies/Companies';
-import { StudentsInterests } from '../../api/students/StudentsInterest'
-import { Interests } from '../../api/interests/Interests'
+import { StudentsInterests } from '../../api/students/StudentsInterest';
+import { Interests } from '../../api/interests/Interests';
 
 Meteor.publish(Students.userPublicationName, () => Students.collection.find());
 Meteor.publish(Companies.userPublicationName, () => Companies.collection.find());
