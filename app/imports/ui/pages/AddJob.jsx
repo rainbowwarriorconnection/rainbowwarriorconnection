@@ -44,7 +44,6 @@ class AddJob extends React.Component {
     let fRef = null;
     const formSchema = makeSchema();
     const bridge = new SimpleSchema2Bridge(formSchema);
-    console.log(bridge);
     return (
       <Grid id="add-job-page" container centered>
         <Grid.Column>
