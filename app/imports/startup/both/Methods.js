@@ -83,17 +83,14 @@ Meteor.methods({
   },
 });
 
-const updateJobMethod = 'Jobs.add';
+const addJobMethod = 'Jobs.add';
 
 /** Creates a new job in the Jobs collection */
 Meteor.methods({
-  'Jobs.update'({ companyEmail, jobTitle, description, salaryRange, city, state, jobId }) {
-    Jobs.collection.update({ companyEmail }, { $set: { jobTitle, description, salaryRange, city, state } });
-
-    CompanyJobs.collection.remove({ companyEmail });
-
+  'Jobs.add'({ companyEmail, jobTitle, description, salaryRange, city, state, jobId }) {
+    Jobs.collection.add({ jobTitle, description, salaryRange, city, state });
     CompanyJobs.collection.insert({ companyEmail, jobId });
   },
 });
 
-export { addCompanyToRoleMethod, addStudentToRoleMethod, updateStudentsMethod, updateCompaniesMethod, updateJobMethod };
+export { addCompanyToRoleMethod, addStudentToRoleMethod, updateStudentsMethod, updateCompaniesMethod, addJobMethod };

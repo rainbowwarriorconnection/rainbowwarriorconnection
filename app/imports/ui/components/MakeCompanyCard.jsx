@@ -26,7 +26,7 @@ class MakeCompanyCard extends React.Component {
 
 // Require a document to be passed to this component.
 MakeCompanyCard.propTypes = {
-  profile: PropTypes.object.isRequired,
+  project: PropTypes.object.isRequired,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
