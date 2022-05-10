@@ -5,6 +5,8 @@ import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Companies } from '../../api/companies/Companies.js';
+import { Jobs } from '../../api/jobs/Jobs';
+import { CompanyJobs } from '../../api/jobs/CompanyJobs';
 
 
 /** Renders the Home Page: what appears after the user logs in. */
@@ -18,6 +20,9 @@ class CompanyProfile extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     /** Get company information and create model */
+    const email = this.props.company.email;
+    const companyJobs = _.pluck(CompanyJobs.collection.find({ email }).fetch(), 'jobId');
+    console.log(companyJobs);
     return (
       <Container id="company-profile-page">
         <Container className='company-profile-page-grids'>
@@ -42,8 +47,6 @@ class CompanyProfile extends React.Component {
             </Grid.Column>
             <Grid.Column className='company-profile-page-border'>
               <Header as='h3' inverted>Available Positions: </Header>
-              <Header as='h3' inverted textAlign='center'> jobs here
-              </Header>
             </Grid.Column>
           </Grid>
         </Container>
@@ -64,6 +67,7 @@ export default withTracker(({ match }) => {
   const sub1 = Meteor.subscribe(Companies.userPublicationName);
   const ready = sub1.ready();
   const company = Companies.collection.findOne(documentId);
+
   return {
     ready,
     company,

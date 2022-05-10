@@ -11,7 +11,7 @@ class CompanyJobsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      companyEmail: String,
+      companyName: String,
       jobId: String,
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.

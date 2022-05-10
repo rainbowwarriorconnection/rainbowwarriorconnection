@@ -9,11 +9,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
 import { updateJobMethod } from '../../startup/both/Methods';
-import { Interests } from '../../api/interests/Interests';
-import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
+import { Companies } from '../../api/companies/Companies';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = () => new SimpleSchema({
@@ -29,7 +25,7 @@ class AddJob extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const jobData = _.extend({ jobId: `${data.jobTitle}-${Meteor.user()._id}` }, data);
+    const jobData = _.extend({ companyEmail: this.company.props.email, jobId: `${data.jobTitle}-${Meteor.user()._id}` }, data);
     console.log(jobData);
     Meteor.call(updateJobMethod, jobData, (error) => {
       if (error) {
@@ -72,17 +68,18 @@ class AddJob extends React.Component {
 
 AddJob.propTypes = {
   ready: PropTypes.bool.isRequired,
+  company: PropTypes.object,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(() => {
+export default withTracker(( { match } ) => {
   // Ensure that minimongo is populated with all collections prior to running render().
-  const sub1 = Meteor.subscribe(Interests.userPublicationName);
-  const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-  const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Projects.userPublicationName);
+  const documentId = match.params._id;
+  const sub1 = Meteor.subscribe(Companies.userPublicationName);
+  const ready = sub1.ready();
+  const company = Companies.collection.findOne(documentId);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    ready,
+    company,
   };
 })(AddJob);
