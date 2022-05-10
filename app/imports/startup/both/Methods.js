@@ -1,16 +1,15 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Projects } from '../../api/projects/Projects';
 /**
  * Unused imports
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
  * */
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Students } from '../../api/students/Students';
 import { Companies } from '../../api/companies/Companies';
-import { StudentsInterests} from '../../api/students/StudentsInterest';
+import { CompanyJobs } from '../../api/jobs/CompanyJobs';
+import { StudentsInterests } from '../../api/students/StudentsInterest';
+import { Jobs } from '../../api/jobs/Jobs';
 
 /**
  * In Bowfolios, insecure mode is enabled, so it is possible to update the server's Mongo database by making
@@ -44,7 +43,6 @@ Meteor.methods({
   },
 });
 
-
 const addCompanyToRoleMethod = 'Roles.addCompanyToRole';
 Meteor.methods({
   'Roles.addCompanyToRole'() {
@@ -76,33 +74,26 @@ const updateStudentsMethod = 'Students.update';
 Meteor.methods({
   'Students.update'({ email, firstName, lastName, description, picture, state, interests }) {
     Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
-    
-    StudentsInterests.collection.remove({email});
 
-    _.map(interests, function(interest) {
-        StudentsInterests.collection.insert({ email, interest })
-    }
-    );
+    StudentsInterests.collection.remove({ email });
+
+    _.map(interests, function (interest) {
+      StudentsInterests.collection.insert({ email, interest });
+    });
   },
 });
 
-const addProjectMethod = 'Projects.add';
+const updateJobMethod = 'Jobs.add';
 
-/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsInterests. */
+/** Creates a new job in the Jobs collection */
 Meteor.methods({
-  'Projects.add'({ name, description, picture, interests, participants, homepage }) {
-    Projects.collection.insert({ name, description, picture, homepage });
-    ProfilesProjects.collection.remove({ project: name });
-    ProjectsInterests.collection.remove({ project: name });
-    if (interests) {
-      interests.map((interest) => ProjectsInterests.collection.insert({ project: name, interest }));
-    } else {
-      throw new Meteor.Error('At least one interest is required.');
-    }
-    if (participants) {
-      participants.map((participant) => ProfilesProjects.collection.insert({ project: name, profile: participant }));
-    }
+  'Jobs.update'({ companyEmail, jobTitle, description, salaryRange, city, state, jobId }) {
+    Jobs.collection.update({ companyEmail }, { $set: { jobTitle, description, salaryRange, city, state } });
+
+    CompanyJobs.collection.remove({ companyEmail });
+
+    CompanyJobs.collection.insert({ companyEmail, jobId });
   },
 });
 
-export { addCompanyToRoleMethod, addStudentToRoleMethod, updateStudentsMethod, updateCompaniesMethod, addProjectMethod };
+export { addCompanyToRoleMethod, addStudentToRoleMethod, updateStudentsMethod, updateCompaniesMethod, updateJobMethod };

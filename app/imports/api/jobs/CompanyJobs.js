@@ -3,20 +3,16 @@ import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
 /** Encapsulates state and variable values for this collection. */
-class JobsCollection {
+class CompanyJobsCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'JobsCollection';
+    this.name = 'CompanyJobsCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      jobId: { type: String, optional: true },
-      jobTitle: { type: String, optional: true },
-      description: { type: String, optional: true },
-      salaryRange: { type: String, optional: true },
-      state: { type: String, optional: true },
-      city: { type: String, optional: true },
+      companyEmail: String,
+      jobId: String,
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
@@ -26,4 +22,4 @@ class JobsCollection {
   }
 }
 
-export const Jobs = new JobsCollection();
+export const CompanyJobs = new CompanyJobsCollection();
