@@ -365,6 +365,22 @@
       "name": "Linux"
     }
   ],
+  "defaultCompanyJobs": [
+    {
+      "companyName": "Google",
+      "jobId": "Google-Software Developer"
+    }
+  ],
+  "defaultJobs": [
+  {
+    "jobId": "Google-Software Developer",
+    "jobTitle": "Software Developer",
+    "description": "You develop software.",
+    "salaryRange": "$100,000-$150,000",
+    "state": "California",
+    "city" :"Menlo Park"
+  }
+],
 
     "loadAssetsFile": false
 }
