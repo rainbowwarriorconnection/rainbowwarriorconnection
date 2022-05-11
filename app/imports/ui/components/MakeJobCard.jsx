@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Card, Image, Icon, Button, Segment, Popup } from 'semantic-ui-react';
+=======
+import { Card, Icon } from 'semantic-ui-react';
+>>>>>>> 5e55efb56793ed8deb2259de6e409f52ff709bb5
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
