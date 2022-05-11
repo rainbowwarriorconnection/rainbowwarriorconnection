@@ -12,7 +12,7 @@ class BrowseStudentsPage {
   }
 
   async clickOnStudent(testController, id) {
-    await testController.click(Selector(`#view-student/${id}`));
+    await testController.click(`#view-student/${id}`);
   }
 
   /** Checks that the current page has at least six profiles on it.  */
