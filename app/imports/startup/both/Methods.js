@@ -88,7 +88,7 @@ const addJobMethod = 'Jobs.add';
 /** Creates a new job in the Jobs collection */
 Meteor.methods({
   'Jobs.add'({ companyEmail, jobId,  jobTitle, description, salaryRange, city, state }) {
-    Jobs.collection.add({ jobTitle, description, salaryRange, city, state });
+    Jobs.collection.insert({ jobTitle, description, salaryRange, city, state });
     CompanyJobs.collection.insert({ companyEmail, jobId });
   },
 });

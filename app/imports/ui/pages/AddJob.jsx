@@ -25,7 +25,7 @@ class AddJob extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const jobData = _.extend({ companyEmail: this.company.props.email, jobId: `${this.company.props.name}-${data.jobTitle}` }, data);
+    const jobData = _.extend({ company: this.company.props.name, jobId: `${this.company.props.name}-${data.jobTitle}` }, data);
     console.log(jobData);
     Meteor.call(updateJobMethod, jobData, (error) => {
       if (error) {
