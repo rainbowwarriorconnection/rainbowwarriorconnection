@@ -70,10 +70,24 @@ if (Meteor.users.find().count() === 0) {
   }
 }
 
-if (Interests.collection.find().count() === 0) {
-  if (Meteor.settings.defaultInterests) {
-    console.log('Creating the default interests');
-    Meteor.settings.defaultInterests.map(interest => addInterest(interest));
+if(Interests.collection.find().count() == 0) {
+    if(Meteor.settings.defaultInterests) {
+        console.log("Creating the default interests");
+	Meteor.settings.defaultInterests.map(interest => addInterest(interest));
+    }
+}
+
+if(Jobs.collection.find().count() == 0) {
+  if(Meteor.settings.defaultJobs) {
+    console.log("Creating the default Jobs");
+    Meteor.settings.defaultJobs.map(job => addJob(job));
+  }
+}
+
+if(CompanyJobs.collection.find().count() == 0) {
+  if(Meteor.settings.defaultCompanyJobs) {
+    console.log("Creating the default Jobs");
+    Meteor.settings.defaultCompanyJobs.map(companyjob => addCompanyJob(companyjob));
   }
 }
 

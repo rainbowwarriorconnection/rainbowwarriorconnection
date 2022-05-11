@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -7,12 +7,12 @@ import { withRouter } from 'react-router-dom';
 class MakeJobCard extends React.Component {
   render() {
     return (
-      <Card style={{ background: '#376551', border: "none", boxShadow: "none" }}>
+      <Card style={{ border: "none", boxShadow: "none" }}>
         <Card.Content>
-          <Card.Header style={{ color: 'white' }}>{this.props.job.jobTitle}</Card.Header>
-          <Card.Description style={{ color: 'white' }}>{this.props.job.description}</Card.Description>
-          <Card.Description style={{ color: 'white' }}>{this.props.job.salaryRange}</Card.Description>
-          <Card.Description style={{ color: 'white' }}>{this.props.job.city}, {this.props.job.state}</Card.Description>
+          <Card.Header><Icon name='lab'/>{this.props.job.jobTitle}</Card.Header>
+          <Card.Description>{this.props.job.description}</Card.Description>
+          <Card.Description>{this.props.job.salaryRange}</Card.Description>
+          <Card.Description>{this.props.job.city}, {this.props.job.state}</Card.Description>
         </Card.Content>
       </Card>
     );
