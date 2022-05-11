@@ -18,7 +18,7 @@ class Landing extends React.Component {
         </div>
         <div className='home-landing-background'>
           <div className='transparency'>
-            <Image src="/images/Kermit-Logo-V3-Lined.png" size='large' style={{ paddingTop: '20px' }} centered/>
+            <Image src="/images/Kermit-Logo-V3-Lined.png" size='medium' style={{ paddingTop: '20px' }} centered/>
             <Grid style={{ paddingTop: '20px' }} container centered stackable columns={3}>
               <Grid.Column textAlign='center'>
                 <Icon size="huge" name="user" style={{ color: 'white' }}/>
