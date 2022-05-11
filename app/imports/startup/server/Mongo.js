@@ -91,6 +91,20 @@ if(CompanyJobs.collection.find().count() == 0) {
   }
 }
 
+if (Jobs.collection.find().count() === 0) {
+  if (Meteor.settings.defaultJobs) {
+    console.log('Creating the default Jobs');
+    Meteor.settings.defaultJobs.map(job => addJob(job));
+  }
+}
+
+if (CompanyJobs.collection.find().count() === 0) {
+  if (Meteor.settings.defaultCompanyJobs) {
+    console.log('Creating the default Jobs');
+    Meteor.settings.defaultCompanyJobs.map(companyjob => addCompanyJob(companyjob));
+  }
+}
+
 /**
  * addProfile and addProject currently unimplemented to fix ESLint errors
  * @returns {undefined}
