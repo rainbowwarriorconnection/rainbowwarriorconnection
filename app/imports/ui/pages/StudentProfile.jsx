@@ -60,7 +60,7 @@ class StudentProfile extends React.Component {
 	      <Grid.Row>
                   <Header as='h3' inverted>
 	             <div>
-                     <Icon name='terminal' size='small'/> 
+                <Icon name='terminal' size='small'/> 
 	             Bio 
 	             </div>
 	          </Header>

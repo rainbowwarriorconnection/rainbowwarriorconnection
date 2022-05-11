@@ -50,7 +50,7 @@ class Signup extends React.Component {
 
   /** Display the signup form. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/home' } };
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;

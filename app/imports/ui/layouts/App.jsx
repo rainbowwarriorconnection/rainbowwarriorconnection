@@ -36,7 +36,7 @@ class App extends React.Component {
               <RoleProtectedRoute path="/student-home" role='student' component={StudentHome}/>
               <RoleProtectedRoute path="/company-home" role='company' component={CompanyHome}/>
               <RoleProtectedRoute path="/admin" role='admin' component={AdminHome}/>
-              <RoleProtectedRoute path="/profiles" role='company' component={Profiles}/>
+              <Route path="/profiles" component={Profiles}/>
               <Route path="/companies" component={Companies}/>
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addjob" component={AddJob}/>
