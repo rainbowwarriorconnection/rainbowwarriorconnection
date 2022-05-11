@@ -8,7 +8,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
-import { updateJobMethod } from '../../startup/both/Methods';
+import { addJobMethod } from '../../startup/both/Methods';
 import { Companies } from '../../api/companies/Companies';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
@@ -26,8 +26,7 @@ class AddJob extends React.Component {
   /** On submit, insert the data. */
   submit(data, formRef) {
     const jobData = _.extend({ company: this.company.props.name, jobId: `${this.company.props.name}-${data.jobTitle}` }, data);
-    console.log(jobData);
-    Meteor.call(updateJobMethod, jobData, (error) => {
+    Meteor.call(addJobMethod, jobData, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {
