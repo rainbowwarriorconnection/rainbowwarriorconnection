@@ -1,10 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-/**
- * Unused imports
-import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
- * */
+import { _ } from 'meteor/underscore';
 import { Students } from '../../api/students/Students';
 import { Companies } from '../../api/companies/Companies';
 import { CompanyJobs } from '../../api/jobs/CompanyJobs';
@@ -72,8 +68,8 @@ const updateStudentsMethod = 'Students.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Students.update'({ email, firstName, lastName, description, picture, state, interests }) {
-    Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
+  'Students.update'({ email, firstName, lastName, description, picture, state, interests, github }) {
+    Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state, github } });
 
     StudentsInterests.collection.remove({ email });
 
@@ -87,8 +83,8 @@ const addJobMethod = 'Jobs.add';
 
 /** Creates a new job in the Jobs collection */
 Meteor.methods({
-  'Jobs.add'({ companyEmail, jobId,  jobTitle, description, salaryRange, city, state }) {
-    Jobs.collection.add({ jobTitle, description, salaryRange, city, state });
+  'Jobs.add'({ companyEmail, jobId, jobTitle, description, salaryRange, city, state }) {
+    Jobs.collection.insert({ jobTitle, description, salaryRange, city, state });
     CompanyJobs.collection.insert({ companyEmail, jobId });
   },
 });

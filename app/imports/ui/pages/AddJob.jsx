@@ -26,6 +26,7 @@ class AddJob extends React.Component {
   /** On submit, insert the data. */
   submit(data, formRef) {
     const jobData = _.extend({ company: this.company.props.name, jobId: `${this.company.props.name}-${data.jobTitle}` }, data);
+    console.log(jobData);
     Meteor.call(addJobMethod, jobData, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
@@ -71,7 +72,7 @@ AddJob.propTypes = {
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(( { match } ) => {
+export default withTracker(({ match }) => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const documentId = match.params._id;
   const sub1 = Meteor.subscribe(Companies.userPublicationName);
