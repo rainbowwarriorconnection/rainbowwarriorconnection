@@ -7,12 +7,10 @@ import PropTypes from 'prop-types';
 import { Companies } from '../../api/companies/Companies.js';
 import { Jobs } from '../../api/jobs/Jobs';
 import { CompanyJobs } from '../../api/jobs/CompanyJobs';
-import MakeCard from '../components/MakeCard';
-
+import MakeJobCard from '../components/MakeJobCard';
 
 /** Renders the Home Page: what appears after the user logs in. */
 class CompanyProfile extends React.Component {
-
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -23,8 +21,8 @@ class CompanyProfile extends React.Component {
     /** Get company information and create model */
     const name = this.props.company.name;
     const companyJobIds = _.pluck(CompanyJobs.collection.find({ companyName: name }).fetch(), 'jobId');
-    const companyJobs = _.pluck(Jobs.collection.find({ jobId: companyJobIds }).fetch())
-    console.log(Jobs.collection.find({ jobId: companyJobIds }).fetch());
+    const companyJobs = _.map(companyJobIds, function(id){return _.findWhere(Jobs.collection.find().fetch(), {jobId: id})});
+    console.log(companyJobs);
     return (
       <Container id="company-profile-page">
         <Grid centered columns={2} >
@@ -53,7 +51,6 @@ class CompanyProfile extends React.Component {
               <Grid columns={2}>
                   <Grid.Column>
 	             <Header as='h3' inverted>
-	           
 	                 <Icon inverted name='world'/>
 	                 Homepage
 	             </Header>
@@ -69,17 +66,7 @@ class CompanyProfile extends React.Component {
 	    <Grid.Row>
 	      <Header as='h4' inverted>Looking for...</Header>
 	      <Segment>
-	      <List>
-              {_.map(companyJobIds, (job, index) =>
-		      <List.Item inverted>
-		           <Icon name='lab'/>
-		           <List.Content inverted>
-		                <List.Header inverted>{job}</List.Header>
-		           </List.Content>
-		      </List.Item>
-	      )}
-	      </List>
-	      </Segment>
+        {_.map(companyJobs, (job, index) => <MakeJobCard key={index} job={job}/>)}  
 	    </Grid.Row>
             </Grid.Row>
         </Grid>
