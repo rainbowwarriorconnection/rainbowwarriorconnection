@@ -19,7 +19,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import CompanySignup from '../pages/CompanySignup.jsx';
-import AdminHome from '../pages/AdminHome.jsx';
+import AdminHome from '../pages/AdminHome';
 import StudentProfile from '../pages/StudentProfile';
 import CompanyProfile from '../pages/CompanyProfile';
 
@@ -35,8 +35,8 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <RoleProtectedRoute path="/student-home" role='student' component={StudentHome}/>
               <RoleProtectedRoute path="/company-home" role='company' component={CompanyHome}/>
-              <RoleProtectedRoute path="/admin-home" role='admin' component={AdminHome}/>
-              <RoleProtectedRoute path="/profiles" role='company' component={Profiles}/>
+              <RoleProtectedRoute path="/admin" role='admin' component={AdminHome}/>
+              <RoleProtectedRoute path="/profiles" role='student' component={Profiles}/>
               <Route path="/companies" component={Companies}/>
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addjob" component={AddJob}/>
