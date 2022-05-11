@@ -8,7 +8,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
-import { updateJobMethod } from '../../startup/both/Methods';
+import { addJobMethod } from '../../startup/both/Methods';
 import { Companies } from '../../api/companies/Companies';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
@@ -27,7 +27,7 @@ class AddJob extends React.Component {
   submit(data, formRef) {
     const jobData = _.extend({ companyEmail: this.company.props.email, jobId: `${this.company.props.name}-${data.jobTitle}` }, data);
     console.log(jobData);
-    Meteor.call(updateJobMethod, jobData, (error) => {
+    Meteor.call(addJobMethod, jobData, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {
@@ -72,7 +72,7 @@ AddJob.propTypes = {
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(( { match } ) => {
+export default withTracker(({ match }) => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const documentId = match.params._id;
   const sub1 = Meteor.subscribe(Companies.userPublicationName);
