@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Students } from '../../api/students/Students';
 import { Companies } from '../../api/companies/Companies';
-import { StudentsInterests } from '../../api/students/StudentsInterest'
-import { Interests } from '../../api/interests/Interests'
+import { StudentsInterests } from '../../api/students/StudentsInterest';
+import { Interests } from '../../api/interests/Interests';
 import { Jobs } from '../../api/jobs/Jobs';
 import { CompanyJobs } from '../../api/jobs/CompanyJobs';
 

@@ -23,7 +23,7 @@ const makeSchema = (allInterests, userInterests) => new SimpleSchema({
   state: { type: String, label: 'Location Preference', optional: true },
   picture: { type: String, label: 'Picture URL', optional: true },
   interests: { type: Array, label: 'Interests', optional: true, defaultValue: userInterests },
-  github: { type: String, label: 'GitHub Username', optional: true},
+  github: { type: String, label: 'GitHub Username', optional: true },
   'interests.$': { type: String, label: 'Interests', optional: true, allowedValues: allInterests },
 });
 
@@ -74,7 +74,7 @@ class StudentHome extends React.Component {
                 <TextField name='state' id='state' showInlineError={true} placeholder={'Location Preference'}/>
               </Form.Group>
               <TextField name='picture' id='picture' showInlineError={true} placeholder={'URL for picture'}/>
-	      <TextField name='github' id='github' showInlineError={true} placeholder={'GitHub username'}/>
+              <TextField name='github' id='github' showInlineError={true} placeholder={'GitHub username'}/>
               <LongTextField name='description' id='description' placeholder={'Description'}/>
               <MultiSelectField name='interests' id='interests' placeholder='Interests' defaultValue={
                 (interestsArr) || [] } allowedValues={allInterests}/>
