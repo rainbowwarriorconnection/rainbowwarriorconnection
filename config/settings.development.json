@@ -195,20 +195,20 @@
     ],
     "defaultStudents": [
         {
-            "description": "Student",
-            "email": "student@student.com",
-            "firstName": "Student",
-            "lastName": "Student",
-            "picture": "https://picsum.photos/300/300",
+              "description": "Artist, Animator, Storyteller",
+            "email": "hayamas@hawaii.edu",
+            "firstName": "Shayne",
+            "lastName": "Hayama",
+            "picture": "https://media-exp1.licdn.com/dms/image/C4D03AQHWUcmGWvLw0A/profile-displayphoto-shrink_800_800/0/1585129712906?e=1657756800&v=beta&t=Ufh5ftVPzqzpCvGq2vI4UeHiDC5g_Z9erEYPovv_OPE",
             "state": "Hawaii"
         },
 	      {
-            "description": "Student2",
-            "email": "student2@student.com",
-            "firstName": "Student2",
-            "lastName": "Student2",
-            "picture": "https://picsum.photos/300/300",
-            "state": "Hawaii2"
+            "description": "Character Animator | Storyboard Artist | Story Writer",
+            "email": "aaronb@hawaii.edu",
+            "firstName": "Aaron",
+            "lastName": "Butac",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQGTfwR91YRLIw/profile-displayphoto-shrink_400_400/0/1594494175542?e=1657756800&v=beta&t=GdZ22GvbcttuF33C3zz-OPmpZch_dt3QVzSyJDRAa-k",
+            "state": "Hawaii"
         },
         {
             "description": "Animation and ICS Student",
@@ -217,6 +217,102 @@
             "lastName": "Tong-Lee",
             "picture": "https://media-exp1.licdn.com/dms/image/C5603AQEeCU38DB3oSw/profile-displayphoto-shrink_200_200/0/1625194903449?e=1654732800&v=beta&t=qmkiTXOiwarXsDLx1jWVPmc6Vm0X2mxxG_wR3BDjHXA",
             "state": "Hawaii"
+        },
+        {
+            "description": "Aspiring Software Engineer | Student at the University of Hawaii at Manoa pursuing a Bachelors of Arts in Computer Science",
+            "email": "jakehardy95@yahoo.com",
+            "firstName": "Jacob",
+            "lastName": "Hardy",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQFTJyI7062dfA/profile-displayphoto-shrink_400_400/0/1598159358409?e=1657756800&v=beta&t=U9DphyrcFBHnFpaVhbic_Bmhc5OKS8JlEm9Dkn_sqf4",
+            "state": "Hawaii"
+        },
+        {
+            "description": "2D Illustrator & 3D Generalist",
+            "email": "leesylvia31@gmail.com",
+            "firstName": "Sylvia",
+            "lastName": "Lee",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQFkaX-Y_fxRTQ/profile-displayphoto-shrink_400_400/0/1642755841178?e=1657756800&v=beta&t=fqhBfh_uphruk9KPlH8lomFQ39_2eyJ3airT6d-WLig",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Student at University of Hawaii at Manoa",
+            "email": "cknakano@hawaii.edu",
+            "firstName": "Christine",
+            "lastName": "Nakano",
+            "picture": "https://media-exp1.licdn.com/dms/image/C4E03AQFKOf5y_8wpzw/profile-displayphoto-shrink_400_400/0/1641896819951?e=1657756800&v=beta&t=1OFjgzt48kVpVC2ksHMxIpv7LtEg_1o3_0cVv0B1r4I",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Student at University of Hawaii at Manoa",
+            "email": "balal@hawaii.edu",
+            "firstName": "Louie",
+            "lastName": "Bala",
+            "picture": "https://media-exp1.licdn.com/dms/image/C4E03AQEZ4Ufc7hKOSg/profile-displayphoto-shrink_400_400/0/1642297731592?e=1657756800&v=beta&t=eCuhBdD_zUjlvVKqw29GORrabXsMM8aZaIjIC-34fO8",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Writer, Animator, Instructor, Evaluator",
+            "email": "kalilinoed@hawaii.edu",
+            "firstName": "Kalilinoe",
+            "lastName": "Detwiler",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQEOZa0ZAzAyAg/profile-displayphoto-shrink_400_400/0/1591072592057?e=1657756800&v=beta&t=OyLPJJh-uPRXZMHBa18FreJAk4GtYq_cOuTl1CZW9Ro",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Animator | Vis Dev Artist | Story Artist",
+            "email": "mnclause@gmail.com",
+            "firstName": "Mia",
+            "lastName": "Clause",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQEOZa0ZAzAyAg/profile-displayphoto-shrink_400_400/0/1591072592057?e=1657756800&v=beta&t=OyLPJJh-uPRXZMHBa18FreJAk4GtYq_cOuTl1CZW9Ro",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Digital Media Producer",
+            "email": "brianamsmith13@gmail.com",
+            "firstName": "Brianna",
+            "lastName": "Smith",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQE1oTTw_l13NA/profile-displayphoto-shrink_400_400/0/1614626138953?e=1657756800&v=beta&t=-3nUInVRzklUMXp_LNrU7mmb9WrKQkOmkc9YOylH_IA",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Electrical Engineer",
+            "email": "macematsumoto@gmail.com",
+            "firstName": "Mace",
+            "lastName": "Kanda-Matsumoto",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQHvR2ru1jbfyw/profile-displayphoto-shrink_400_400/0/1526953016133?e=1657756800&v=beta&t=1tb5tyUbWQXmkWai9l1U_g4a56HDAxZ0aVQFUVZbu6k",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Filmmaker",
+            "email": "malia.adamsa@gmail.com",
+            "firstName": "Malia",
+            "lastName": "Adams",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQFJPPbKq8Pg1g/profile-displayphoto-shrink_400_400/0/1591916847627?e=1657756800&v=beta&t=ATBaNNhjUC6B881-VGLquOHUs8rCcIBxTsR5l2M75Ic",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Computer Science Student at University of Hawaii at Manoa",
+            "email": "williamliang808@gmail.com",
+            "firstName": "William",
+            "lastName": "Liang",
+            "picture": "https://media-exp1.licdn.com/dms/image/C5603AQEIhCE1puu0Vw/profile-displayphoto-shrink_400_400/0/1640981251170?e=1657756800&v=beta&t=blfFJIOVP4-jhyUw_M7Tx_tutIRU3BlmCmVgXcR_Q7A",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Web Developer at University of Hawaii at Manoa",
+            "email": "gavpeng7447@gmail.com",
+            "firstName": "Gaven",
+            "lastName": "Peng",
+            "picture": "https://media-exp1.licdn.com/dms/image/D5603AQHUaw8BAGT8Sg/profile-displayphoto-shrink_400_400/0/1640847907074?e=1657756800&v=beta&t=0cBfqd0T0ldTQcKNZmiBbXToHau6Dj3ArEpZk2XKjEM",
+            "state": "Hawaii"
+        },
+        {
+            "description": "Student at University of Hawaii at Manoa",
+            "email": "alexisnelson.animator@gmail.com",
+            "firstName": "Alexis",
+            "lastName": "Nelson",
+            "picture": "https://media-exp1.licdn.com/dms/image/C4D35AQEX4mFyvm3q5g/profile-framedphoto-shrink_400_400/0/1619521455425?e=1652324400&v=beta&t=Vt8bRVO5tomuL9ZVVaL6ZjpUT0sTmQcqDsh1GaSoNQI",
+            "state": "Washington"
         }
     ],
   "defaultInterests": [
