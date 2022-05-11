@@ -4,6 +4,8 @@ import { Roles } from 'meteor/alanning:roles';
 import { Students } from '../../api/students/Students';
 import { Companies } from '../../api/companies/Companies';
 import { Interests } from '../../api/interests/Interests';
+import { Jobs } from '../../api/jobs/Jobs';
+import { CompanyJobs } from '../../api/jobs/CompanyJobs';
 
 /* eslint-disable no-console */
 
@@ -34,6 +36,18 @@ function addCompany({ name, homepage, email, description, picture, state, city }
 function addInterest({ name }) {
   console.log(`Defining interest ${name}`);
   Interests.collection.insert({ name });
+  console.log(`Defining interest ${name}`);
+  Interests.collection.insert({ name });
+}
+
+function addJob({ jobId, jobTitle, description, salaryRange, state, city }) {
+  console.log(`Defining job ${jobId}`);
+  Jobs.collection.insert({ jobId, jobTitle, description, salaryRange, state, city });
+}
+
+function addCompanyJob({ companyName, jobId }) {
+  console.log(`Connecting ${companyName} with ${jobId}`);
+  CompanyJobs.collection.insert({ companyName, jobId });
 }
 
 function addAdmin({ email, password, role }) {
@@ -58,10 +72,24 @@ if (Meteor.users.find().count() === 0) {
   }
 }
 
-if (Interests.collection.find().count() === 0) {
-  if (Meteor.settings.defaultInterests) {
-    console.log('Creating the default interests');
-    Meteor.settings.defaultInterests.map(interest => addInterest(interest));
+if(Interests.collection.find().count() == 0) {
+    if(Meteor.settings.defaultInterests) {
+        console.log("Creating the default interests");
+	Meteor.settings.defaultInterests.map(interest => addInterest(interest));
+    }
+}
+
+if(Jobs.collection.find().count() == 0) {
+  if(Meteor.settings.defaultJobs) {
+    console.log("Creating the default Jobs");
+    Meteor.settings.defaultJobs.map(job => addJob(job));
+  }
+}
+
+if(CompanyJobs.collection.find().count() == 0) {
+  if(Meteor.settings.defaultCompanyJobs) {
+    console.log("Creating the default Jobs");
+    Meteor.settings.defaultCompanyJobs.map(companyjob => addCompanyJob(companyjob));
   }
 }
 

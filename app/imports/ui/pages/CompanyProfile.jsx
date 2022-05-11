@@ -1,9 +1,14 @@
 import React from 'react';
-import { Grid, Loader, Image, Header, Container } from 'semantic-ui-react';
+import { Grid, Loader, Image, Header, Container, Card } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
+import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Companies } from '../../api/companies/Companies.js';
+import { Jobs } from '../../api/jobs/Jobs';
+import { CompanyJobs } from '../../api/jobs/CompanyJobs';
+import MakeCard from '../components/MakeCard';
+
 
 /** Renders the Home Page: what appears after the user logs in. */
 class CompanyProfile extends React.Component {
@@ -16,6 +21,10 @@ class CompanyProfile extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   renderPage() {
     /** Get company information and create model */
+    const name = this.props.company.name;
+    const companyJobIds = _.pluck(CompanyJobs.collection.find({ companyName: name }).fetch(), 'jobId');
+    const companyJobs = _.pluck(Jobs.collection.find({ jobId: companyJobIds }).fetch())
+    console.log(Jobs.collection.find({ jobId: companyJobIds }).fetch());
     return (
       <Container id="company-profile-page">
         <Container className='company-profile-page-grids'>
@@ -36,12 +45,11 @@ class CompanyProfile extends React.Component {
             <Grid.Column className='company-profile-page-border'>
               <Header as='h3' inverted>Location: {this.props.company.city}, {this.props.company.state} </Header>
               <Header as='h3' inverted>Contact us: {this.props.company.email}</Header>
-              <Header href={'{this.props.company.homepage}'} as='h3' inverted>{this.props.company.homepage}</Header>
+              <Header href={`{this.props.company.homepage}`} as='h3' inverted>{this.props.company.homepage}</Header>
             </Grid.Column>
             <Grid.Column className='company-profile-page-border'>
               <Header as='h3' inverted>Available Positions: </Header>
-              <Header as='h3' inverted textAlign='center'> jobs here
-              </Header>
+              {_.map(companyJobIds, (job, index) => <Header as='h3' inverted key={index}>{job}</Header>)}
             </Grid.Column>
           </Grid>
         </Container>
@@ -60,8 +68,11 @@ export default withTracker(({ match }) => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const documentId = match.params._id;
   const sub1 = Meteor.subscribe(Companies.userPublicationName);
-  const ready = sub1.ready();
+  const sub2 = Meteor.subscribe(Jobs.userPublicationName);
+  const sub3 = Meteor.subscribe(CompanyJobs.userPublicationName);
+  const ready = sub1.ready() && sub2.ready() && sub3.ready();
   const company = Companies.collection.findOne(documentId);
+
   return {
     ready,
     company,
