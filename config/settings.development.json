@@ -465,17 +465,53 @@
     {
       "companyName": "Google",
       "jobId": "Google-Software Developer"
+    },
+    {
+      "companyName": "Riot Games",
+      "jobId": "Riot Games-Software Developer"
+    },
+    {
+      "companyName": "MB Technologies",
+      "jobId": "MB Technologies-Software Developer"
+    },
+    {
+      "companyName": "Twitter",
+      "jobId": "Twitter-Data Analyst"
     }
   ],
   "defaultJobs": [
-  {
-    "jobId": "Google-Software Developer",
-    "jobTitle": "Software Developer",
-    "description": "You develop software.",
-    "salaryRange": "$100,000-$150,000",
-    "state": "California",
-    "city" :"Menlo Park"
-  }
+    {
+      "jobId": "Google-Software Developer",
+      "jobTitle": "Software Developer",
+      "description": "You develop software.",
+      "salaryRange": "$100,000-$150,000",
+      "state": "California",
+      "city" :"Menlo Park"
+    },
+    {
+      "jobId": "Riot Games-Software Developer",
+      "jobTitle": "Software Developer",
+      "description": "Will develop engine for new games.",
+      "salaryRange": "$110,000-$120,000",
+      "state": "California",
+      "city" :"Los Angeles"
+    },
+    {
+      "jobId": "MB Technologies-Software Developer",
+      "jobTitle": "Software Developer",
+      "description": "We are looking for young software engineers to work on technical projects for clients.",
+      "salaryRange": "$90,000-$100,000",
+      "state": "Hawaii",
+      "city" :"Honolulu"
+    },
+    {
+      "jobId": "Twitter-Data Analyst",
+      "jobTitle": "Data Analyst",
+      "description": "Data analysis for marketing team.",
+      "salaryRange": "$85,000-$95,000",
+      "state": "California",
+      "city" :"San Francisco"
+    }
 ],
 
     "loadAssetsFile": false
