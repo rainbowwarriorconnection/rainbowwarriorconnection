@@ -66,7 +66,8 @@ class CompanyProfile extends React.Component {
 	    <Grid.Row>
 	      <Header as='h4' inverted>Looking for...</Header>
 	      <Segment>
-        {_.map(companyJobs, (job, index) => <MakeJobCard key={index} job={job}/>)}  
+                  {_.map(companyJobs, (job, index) => <MakeJobCard key={index} job={job}/>)}  
+	      </Segment>
 	    </Grid.Row>
             </Grid.Row>
         </Grid>
