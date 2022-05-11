@@ -63,17 +63,14 @@
 
 .column.student-profile-page-border {
   border: 2px solid white;
-  border-radius: 10px;
 }
 
 .ui.container.student-profile-page-border {
   padding: 25px;
   border: 2px solid white;
-  border-radius: 10px;
 }
 .company-profile-page-grids {
   padding-top: 30px;
-  padding-bottom: 30px;
 }
 
 .ui.big.label.company-page-interests-label {
