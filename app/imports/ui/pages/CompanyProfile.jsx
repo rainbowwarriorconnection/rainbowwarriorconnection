@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Divider, Loader, Image, Header, Container, Card } from 'semantic-ui-react';
+import { Segment, Icon, List, Accordion, Grid, Divider, Loader, Image, Header, Container, Card } from 'semantic-ui-react';
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { withTracker } from 'meteor/react-meteor-data';
@@ -34,15 +34,30 @@ class CompanyProfile extends React.Component {
             </Grid.Column>
             <Grid.Column width={8}>
 	      <Grid columns={2}>
-	        <Grid.Column> <Header as='h3' inverted>Location</Header></Grid.Column>
+	        <Grid.Column> <Header as='h3' inverted>
+	       
+                   <Icon name='map' size='mini'/>
+	              Location
+	       </Header></Grid.Column>
 	        <Grid.Column> <Header as='h4' inverted>{this.props.company.city}, {this.props.company.state} </Header></Grid.Column> 
 	      </Grid>
 	      <Grid columns={2}>
-                  <Grid.Column><Header as='h3' inverted>Contact us</Header></Grid.Column>
+                  <Grid.Column>
+	               <Header as='h3' inverted> 
+	                    <Icon inverted name='mail' size='small'/>
+	                    Contact us 
+	               </Header>
+	          </Grid.Column>
 	          <Grid.Column><Header as='h4' inverted>{this.props.company.email}</Header></Grid.Column>
 	      </Grid>
               <Grid columns={2}>
-                  <Grid.Column><Header as='h3' inverted>Homepage</Header></Grid.Column>
+                  <Grid.Column>
+	             <Header as='h3' inverted>
+	           
+	                 <Icon inverted name='world'/>
+	                 Homepage
+	             </Header>
+	    	  </Grid.Column>
 	          <Grid.Column><Header as='h4' inverted><a href={this.props.company.homepage}>{this.props.company.homepage}</a></Header></Grid.Column>
 	      </Grid>
 	      <Divider/>
@@ -51,7 +66,21 @@ class CompanyProfile extends React.Component {
 	      </Grid.Row>
 	      </Grid.Column>
             <Grid.Row>
-              {_.map(companyJobIds, (job, index) => <Header as='h3' inverted key={index}>{job}</Header>)}
+	    <Grid.Row>
+	      <Header as='h4' inverted>Looking for...</Header>
+	      <Segment>
+	      <List>
+              {_.map(companyJobIds, (job, index) =>
+		      <List.Item inverted>
+		           <Icon name='lab'/>
+		           <List.Content inverted>
+		                <List.Header inverted>{job}</List.Header>
+		           </List.Content>
+		      </List.Item>
+	      )}
+	      </List>
+	      </Segment>
+	    </Grid.Row>
             </Grid.Row>
         </Grid>
       </Container>
