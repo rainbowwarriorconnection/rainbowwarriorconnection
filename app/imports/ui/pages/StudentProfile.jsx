@@ -25,7 +25,10 @@ class StudentProfile extends React.Component {
           <Grid centered columns={2} >
             <Grid.Column width={4}>
               <Image size='medium' src={this.props.student.picture}/>
-              <Header as='h1' inverted> <div> {this.props.student.firstName} {this.props.student.lastName} </div></Header>
+              <Header as='h1' inverted> 
+	    		<a href={'https://github.com/'+this.props.student.github}><Icon inverted name='github'/></a> 
+	    		{this.props.student.firstName} {this.props.student.lastName}
+	      </Header>
             </Grid.Column>
 	    <Grid.Column width={8}>
 	      <Grid.Row>
@@ -57,8 +60,7 @@ class StudentProfile extends React.Component {
 	      <Grid.Row>
                   <Header as='h3' inverted>
 	             <div>
-                     <Icon name='terminal' size='small'/>
-	             
+                     <Icon name='terminal' size='small'/> 
 	             Bio 
 	             </div>
 	          </Header>

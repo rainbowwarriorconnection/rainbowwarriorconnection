@@ -72,8 +72,8 @@ const updateStudentsMethod = 'Students.update';
  * updated situation specified by the user.
  */
 Meteor.methods({
-  'Students.update'({ email, firstName, lastName, description, picture, state, interests }) {
-    Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state } });
+  'Students.update'({ email, firstName, lastName, description, picture, state, interests, github }) {
+    Students.collection.update({ email }, { $set: { email, firstName, lastName, description, picture, state, github } });
 
     StudentsInterests.collection.remove({ email });
 
