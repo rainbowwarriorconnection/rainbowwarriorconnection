@@ -8,8 +8,9 @@ import { Interests } from '../../api/interests/Interests';
 /* eslint-disable no-console */
 
 /** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
-function createUser(email, role) {
-  const userID = Accounts.createUser({ username: email, email, password: 'foo' });
+
+function createUser(email, password, role) {
+  const userID = Accounts.createUser({ username: email, email, password: password });
   if (role === 'admin' || role === 'student' || role === 'company') {
     Roles.createRole(role, { unlessExists: true });
     Roles.addUsersToRoles(userID, role);
@@ -31,11 +32,22 @@ function addCompany({ name, homepage, email, description, picture, state, city }
 }
 
 function addInterest({ name }) {
+  console.log(`Defining interest ${name}`);
   Interests.collection.insert({ name });
+}
+
+function addAdmin({ email, password, role }) {
+  // eslint-disable-next-line no-undef
+  console.log(`Creating admin ${role}`);
+  createUser(email, password, 'admin');
 }
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
+  if (Meteor.settings.defaultAccounts) {
+    console.log('Creating the default accounts');
+    Meteor.settings.defaultAccounts.map(profile => addAdmin(profile));
+  }
   if (Meteor.settings.defaultStudents && Meteor.settings.defaultCompanies) {
     console.log('Creating the default students');
     Meteor.settings.defaultStudents.map(profile => addStudent(profile));

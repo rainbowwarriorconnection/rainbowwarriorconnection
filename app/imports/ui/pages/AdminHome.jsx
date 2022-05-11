@@ -1,5 +1,11 @@
 import React from 'react';
 import { Container, Grid, Header, Dropdown, Input, Button } from 'semantic-ui-react';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Companies } from '../../api/companies/Companies';
+import { StudentsInterests } from '../../api/students/StudentsInterest';
+import { Interests } from '../../api/interests/Interests';
+import { Students } from '../../api/students/Students';
 
 /** Renders a color-blocked static landing page. */
 class AdminHome extends React.Component {
@@ -82,4 +88,13 @@ class AdminHome extends React.Component {
   }
 }
 
-export default AdminHome;
+export default withTracker(() => {
+  // Ensure that minimongo is populated with all collections prior to running render().
+  const sub1 = Meteor.subscribe(Companies.userPublicationName);
+  const sub2 = Meteor.subscribe(Students.userPublicationName);
+  const sub3 = Meteor.subscribe(StudentsInterests.userPublicationName);
+  const sub4 = Meteor.subscribe(Interests.userPublicationName);
+  return {
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
+  };
+})(AdminHome);
