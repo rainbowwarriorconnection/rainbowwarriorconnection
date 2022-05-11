@@ -36,8 +36,6 @@ function addCompany({ name, homepage, email, description, picture, state, city }
 function addInterest({ name }) {
   console.log(`Defining interest ${name}`);
   Interests.collection.insert({ name });
-  console.log(`Defining interest ${name}`);
-  Interests.collection.insert({ name });
 }
 
 function addJob({ jobId, jobTitle, description, salaryRange, state, city }) {
