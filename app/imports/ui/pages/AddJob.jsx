@@ -8,23 +8,16 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
-import MultiSelectField from '../forms/controllers/MultiSelectField';
-import { addProjectMethod } from '../../startup/both/Methods';
-import { Interests } from '../../api/interests/Interests';
-import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
-import { Projects } from '../../api/projects/Projects';
+import { updateJobMethod } from '../../startup/both/Methods';
+import { Companies } from '../../api/companies/Companies';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests) => new SimpleSchema({
+const makeSchema = () => new SimpleSchema({
   jobTitle: String,
   description: String,
-  location: String,
-  position: String,
+  city: String,
+  state: String,
   salaryRange: String,
-  interests: { type: Array, label: 'Skills', optional: false },
-  'interests.$': { type: String, allowedValues: allInterests },
 });
 
 /** Renders the Page for adding a document. */
@@ -32,7 +25,9 @@ class AddJob extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    Meteor.call(addProjectMethod, data, (error) => {
+    const jobData = _.extend({ companyEmail: this.company.props.email, jobId: `${this.company.props.name}-${data.jobTitle}` }, data);
+    console.log(jobData);
+    Meteor.call(updateJobMethod, jobData, (error) => {
       if (error) {
         swal('Error', error.message, 'error');
       } else {
@@ -44,9 +39,7 @@ class AddJob extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     let fRef = null;
-    const allInterests = _.pluck(Interests.collection.find().fetch(), 'name');
-    const allParticipants = _.pluck(Profiles.collection.find().fetch(), 'email');
-    const formSchema = makeSchema(allInterests, allParticipants);
+    const formSchema = makeSchema();
     const bridge = new SimpleSchema2Bridge(formSchema);
     return (
       <Grid id="add-job-page" container centered>
@@ -56,12 +49,12 @@ class AddJob extends React.Component {
             <Segment>
               <Form.Group widths={'equal'}>
                 <TextField id='jobTitle' name='jobTitle' showInlineError={true} placeholder='Job Title'/>
-                <MultiSelectField id='position' name='position' showInlineError={true} placeholder='Position'/>
-                <MultiSelectField id='location' name='location' showInlineError={true} placeholder='State/Country'/>
+                <TextField id='city' name='city' showInlineError={true} placeholder='City'/>
+                <TextField id='state' name='state' showInlineError={true} placeholder='State'/>
               </Form.Group>
               <LongTextField id='description' name='description' placeholder='Describe the job here'/>
               <Form.Group widths={'equal'}>
-                <MultiSelectField id='interests' name='interests' showInlineError={true} placeholder={'Skills Needed'}/>
+                <TextField id='salaryRange' name='salaryRange' showInlineError={true} placeholder={'Salary Range'}/>
               </Form.Group>
               <SubmitField id='submit' value='Submit'/>
               <ErrorsField/>
@@ -75,17 +68,18 @@ class AddJob extends React.Component {
 
 AddJob.propTypes = {
   ready: PropTypes.bool.isRequired,
+  company: PropTypes.object,
 };
 
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
-export default withTracker(() => {
+export default withTracker(( { match } ) => {
   // Ensure that minimongo is populated with all collections prior to running render().
-  const sub1 = Meteor.subscribe(Interests.userPublicationName);
-  const sub2 = Meteor.subscribe(Profiles.userPublicationName);
-  const sub3 = Meteor.subscribe(ProfilesInterests.userPublicationName);
-  const sub4 = Meteor.subscribe(ProfilesProjects.userPublicationName);
-  const sub5 = Meteor.subscribe(Projects.userPublicationName);
+  const documentId = match.params._id;
+  const sub1 = Meteor.subscribe(Companies.userPublicationName);
+  const ready = sub1.ready();
+  const company = Companies.collection.findOne(documentId);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    ready,
+    company,
   };
 })(AddJob);
