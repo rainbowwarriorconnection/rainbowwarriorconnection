@@ -13,7 +13,7 @@ import { Companies } from '../../api/companies/Companies';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const makeSchema = () => new SimpleSchema({
-  jobTitle: String,
+  jobTitle: {type: String, label: 'Job Title', optional: false},
   description: String,
   city: String,
   state: String,
@@ -45,7 +45,7 @@ class AddJob extends React.Component {
       <Grid id="add-job-page" container centered>
         <Grid.Column>
           <Header as="h2" textAlign="center" inverted>Add Job Posting</Header>
-          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
+          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
             <Segment>
               <Form.Group widths={'equal'}>
                 <TextField id='jobTitle' name='jobTitle' showInlineError={true} placeholder='Job Title'/>
