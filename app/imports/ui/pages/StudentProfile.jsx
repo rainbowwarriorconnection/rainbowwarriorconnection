@@ -34,7 +34,7 @@ class StudentProfile extends React.Component {
         <Container className='student-profile-page-grids' verticalAlign='top'>
           <Grid columns={2}>
             <Grid.Column className='student-profile-page-border'>
-              <Header as='h2' inverted>Skills: </Header>
+              <Header as='h2' inverted>Interests: </Header>
               {_.map(studentInterests, (interests, index) => <Label size='big'
                 className='student-profile-page-interests-label' key={index}>{interests}</Label>)}
             </Grid.Column>

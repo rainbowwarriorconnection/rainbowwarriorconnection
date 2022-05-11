@@ -43,7 +43,7 @@ class ProfilesPage extends React.Component {
   renderCard(profile, index) {
     const val = this.state.filterValue;
     if (!val) {
-      return <MakeCard key={index} profile={profile}/>;
+      return <MakeCard id={'studentCard'} key={index} profile={profile}/>;
     }
     if (this.state.filterType === 'search') {
       const fullName = `${profile.firstName.toUpperCase()} ${profile.lastName.toUpperCase()}`;
@@ -60,7 +60,7 @@ class ProfilesPage extends React.Component {
     const studentData = emails.map(email => getProfileData(email));
     const interests = _.pluck(Interests.collection.find().fetch(), 'name');
     return (
-      <Container>
+      <Container id='browse-students-page'>
         <FilterBar onFilter={this.onFilter} interests={interests} className="filter-format"/>
         <Card.Group className="card-format" centered>
           {_.map(studentData, (profile, index) => this.renderCard(profile, index))}

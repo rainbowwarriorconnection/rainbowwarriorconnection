@@ -2,7 +2,7 @@ import { Selector } from 'testcafe';
 
 class BrowseStudentsPage {
   constructor() {
-    this.pageId = '#student-profiles-page';
+    this.pageId = '#browse-students-page';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -11,10 +11,14 @@ class BrowseStudentsPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
+  async clickOnStudent(testController, id) {
+    await testController.click(Selector(`#view-student/${id}`));
+  }
+
   /** Checks that the current page has at least six profiles on it.  */
   async hasDefaultProfiles(testController) {
     const cardCount = Selector('.ui .card').count;
-    await testController.expect(cardCount).gte(2);
+    await testController.expect(cardCount).gte(10);
   }
 }
 

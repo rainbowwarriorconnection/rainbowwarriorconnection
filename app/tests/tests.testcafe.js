@@ -8,11 +8,13 @@ import { companySignUp } from './companySignup.page';
 import { studentHomePage } from './home.page';
 import { browseStudentsPage } from './browseStudents.page';
 import { browseCompaniesPage } from './browseCompanies.page';
+import {studentProfilePage} from "./studentProfile.page";
+import {companyProfilePage} from "./companyProfile.page";
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
-const newUser = { username: `user-${new Date().getTime()}@foo.com`, password: 'foo' };
+const newUser = { username: `user-${new Date().getTime()}@foo.com`, password: 'foo', _id: this._id };
 const newCompany = { username: `user-${new Date().getTime()}@company.com`, password: 'oof' };
 
 fixture('Bowfolios localhost test with default db')
@@ -22,7 +24,7 @@ test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
-test('Test that signup page works, then logout works', async (testController) => {
+test.only('Test that signup page works, then logout works', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
   await navBar.gotoSignupPage(testController);
   await signupPage.isDisplayed(testController);
@@ -76,4 +78,22 @@ test('Test that browse company page displays when signed in and when the user is
   await signinPage.signin(testController, newUser.username, newUser.password);
   await navBar.gotoBrowseCompaniesPage(testController);
   await browseStudentsPage.hasDefaultProfiles(testController);
+});
+
+test.only('Test that student profile page shows up', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, newUser.username, newUser.password);
+  await navBar.gotoBrowseStudentsPage(testController);
+  await browseStudentsPage.clickOnStudent(testController, newUser._id);
+  await studentProfilePage.isDisplayed(testController);
+});
+
+test.only('Test that company profile page shows up', async (testController) => {
+  await navBar.ensureLogout(testController);
+  await navBar.gotoSigninPage(testController);
+  await signinPage.signin(testController, newUser.username, newUser.password);
+  await navBar.gotoBrowseStudentsPage(testController);
+  await browseCompaniesPage.clickOnStudent(testController, newUser._id);
+  await companyProfilePage.isDisplayed(testController);
 });

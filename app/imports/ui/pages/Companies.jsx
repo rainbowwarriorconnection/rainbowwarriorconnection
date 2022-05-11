@@ -26,7 +26,7 @@ class CompaniesPage extends React.Component {
     const companies = _.pluck(Companies.collection.find().fetch(), 'name');
     const companyData = companies.map(company => getCompanyData(company));
     return (
-      <Container id="company-profiles-page">
+      <Container id="browse-companies-page">
         <Card.Group centered>
           {_.map(companyData, (company, index) => <MakeCompanyCard key={index} project={company}/>)}
         </Card.Group>

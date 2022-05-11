@@ -23,7 +23,7 @@ class CompanyProfile extends React.Component {
     /** Get company information and create model */
     const name = this.props.company.name;
     const companyJobIds = _.pluck(CompanyJobs.collection.find({ companyName: name }).fetch(), 'jobId');
-    const companyJobs = _.pluck(Jobs.collection.find({ jobId: companyJobIds }).fetch())
+    const companyJobs = _.pluck(Jobs.collection.find({ jobId: companyJobIds }).fetch());
     console.log(Jobs.collection.find({ jobId: companyJobIds }).fetch());
     return (
       <Container id="company-profile-page">

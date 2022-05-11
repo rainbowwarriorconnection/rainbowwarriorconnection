@@ -313,6 +313,14 @@
             "lastName": "Nelson",
             "picture": "https://media-exp1.licdn.com/dms/image/C4D35AQEX4mFyvm3q5g/profile-framedphoto-shrink_400_400/0/1619521455425?e=1652324400&v=beta&t=Vt8bRVO5tomuL9ZVVaL6ZjpUT0sTmQcqDsh1GaSoNQI",
             "state": "Washington"
+        },
+        {
+          "description": "College sophomore with an interest in family studies and human development.\n",
+          "email": "clarawu@hawaii.edu",
+          "firstName": "Clara",
+          "lastName": "Wu",
+          "picture": "https://www.kaleookalani.org/wp-content/uploads/2020/05/Clara.DC_.cropped.resized.jpg",
+          "state": "Hawaii"
         }
     ],
   "defaultInterests": [
