@@ -26,7 +26,7 @@ test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
 });
 
-test.only('Test that signup page works, then logout works', async (testController) => {
+test('Test that signup page works, then logout works', async (testController) => {
   // Create a new user email address that's guaranteed to be unique.
   await navBar.gotoSignupPage(testController);
   await signupPage.isDisplayed(testController);
@@ -43,7 +43,7 @@ test('Test that signin and signout work', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test that company home page displays', async (testController) => {
+test('Test that company home page displays', async (testController) => {
   await navBar.gotoCompanySignupPage(testController);
   await companySignUp.signup(testController, newCompany.username, newCompany.password);
   await navBar.gotoCompanyHomePage(testController);
@@ -82,7 +82,7 @@ test('Test that browse company page displays when signed in and when the user is
   await browseStudentsPage.hasDefaultProfiles(testController);
 });
 
-test.only('Test that student profile page shows up', async (testController) => {
+test('Test that student profile page shows up', async (testController) => {
   const student = Students.collection.findOne(newUser.username);
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
@@ -92,7 +92,7 @@ test.only('Test that student profile page shows up', async (testController) => {
   await studentProfilePage.isDisplayed(testController);
 });
 
-test.only('Test that company profile page shows up', async (testController) => {
+test('Test that company profile page shows up', async (testController) => {
   const company = Companies.collection.findOne(newCompany.username);
   await navBar.ensureLogout(testController);
   await navBar.gotoSigninPage(testController);
@@ -101,3 +101,4 @@ test.only('Test that company profile page shows up', async (testController) => {
   await browseCompaniesPage.clickOnCompany(testController, company._id);
   await companyProfilePage.isDisplayed(testController);
 });
+
