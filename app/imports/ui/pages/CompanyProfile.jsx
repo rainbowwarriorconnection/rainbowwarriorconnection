@@ -60,18 +60,17 @@ class CompanyProfile extends React.Component {
             <Divider/>
             <Grid.Row>
 	    <Grid.Row>
+	    	<Header as='h3' inverted> Description</Header>
+	    	<Header as='h4' inverted> { this.props.company.description } </Header>
+	    </Grid.Row>
+	    <Divider/>
+	    <Grid.Row>
 	      <Header as='h4' inverted>Looking for...</Header>
                   {_.map(companyJobs, (job, index) => <MakeJobCard key={index} job={job}/>)}  
 	    </Grid.Row>
             </Grid.Row>
           </Grid.Column>
           <Grid.Row>
-            <Grid.Row>
-              <Header as='h4' inverted>Looking for...</Header>
-              <Segment>
-                {_.map(companyJobs, (job, index) => <MakeJobCard key={index} job={job}/>)}
-              </Segment>
-            </Grid.Row>
           </Grid.Row>
         </Grid>
       </Container>
